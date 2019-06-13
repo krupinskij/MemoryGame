@@ -3,10 +3,6 @@ let MAX_VER = 4;
 let SIZE = 150;
 let MAX_ELEMENTS;
 
-let levelButtons = document.querySelectorAll(".buttons button");
-let image = document.getElementById("level-image");
-let checkButton = document.getElementById("check");
-
 let buttons;
 let clickedButtons = [];
 let images = [];
@@ -15,24 +11,21 @@ let visibleElements;
 let clickCounter=0;
 
 function generatePlayGround(){
-    
-    const playGround = document.getElementById("playGround");
 
-    playGround.style.gridTemplate = `repeat(${MAX_VER},${SIZE}px) / repeat(${MAX_HOR},${SIZE}px)`;
+    $("#playGround").css("gridTemplate", `repeat(${MAX_VER},${SIZE}px) / repeat(${MAX_HOR},${SIZE}px)`);
 
     for(let i=0;i<MAX_VER;i++)
     {
         for(let j=0;j<MAX_HOR;j++)
         {
-            let gridButton = document.createElement('button');
-            playGround.appendChild(gridButton);
+            $("#playGround").append("<button></button>");
         }
     }
 }
 
 function randomImage(){
     const stack = [];
-    buttons = document.querySelectorAll("#page_2 button");
+    buttons = $("#page_2 button");
     for(let i=0;i<MAX_ELEMENTS;i++)
     {
         let number = Math.floor(Math.random()*MAX_ELEMENTS);
@@ -48,27 +41,23 @@ function randomImage(){
         } else {
             images[number]=`url(img/pokemons/images/${number+1}.png)`;
         }
-        buttons[i].style.backgroundImage = "url(img/pokemons/back.png)";
-        buttons[i].id=number;
+        $(buttons[i]).css("backgroundImage", "url(img/pokemons/back.png)");
+        $(buttons[i]).attr("id",number);
     }
 }
 
-levelButtons.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-        levelButtons.forEach(btn2=>{
-            btn2.className ="";
-        });
-        image.src = `img/homepage/${btn.id}.png`;
-        btn.className = "clicked";
-    });
+
+$(".buttons button").on("click", function() {
+  $(".buttons button").removeClass("clicked");
+  $(this).addClass("clicked");
+  $("#level-image").attr("src", `img/homepage/${$(this).attr("id")}.png`);
 });
 
 
 
-checkButton.addEventListener('click',()=>{
-    let level = document.querySelector(".clicked").id;
+$("#check").on('click', function() {
 
-    switch(level){
+    switch($(".clicked").attr("id")){
         case "easy": break;
         case "medium":
             MAX_HOR=6;
@@ -82,57 +71,59 @@ checkButton.addEventListener('click',()=>{
             SIZE=100;
     }
 
-    document.getElementById("page_2").style.display="flex";
-    document.getElementById("page_1").style.display="none";
-    document.body.style.backgroundImage = "url(img/tlo/page_2.png)";
+    $("#page_1").css("display", "none").next().css("display", "flex");
+    $(document).css("backgroundImage", "url(img/tlo/page_2.png)");
 
     MAX_ELEMENTS = MAX_HOR*MAX_VER;
     visibleElements=MAX_ELEMENTS;
     generatePlayGround();
     randomImage();
 
-    buttons.forEach(btn=>{
-        btn.addEventListener('click',()=>{
-            clickedButtons.push(btn);
+    $("#page_2 button").on('click',function() {
+            clickedButtons.push(this);
             clickCounter++;
 
-            btn.style.borderWidth="4px";
-            btn.style.borderColor="red";
-            btn.style.backgroundImage = images[btn.id];
-    
+            $(this).css({
+              borderWidth: "4px",
+              borderColor: "red",
+              backgroundImage: images[$(this).attr("id")]
+            });
+
             if(clickedButtons.length%2==0){
-    
+
                 setTimeout(function() {
-                    if(clickedButtons[0]!==clickedButtons[1] && (clickedButtons[0].id)%(MAX_ELEMENTS/2)==(clickedButtons[1].id)%(MAX_ELEMENTS/2)) {
-                    clickedButtons[0].style.visibility="hidden";
-                    clickedButtons[1].style.visibility="hidden";
+                    if(clickedButtons[0]!==clickedButtons[1] &&
+                        $(clickedButtons[0]).attr("id")%(MAX_ELEMENTS/2)==$(clickedButtons[1]).attr("id")%(MAX_ELEMENTS/2)) {
+
+                    $(clickedButtons[0]).css("visibility", "hidden");
+                    $(clickedButtons[1]).css("visibility", "hidden");
 
                     visibleElements-=2;
 
                     if(visibleElements==0){
-                        document.getElementById("page_2").style.display="none";
-                        document.getElementById("page_3").style.display="grid";
-                        document.body.style.backgroundImage = "url(img/tlo/page_3.png)";
 
-                        document.getElementById("count").textContent = clickCounter;
+                        $("#page_2").css("display", "none").next().css("display", "grid");
+                        $(document).css("backgroundImage", "url(img/tlo/page_3.png)");
+                        $("#count").text(clickCounter);
                     }
                 }
-    
-                clickedButtons[0].style.border="";
-                clickedButtons[1].style.border="";
-                clickedButtons[0].style.backgroundImage= "url(img/pokemons/back.png)";
-                clickedButtons[1].style.backgroundImage= "url(img/pokemons/back.png)";
+
+                $(clickedButtons[0]).css({
+                  border: "",
+                  backgroundImage: "url(img/pokemons/back.png)"
+                });
+
+                $(clickedButtons[1]).css({
+                  border: "",
+                  backgroundImage: "url(img/pokemons/back.png)"
+                });
+
                 clickedButtons.shift();
                 clickedButtons.shift();
+
                 },1000);
-    
-                
+
+
             }
-        })
     })
 })
-
-
-
-
-
