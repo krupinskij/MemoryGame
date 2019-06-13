@@ -10,6 +10,8 @@ let images = [];
 let visibleElements;
 let clickCounter=0;
 
+$("#page_2").fadeOut(1);
+
 function generatePlayGround(){
 
     $("#playGround").css("gridTemplate", `repeat(${MAX_VER},${SIZE}px) / repeat(${MAX_HOR},${SIZE}px)`);
@@ -71,8 +73,9 @@ $("#check").on('click', function() {
             SIZE=100;
     }
 
-    $("#page_1").css("display", "none").next().css("display", "flex");
-    $(document).css("backgroundImage", "url(img/tlo/page_2.png)");
+    $("#page_1").fadeOut(500, function() {
+      $("#page_2").fadeIn(500);
+    });
 
     MAX_ELEMENTS = MAX_HOR*MAX_VER;
     visibleElements=MAX_ELEMENTS;
@@ -87,7 +90,7 @@ $("#check").on('click', function() {
               borderWidth: "4px",
               borderColor: "red",
               backgroundImage: images[$(this).attr("id")]
-            });
+            }).removeClass("hide").addClass("show");
 
             if(clickedButtons.length%2==0){
 
@@ -95,15 +98,20 @@ $("#check").on('click', function() {
                     if(clickedButtons[0]!==clickedButtons[1] &&
                         $(clickedButtons[0]).attr("id")%(MAX_ELEMENTS/2)==$(clickedButtons[1]).attr("id")%(MAX_ELEMENTS/2)) {
 
-                    $(clickedButtons[0]).css("visibility", "hidden");
-                    $(clickedButtons[1]).css("visibility", "hidden");
+                    $(clickedButtons[0]).animate({
+                      opacity: 0
+                    }, 300);
+                    $(clickedButtons[1]).animate({
+                      opacity: 0
+                    }, 300);
 
                     visibleElements-=2;
 
                     if(visibleElements==0){
 
-                        $("#page_2").css("display", "none").next().css("display", "grid");
-                        $(document).css("backgroundImage", "url(img/tlo/page_3.png)");
+                      $("#page_2").fadeOut(500, function() {
+                        $("#page_3").fadeIn(500);
+                      });
                         $("#count").text(clickCounter);
                     }
                 }
@@ -111,12 +119,12 @@ $("#check").on('click', function() {
                 $(clickedButtons[0]).css({
                   border: "",
                   backgroundImage: "url(img/pokemons/back.png)"
-                });
+                }).removeClass("show").addClass("hide");
 
                 $(clickedButtons[1]).css({
                   border: "",
                   backgroundImage: "url(img/pokemons/back.png)"
-                });
+                }).removeClass("show").addClass("hide");
 
                 clickedButtons.shift();
                 clickedButtons.shift();
