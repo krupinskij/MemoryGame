@@ -16,8 +16,13 @@ div{
     justify-items: center;
 }
 
-#page_2, #page_3{
+#page_1, #page_2, #page_3{
     display: none;
+}
+
+#page_0 {
+  background-color: rgba(0,0,0,0.8);
+  cursor: pointer;
 }
 
 #page_1 {
@@ -44,10 +49,41 @@ h1 {
 
 .text{
     background-color: rgba(0,0,0,0.2);
+    text-shadow:
+       6px 6px 0 #2D59A8,
+       0 6px 0 #2D59A8,
+
+       -6px 6px 0 #2D59A8,
+       -6px 0 0 #2D59A8,
+
+       -6px -6px 0 #2D59A8,
+       0 -6px 0 #2D59A8,
+
+       6px -6px 0 #2D59A8,
+       6px 0 0 #2D59A8;
+
+    font-family: 'Nunito', sans-serif;
 }
 
-img, .clicked{
-    box-shadow: 0px 0px 5px 5px hsla(214, 100%, 61%, 0.75);
+#level-image {
+  border-radius: 15px;
+  height: 100%;
+}
+
+@keyframes jump {
+  100% {transform: translate3d(0,-30%,0)}
+}
+.clicked {
+  animation: jump .5s linear alternate infinite;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+}
+
+.buttons img, #check {
+  cursor: pointer;
 }
 
 button {
@@ -56,25 +92,6 @@ button {
     font-size: 20px;
     color: white;
     border-radius: 10px;
-}
-
-#easy {
-    background-color: rgb(48, 133, 69);
-}
-#medium {
-    color: black;
-    background-color: rgb(255, 255, 79);
-}
-#hard {
-    background-color: rgb(199, 59, 59);
-}
-#legendary {
-    background-color: black;
-}
-#check {
-    background-color: hsl(214, 100%, 61%);
-    width: 300px;
-    height: 75px;
 }
 
 .playGround {

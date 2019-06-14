@@ -11,6 +11,11 @@ let visibleElements;
 let clickCounter=0;
 
 $("#page_2").fadeOut(1);
+$("#page_0").on('click', function() {
+  $(this).fadeOut(500, function() {
+    $("#page_1").fadeIn(500);
+  });
+});
 
 function generatePlayGround(){
 
@@ -49,10 +54,10 @@ function randomImage(){
 }
 
 
-$(".buttons button").on("click", function() {
-  $(".buttons button").removeClass("clicked");
+$(".buttons img").on("click", function() {
+  $(".buttons img").removeClass("clicked");
   $(this).addClass("clicked");
-  $("#level-image").attr("src", `img/homepage/${$(this).attr("id")}.png`);
+  $("#level-image").attr("src", `img/homepage/${$(this).attr("id")}.gif`);
 });
 
 
