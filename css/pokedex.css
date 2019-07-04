@@ -1,0 +1,22 @@
+#pokedex {
+  position: fixed;
+  left: -35%; }
+
+.page2__pokedex {
+  height: 100vh;
+  display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; }
+
+.page2__showPokedex {
+  z-index: 1; }
+  .page2__showPokedex #showPokedex {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px; }

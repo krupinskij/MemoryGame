@@ -6,41 +6,61 @@
         </title>
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="index.css" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="css/pokedex.css" type="text/css"/>
+
     </head>
     <body>
 
-      <div id="page_0">
-        <section id="content">
-          <img src="https://i.imgur.com/nUSNVkk.png" border="0">
-        </section>
+      <div id="page_0" class="page0">
+        <img src="https://i.imgur.com/nUSNVkk.png" border="0">
       </div>
 
-        <div id="page_1">
+        <div id="page_1" class="page1">
             <img src="https://i.imgur.com/IdjIdL5.png" border="0">
-            <img id="level-image" src="img/homepage/easy.gif" alt="level"/>
-            <section class="buttons">
-                    <img id="easy" class="clicked" src="https://i.imgur.com/YvKwwlq.png" border="0">
-                    <img id="medium" src="https://i.imgur.com/Ksy3wnO.png" border="0">
-                    <img id="hard" src="https://i.imgur.com/anQNeo0.png" border="0">
-                    <img id="legendary" src="https://i.imgur.com/N2SdIJH.png" border="0">
+            <img class="page1__img" id="level-image" src="img/homepage/easy.gif" alt="level-image"/>
+            <section class="page1__levelOptions">
+                    <img id="easy" class="page1__imageClick clicked" src="https://i.imgur.com/YvKwwlq.png" border="0">
+                    <img id="medium" class="page1__imageClick" src="https://i.imgur.com/Ksy3wnO.png" border="0">
+                    <img id="hard" class="page1__imageClick" src="https://i.imgur.com/anQNeo0.png" border="0">
+                    <img id="legendary" class="page1__imageClick" src="https://i.imgur.com/N2SdIJH.png" border="0">
             </section>
-            <img id="check" src="https://i.imgur.com/B4RB9nx.png" border="0">
+            <img id="check" class="page1__imageClick" src="https://i.imgur.com/B4RB9nx.png" border="0">
 
         </div>
-        <div id="page_2">
-            <section class="playGround" id="playGround"></section>
+
+        <div id="page_2" class="page2">
+
+          <section class="page2__pokedex">
+            <canvas id="pokedex" width="730" height="550">
+              <img id="img" src="img/pokedex/pokedex.png" alt="pokedex"/>
+              <img id="back" src="img/pokedex/pokedex_cover_back.png" alt="pokedex cover back">
+              <img id="front" src="img/pokedex/pokedex_cover_front.png" alt="pokedex cover front">
+              <img id="pokemon" src="#" alt="pokemon image">
+
+              Your browser does not support the HTML5 canvas tag.
+            </canvas>
+          </section>
+
+          <section class="page2__playGround" id="playGround"></section>
+
+          <section class="page2__showPokedex">
+            <button id="showPokedex">Pokaż pokedex</button>
+          </section>
+
         </div>
-        <div id="page_3">
+
+        <div id="page_3" class="page3">
             <img src="https://i.imgur.com/UVLpnLz.png" border="0">
             <img src="https://i.imgur.com/rurJ4tj.png" border="0">
             <img src="https://i.imgur.com/orPbYpl.png" border="0">
-            <p class="text" id="count">--ile--</p>
+            <p class="page3__count" id="count">--ile--</p>
             <img src="https://i.imgur.com/1z8gjnD.png" border="0">
         </div>
 
     </body>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/pokedex.js"></script>
 </html>

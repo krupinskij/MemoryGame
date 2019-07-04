@@ -1,0 +1,255 @@
+{
+  "pokemons": [
+    {
+      "name": "Pikachu",
+      "type": "Elektryczny",
+      "evolution": ["Pichu", "PIKACHU", "Raichu"],
+      "description": "Gdy się zdenerwuje, może uwolnić energię elektryczną zmagazynowaną na policzkach."
+    },
+
+    {
+      "name": "Squirtle",
+      "type": "Wodny",
+      "evolution": ["SQUIRTLE", "Wartortle", "Raichu"],
+      "description": "Squirtle są niezwykle towarzyskie oraz przyjaźnie nastawione do swoich trenerów."
+    },
+
+    {
+      "name": "Bulbasaur",
+      "type": "Trawiasty / Trujący",
+      "evolution": ["BULBASAUR", "Ivysaur", "Venusaur"],
+      "description": "Dzięki bulwie zlokalizowanej na grzbiecie Bulbasaura, te Pokémony mogą pobierać energię ze słońca."
+    },
+
+    {
+      "name": "Charmander",
+      "type": "Ognisty",
+      "evolution": ["CHARMANDER", "Charmeleon", "Charizard"],
+      "description": "Na końcu ogona jego ogona znajduje się płomień. Mówi się, że jeśli ten płomień gaśnie, Pokémon umiera."
+    },
+
+    {
+      "name": "Rattata",
+      "type": "Normalny",
+      "evolution": ["RATTATA",  "Raticate"],
+      "description": "Ten Pokémon zjada wszystko co znajdzie. Znany jest z podkradania jedzenia ludziom."
+    },
+
+    {
+      "name": "Caterpie",
+      "type": "Robak",
+      "evolution": ["CATERPIE", "Metapod", "Butterfree"],
+      "description": "W sytuacji zagrożenia z jego czułków wydziela się brzydki zapach."
+    },
+
+    {
+      "name": "Pidgey",
+      "type": "Normalny / Powietrzny",
+      "evolution": ["PIDGEY", "Pidgeotto", "Pidgeot"],
+      "description": "Dzikie Pidgeye można najczęściej spotkać w lasach i na łąkach. Najczęściej jedzą nasiona i ziarna roślin."
+    },
+
+    {
+      "name": "Sandshrew",
+      "type": "Ziemny",
+      "evolution": ["SANDSHREW", "Sandslash"],
+      "description": "W sytuacji zagrożenia zwija się w kulkę chroniąc swoje ciało pancerzem."
+    },
+
+    {
+      "name": "Jigglypuff",
+      "type": "Normalny / Wróżka",
+      "evolution": ["Igglybuff", "JIGGLYPUFF", "Wigglytuff"],
+      "description": "Pięknie śpiewa, jednak słuchanie jego śpiewu usypia."
+    },
+
+    {
+      "name": "Diglett",
+      "type": "Ziemny",
+      "evolution": ["DIGLETT", "Dugtrio"],
+      "description": "Diglett drąży tunele pod ziemią, dzięki czemu użyźnia glebę."
+    },
+
+    {
+      "name": "Onix",
+      "type": "Ziemny / Kamienny",
+      "evolution": ["ONIX", "Steelix"],
+      "description": "Jest agresywny wobec ludzi, ale większość życia spędza pod ziemią, drążąć tunele."
+    },
+
+    {
+      "name": "Meowth",
+      "type": "Normalny",
+      "evolution": ["MEOWTH", "Persian"],
+      "description": "Na czole widnieje złoty obiekt, zwany \"talizmanem\"."
+    },
+
+    {
+      "name": "Psyduck",
+      "type": "Wodny",
+      "evolution": ["PSYDUCK",  "Golduck"],
+      "description": "Dręczą go wieczne migreny. Gdy migrena się nasili, Psyduck jest w stanie użyć tajemniczej psychicznej mocy."
+    },
+
+    {
+      "name": "Cubone",
+      "type": "Ziemny",
+      "evolution": ["CUBONE", "Marowak"],
+      "description": "Na jego głowie znajduje się czaszka, należąca do jego zmarłej matki, zaś w ręku trzyma kość."
+    },
+
+    {
+      "name": "Magikarp",
+      "type": "Wodny",
+      "evolution": ["MAGIKARP", "Gyardos"],
+      "description": "Nie stanowi zagrożenia. Wielu ludzi zastanawia się, w jaki sposób ten Pokémon w ogóle przetrwał."
+    },
+
+    {
+      "name": "Snorlax",
+      "type": "Normalny",
+      "evolution": ["Munchlax", "SNORLAX"],
+      "description": "Śpi przez większość życia. Budzą się jedynie po to, by zaspokoić głód."
+    },
+
+    {
+      "name": "Gastly",
+      "type": "Duch / Trujący",
+      "evolution": ["GASTLY", "Haunter", "Gengar"],
+      "description": "Jest pokemonem lubiącym zabawę. Uwielbia straszyć ludzi."
+    },
+
+    {
+      "name": "Vulpix",
+      "type": "Ognisty",
+      "evolution": ["VULPIX", "Ninetales"],
+      "description": "W momencie urodzenia Vulpix posiada tylko jeden, biały ogon. Wraz z upływem czasu, ogon rozdziela się na sześć mniejszych."
+    },
+
+    {
+      "name": "Mankey",
+      "type": "Walczący",
+      "evolution": ["MANKEY", "Primeape"],
+      "description": "Jest niezwykle agresywnym Pokémonem. Łatwo go rozzłościć i wtedy wpada w szał."
+    },
+
+    {
+      "name": "Abra",
+      "type": "Psychiczny",
+      "evolution": ["ABRA", "Kadabra", "Alakazam"],
+      "description": "Potrafi czytać w myślach. Jeśli wyczuje niebezpieczeństwo, może się teleportować, w celu jego uniknięcia."
+    },
+
+    {
+      "name": "Krabby",
+      "type": "Wodny",
+      "evolution": ["KRABBY",  "Kingler"],
+      "description": "W sytuacji wytwarza pianę, by sprawić wrażanie, że jest większy."
+    },
+
+    {
+      "name": "Drowzee",
+      "type": "Psychiczny",
+      "evolution": ["DROWZEE", "Hypno"],
+      "description": "Jest w stanie uśpić ludzi, a następnie pożywić się ich snami, wysysając je przez nos."
+    },
+
+    {
+      "name": "Hitmonlee",
+      "type": "Walczący",
+      "evolution": ["Tyrogue", "HITMONLEE"],
+      "description": "Jest bardzo wygimnastykowanym Pokémonem. Potrafi zadawać kopnięcia z każdej pozycji."
+    },
+
+    {
+      "name": "Hitmonchan",
+      "type": "Walczący",
+      "evolution": ["Tyrogue", "HITMONCHAN"],
+      "description": "Jego ciosy są zbyt szybkie, by dostrzec je gołym okiem."
+    },
+
+    {
+      "name": "Koffing",
+      "type": "Trujący",
+      "evolution": ["KOFFING", "Weezing"],
+      "description": "W zależności od nastroju, Koffingi wydzielają różne rodzaje gazu. W sytuacjach skrajnego zagrożenia są w stanie wywołać samo-eksplozję."
+    },
+
+    {
+      "name": "Ekans",
+      "type": "Trujący",
+      "evolution": ["EKANS", "Arbok"],
+      "description": "Porusza się bezszelestnie w trawie. Ekans jest w stanie przełknąć dużą zdobycz w całości."
+    },
+
+    {
+      "name": "Weedle",
+      "type": "Robak / Trujący",
+      "evolution": ["WEEDLE", "Kakuna", "Beedrill"],
+      "description": "Weedle nie jest bardzo silny, ale może pluć lepką nicią, by złapać w nią wrogów."
+    },
+
+    {
+      "name": "Staryu",
+      "type": "Wodny",
+      "evolution": ["STARYU",  "Starmie"],
+      "description": "Na środku posiada czerwony kryształ - zwany rdzeniem - który jest jego sercem."
+    },
+
+    {
+      "name": "Eevee",
+      "type": "Normalny",
+      "evolution": ["EEVEE", "Vaporeon / Jolteon / Flareon"],
+      "description": "Jest jedynym Pokémonem, który ma osiem różnych form ewolucyjnych."
+    },
+
+    {
+      "name": "Lickitung",
+      "type": "Normalny",
+      "evolution": ["LICKITUNG"],
+      "description": "Liżą wszystko, co jest dla nich nowe i co znajduje się pobliżu - łącznie z ludźmi."
+    },
+
+    {
+      "name": "Spearow",
+      "type": "Normalny / Powietrzny",
+      "evolution": ["SPEAROW", "Fearow"],
+      "description": "Jest bardzo agrsywny. Atakuje nawet swoich trenerów."
+    },
+
+    {
+      "name": "Nidoran",
+      "type": "Trujący",
+      "evolution": ["NIDORAN", "Nidorino / Nidorina", "Nidoking / Nidoqueen"],
+      "description": "U tych pokemonów występuje silne rozgraniczenie między płciami."
+    },
+
+    {
+      "name": "Clefairy",
+      "type": "Wróżka",
+      "evolution": ["CLEFAIRY", "Clefable"],
+      "description": "Clefairy jest bardzo przyjacielskim Pokémonem, jednak czasem boi się ludzi i niektórych Pokémonów."
+    },
+
+    {
+      "name": "Zubat",
+      "type": "Trujący / Powietrzny",
+      "evolution": ["ZUBAT", "Golbat"],
+      "description": "Zubat nie ma oczu. Podczas latania korzysta z echolokacji."
+    },
+
+    {
+      "name": "Geodude",
+      "type": "Kamienny / Ziemny",
+      "evolution": ["GEODUDE", "Graveler", "Golem"],
+      "description": "Te pokemony często walczą ze sobą, by sprawdzić, który jest twardszy."
+    },
+
+    {
+      "name": "Growlithe",
+      "type": "Ognisty",
+      "evolution": ["GROWLITHE", "Arcanine"],
+      "description": "Są odważne i posłuszne. Dzięki swym cechom są wykorzystywane w policji."
+    }
+  ]
+}
