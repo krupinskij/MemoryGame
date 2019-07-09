@@ -16,7 +16,8 @@ function fillDescription(data){
 
   let x=460;
   let y=180;
-  const maxLineLength = 25;
+  const maxLineLengthE = 22;
+  const maxLineLengthD = 25;
 
   context.fillStyle = "white";
 
@@ -29,18 +30,29 @@ function fillDescription(data){
 
   context.fillText("Ewolucja:", x, y); y+=20;
   for(let i=0;i<data.evolution.length;i++) {
-    context.fillText((i+1) + ". " + data.evolution[i], x, y); y+=20;
+    //context.fillText((i+1) + ". " + data.evolution[i], x, y); y+=20;
+
+    const wordsE = data.evolution[i].split(" ");
+    let lineE = (i+1) + ". ";
+    for(let j=0;j<wordsE.length;j++) {
+      lineE+=wordsE[j]+" ";
+
+      if(j===wordsE.length-1 || lineE.length+wordsE[j+1].length>maxLineLengthE) {
+        context.fillText(lineE, x, y); y+=20;
+        lineE="   ";
+      }
+    }
   } y+=20;
 
   context.font = "10pt Courier New";
-  const words = data.description.split(" ");
-  let line = "";
-  for(let i=0;i<words.length;i++) {
-    line+=words[i]+" ";
+  const wordsD = data.description.split(" ");
+  let lineD = "";
+  for(let i=0;i<wordsD.length;i++) {
+    lineD+=wordsD[i]+" ";
 
-    if(i===words.length-1 || line.length+words[i+1].length>maxLineLength) {
-      context.fillText(line, x, y); y+=20;
-      line="";
+    if(i===wordsD.length-1 || lineD.length+wordsD[i+1].length>maxLineLengthD) {
+      context.fillText(lineD, x, y); y+=20;
+      lineD="";
     }
   }
 
@@ -59,9 +71,9 @@ function openLoop() {
 
   let fracPI = 0;
 
-  const pokemonButton = clickedButtons[clickedButtons.length-1];
-  const pokemonNumber = pokemonButton.getAttribute("id")%(MAX_ELEMENTS/2);
-  pokemon.setAttribute("src", "img/pokemons/images/"+(pokemonNumber+1)+".png");
+  const card = game.lastCard;
+  const pokemonNumber = card.id;
+  pokemon.setAttribute("src", "img/pokemons/images/"+(pokemonNumber)+".png");
 
   const openCover = setInterval(function() {
 
@@ -94,7 +106,7 @@ function openLoop() {
             if (this.readyState == 4 && this.status == 200) {
                 const parsedFile = JSON.parse(this.responseText);
 
-                const pokemonData = parsedFile.pokemons[pokemonNumber];
+                const pokemonData = parsedFile.pokemons[pokemonNumber-1];
                 fillDescription(pokemonData);
             }
         };
@@ -180,8 +192,8 @@ function slideRight() {
 
 button.addEventListener("click", function() {
 
-  if(clickedButtons.length%2!==1) return;
-  console.log(clickedButtons);
+  if(game.isPair) return;
+  //console.log(clickedButtons);
   if(busy) return;
   busy = true;
 
