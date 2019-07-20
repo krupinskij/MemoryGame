@@ -1,68 +1,105 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <title>
-            Memory Pokemon
-        </title>
-        <meta charset="utf-8">
-        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="css/pokedex.css" type="text/css"/>
+<head>
 
-    </head>
-    <body>
+  <title>
+    Memory Pokemon
+  </title>
 
-      <div id="page_0" class="page0">
-        <img src="https://i.imgur.com/nUSNVkk.png" border="0">
-      </div>
+  <meta charset="utf-8">
 
-        <div id="page_1" class="page1">
-            <img src="https://i.imgur.com/IdjIdL5.png" border="0">
-            <img class="page1__img" id="level-image" src="img/homepage/easy.gif" alt="level-image"/>
-            <section class="page1__levelOptions">
-                    <img id="easy" class="page1__imageClick clicked" src="https://i.imgur.com/YvKwwlq.png" border="0">
-                    <img id="medium" class="page1__imageClick" src="https://i.imgur.com/Ksy3wnO.png" border="0">
-                    <img id="hard" class="page1__imageClick" src="https://i.imgur.com/anQNeo0.png" border="0">
-                    <img id="legendary" class="page1__imageClick" src="https://i.imgur.com/N2SdIJH.png" border="0">
-            </section>
-            <img id="check" class="page1__imageClick" src="https://i.imgur.com/B4RB9nx.png" border="0">
+  <link href="https://fonts.googleapis.com/css?family=Righteous|Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" type="text/css"/>
+  <link rel="stylesheet" href="css/pokedex.css" type="text/css"/>
 
-        </div>
+</head>
+<body>
 
-        <div id="page_2" class="page2">
+  <div id="gameStartScreen" class="page0 gameScreen">
+    <img class="page0_gameName" src="img/name.png" alt="Pokemon - Memory Game">
+  </div>
 
-          <section class="page2__pokedex">
-            <canvas id="pokedex" width="730" height="550">
-              <img id="img" src="img/pokedex/pokedex.png" alt="pokedex"/>
-              <img id="back" src="img/pokedex/pokedex_cover_back.png" alt="pokedex cover back">
-              <img id="front" src="img/pokedex/pokedex_cover_front.png" alt="pokedex cover front">
-              <img id="pokemon" src="#" alt="pokemon image">
+  <div id="levelSelectScreen" class="page1 gameScreen">
 
-              Your browser does not support the HTML5 canvas tag.
-            </canvas>
-          </section>
+    <section class="page1_header">
+      Wybierz poziom:
+    </section>
 
-          <section class="page2__playGround" id="playGround"></section>
+    <section class="page1_optionsContainer">
 
-          <section class="page2__showPokedex">
-            <button id="showPokedex">Pokaż pokedex</button>
-          </section>
+      <img id="pokeball" class="page1_pointer" src="img/pokeball.png" alt="Pokeball pointing choosen level"/>
 
-        </div>
+      <span id="easy" class="page1_option page1_option-easy">Łatwy</span>
+      <span id="medium" class="page1_option page1_option-medium">Średni</span>
+      <span id="hard" class="page1_option page1_option-hard">Trudny</span>
+      <span id="legendary" class="page1_option page1_option-legendary">Legendarny</span>
 
-        <div id="page_3" class="page3">
-            <img src="https://i.imgur.com/UVLpnLz.png" border="0">
-            <img src="https://i.imgur.com/rurJ4tj.png" border="0">
-            <img src="https://i.imgur.com/orPbYpl.png" border="0">
-            <p class="page3__count" id="count">--ile--</p>
-            <img src="https://i.imgur.com/1z8gjnD.png" border="0">
-        </div>
+      <img id="levelImage" class="page1_levelImage" src="img/levelImages/easy.gif" alt="Image representing choosen level"/>
 
-    </body>
+    </section>
 
-    <script src="js/card.js"></script>
-    <script src="js/playground.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/pokedex.js"></script>
+    <section id="submitLevel" class="page1_submitLevel">
+      Graj!
+    </section>
+
+  </div>
+
+  <div id="gameContainerScreen" class="page2 gameScreen">
+
+    <section class="page2_header">
+      Połącz pokemony z ich imionami
+    </section>
+
+    <section id="gameContainer" class="page2_gameContainer"></section>
+
+    <section id="pokedexContainer" class="page2_pokedexContainer">
+
+      <canvas id="pokedex" class="page2_pokedex"  width="750" height="550">
+
+        <img id="pokedexInside" src="img/pokedex/pokedex_inside.png" alt="Pokedex inside"/>
+        <img id="pokedexCoverBack" src="img/pokedex/pokedex_cover_back.png" alt="Pokedex back cover">
+        <img id="pokedexCoverFront" src="img/pokedex/pokedex_cover_front.png" alt="Pokedex front cover">
+        <img id="pokedexPokemon" src="#" alt="Image of pokemon in pokedex">
+
+        Your browser does not support the HTML5 canvas tag.
+
+      </canvas>
+
+    </section>
+
+    <section id="pokedexSlider" class="page2_pokedexSlider">
+      Otwórz Pokedex
+    </section>
+
+  </div>
+
+  <div id="resultScreen" class="page3 gameScreen">
+
+    <section class="page3_header">
+      Gratulacje!
+    </section>
+
+    <section class="page3_details">
+
+      <span class="page3_details-big">Przeszedłeś grę!</span>
+      <span class="page3_details-normal">Potrzebowałeś do tego:</span>
+      <span id="count" class="page3_details-huge">--ile--</span>
+      <span class="page3_details-normal">kliknięć</span>
+
+    </section>
+
+    <section id="newGameButton" class="page3_newGame">
+      Zagraj jeszcze raz
+    </section>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/card.js"></script>
+  <script src="js/gameContainer.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/pokedex.js"></script>
+
+</body>
 
 </html>

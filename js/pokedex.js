@@ -4,13 +4,28 @@ const canvas = document.getElementById("pokedex");
 const context = canvas.getContext("2d");
 
 
-const image = document.getElementById("img");
-const back = document.getElementById("back");
-const front = document.getElementById("front");
-const pokemon = document.getElementById("pokemon");
+const pokedexInside = document.getElementById("pokedexInside");
+const pokedexCoverBack = document.getElementById("pokedexCoverBack");
+const pokedexCoverFront = document.getElementById("pokedexCoverFront");
+const pokedexPokemon = document.getElementById("pokedexPokemon");
 
-context.drawImage(image, 0,0);
-context.drawImage(back, 0,0);
+
+const pokedexSlider = document.getElementById("pokedexSlider");
+const pokedexContainer= document.getElementById("pokedexContainer");
+
+let containerLeftPosition = -100;
+let isHiden = true;
+
+let coverLeftPosition = 2;
+let coverWidth = 379;
+
+let opened = false;
+let busy = false;
+
+let isBack = true;
+
+context.drawImage(pokedexInside, 0,0);
+context.drawImage(pokedexCoverBack, 0,0);
 
 function fillDescription(data){
 
@@ -30,7 +45,6 @@ function fillDescription(data){
 
   context.fillText("Ewolucja:", x, y); y+=20;
   for(let i=0;i<data.evolution.length;i++) {
-    //context.fillText((i+1) + ". " + data.evolution[i], x, y); y+=20;
 
     const wordsE = data.evolution[i].split(" ");
     let lineE = (i+1) + ". ";
@@ -58,66 +72,65 @@ function fillDescription(data){
 
 }
 
-let toLeft = 2;
-let cover_width = 379;
-
-let opened = false;
-let busy = false;
 
 
-
-let isBack = true;
 function openLoop() {
 
   let fracPI = 0;
 
   const card = game.lastCard;
   const pokemonNumber = card.id;
-  pokemon.setAttribute("src", "img/pokemons/images/"+(pokemonNumber)+".png");
+  pokedexPokemon.setAttribute("src", "img/pokemons/images/"+(pokemonNumber)+".png");
 
   const openCover = setInterval(function() {
 
     fracPI+=0.02;
     context.clearRect(0,0,canvas.width,canvas.height);
 
-    context.drawImage(image, 0,0);
+    context.drawImage(pokedexInside, 0,0);
 
-    cover_width = Math.abs(COVERWIDTH*Math.cos(Math.PI * fracPI));
+    coverWidth = Math.abs(COVERWIDTH*Math.cos(Math.PI * fracPI));
 
     if(isBack) {
 
-      toLeft = Math.abs(COVERWIDTH*(1-Math.cos(Math.PI * fracPI)));
-      context.drawImage(back, toLeft, 0, cover_width, 542 );
+      coverLeftPosition = Math.abs(COVERWIDTH*(1-Math.cos(Math.PI * fracPI)));
+      context.drawImage(pokedexCoverBack, coverLeftPosition, 0, coverWidth, 542 );
 
       if(fracPI>=0.5) {
         isBack=false;
       }
 
     } else {
-      context.drawImage(front, toLeft, 0, cover_width, 542 );
+      context.drawImage(pokedexCoverFront, coverLeftPosition, 0, coverWidth, 542 );
 
       if(fracPI>=1) {
         clearInterval(openCover);
 
-        context.drawImage(pokemon, 100, 170, 150, 150 );
+        context.drawImage(pokedexPokemon, 100, 170, 150, 150 );
+
+        /*
 
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 const parsedFile = JSON.parse(this.responseText);
 
-                const pokemonData = parsedFile.pokemons[pokemonNumber-1];
-                fillDescription(pokemonData);
+                const pokedexPokemonData = parsedFile.pokedexPokemons[pokedexPokemonNumber-1];
+                fillDescription(pokedexPokemonData);
             }
         };
 
-        xhttp.open("GET", "json/pokemon_data.json", true);
+        xhttp.open("GET", "json/pokedexPokemon_data.json", true);
         xhttp.send();
+
+        */
+
+        fillDescription(pokemons[pokemonNumber-1]);
 
         busy=false;
       }
   }
-}, 5);
+}, 8);
 
 }
 
@@ -129,75 +142,79 @@ function closeLoop() {
     fracPI-=0.02;
     context.clearRect(0,0,canvas.width,canvas.height);
 
-    context.drawImage(image, 0,0);
+    context.drawImage(pokedexInside, 0,0);
 
-    cover_width = Math.abs(COVERWIDTH*Math.cos(Math.PI * fracPI));
+    coverWidth = Math.abs(COVERWIDTH*Math.cos(Math.PI * fracPI));
 
     if(!isBack) {
 
-      context.drawImage(front, toLeft, 0, cover_width, 542 );
+      context.drawImage(pokedexCoverFront, coverLeftPosition, 0, coverWidth, 542 );
 
       if(fracPI<=0.5) {
         isBack=true;
       }
 
     } else {
-      toLeft = Math.abs(COVERWIDTH*(1-Math.cos(Math.PI * fracPI)));
-      context.drawImage(back, toLeft, 0, cover_width, 542 );
+      coverLeftPosition = Math.abs(COVERWIDTH*(1-Math.cos(Math.PI * fracPI)));
+      context.drawImage(pokedexCoverBack, coverLeftPosition, 0, coverWidth, 542 );
 
       if(fracPI<=0) {
         clearInterval(closeCover);
-        slideRight();
+        slideLeft();
+
       }
     }
-  }, 5);
+  }, 8);
 
 }
 
-const button = document.getElementById("showPokedex");
-const pokedexCover = document.querySelector(".page2__pokedex");
-let leftPosition = -35;
-let isHiden = true;
-
-function slideLeft() {
-
-  pokedexCover.style.display="flex";
-
-  let leftSlider = setInterval(function() {
-
-    leftPosition+=2;
-    canvas.style.left = leftPosition+"%";
-
-    if(leftPosition>=25) {
-      clearInterval(leftSlider);
-      openLoop();
-    }
-  }, 10)
-}
 
 function slideRight() {
+
+  pokedexContainer.style.display="flex";
+
   let rightSlider = setInterval(function() {
 
-    leftPosition-=2;
-    canvas.style.left = leftPosition+"%";
+    containerLeftPosition+=2;
+    pokedexContainer.style.left = containerLeftPosition+"%";
+    pokedexSlider.style.left = (containerLeftPosition+100)+"%";
 
-    if(leftPosition<=-35) {
+    if(containerLeftPosition>=0) {
       clearInterval(rightSlider);
-      pokedexCover.style.display="none";
+      pokedexSlider.style.left = "95%";
 
-      busy = false;
+      pokedexSlider.innerText = "Zamknij Pokedex";
+      pokedexSlider.style.transform = "rotate(-180deg)";
+      openLoop();
     }
-  }, 10)
+  }, 15)
 }
 
-button.addEventListener("click", function() {
+function slideLeft() {
+  let leftSlider = setInterval(function() {
+
+    containerLeftPosition-=2;
+    pokedexContainer.style.left = containerLeftPosition+"%";
+    pokedexSlider.style.left = (containerLeftPosition+95)+"%";
+
+    if(containerLeftPosition<=-100) {
+      clearInterval(leftSlider);
+      pokedexSlider.style.left = "0%";
+      pokedexContainer.style.display="none";
+      pokedexSlider.innerText = "Otwórz Pokedex"
+      pokedexSlider.style.transform = "rotate(0deg)";
+      busy = false;
+    }
+  }, 15)
+}
+
+pokedexSlider.addEventListener("click", function() {
 
   if(game.isPair) return;
-  //console.log(clickedButtons);
   if(busy) return;
   busy = true;
 
-  if(isHiden) slideLeft();
+  if(isHiden) slideRight();
   else closeLoop();
 
   isHiden = !isHiden;

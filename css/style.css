@@ -1,39 +1,118 @@
 body {
-  background-image: url("../img/tlo/page_1.png");
+  background-image: url("../img/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: 0;
+  cursor: default; }
 
-div {
+.gameScreen {
+  display: none;
   height: 100vh;
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  justify-items: center; }
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  place-items: center;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+  color: white; }
 
 .page0 {
-  background-color: rgba(0, 0, 0, 0.8);
+  display: -ms-grid;
+  display: grid;
+  opacity: 1;
   cursor: pointer; }
+  .page0_gameName {
+    background-color: rgba(0, 0, 0, 0.5);
+    max-height: 50%;
+    padding: 2% 15%; }
 
 .page1 {
-  display: none;
-  opacity: 0;
-  -ms-grid-rows: 20% 40% 20% 20%;
-  grid-template-rows: 20% 40% 20% 20%; }
-  .page1__img {
-    border-radius: 15px;
-    height: 100%; }
-  .page1__levelOptions {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  -ms-grid-rows: 20% 60% 20%;
+  grid-template-rows: 20% 60% 20%; }
+  .page1_header {
+    font-size: 70px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 15%; }
+  .page1_optionsContainer {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr 4fr 6fr;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 4fr 6fr;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center; }
-  .page1__imageClick {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    width: 65%; }
+  .page1_pointer {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    height: 50px;
+    -ms-grid-column-align: end;
+    justify-self: end;
+    -webkit-animation: jump .5s linear alternate infinite;
+    animation: jump .5s linear alternate infinite; }
+  .page1_option {
+    font-family: 'Righteous', cursive;
+    color: white;
+    font-size: 35px;
+    margin: 0 10%;
+    -ms-grid-column-align: start;
+    justify-self: start;
     cursor: pointer; }
+    .page1_option-easy {
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 1;
+      grid-row: 1/2; }
+    .page1_option-medium {
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      -ms-grid-row: 2;
+      -ms-grid-row-span: 1;
+      grid-row: 2/3; }
+    .page1_option-hard {
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      -ms-grid-row: 3;
+      -ms-grid-row-span: 1;
+      grid-row: 3/4; }
+    .page1_option-legendary {
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      -ms-grid-row: 4;
+      -ms-grid-row-span: 1;
+      grid-row: 4/5; }
+  .page1_levelImage {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 4;
+    grid-row: 1/5;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3/4;
+    border-radius: 15px;
+    height: 20rem; }
+  .page1_submitLevel {
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 15%;
+    cursor: pointer;
+    text-decoration: underline; }
 
 @-webkit-keyframes jump {
   100% {
@@ -44,87 +123,57 @@ div {
   100% {
     -webkit-transform: translate3d(0, -30%, 0);
     transform: translate3d(0, -30%, 0); } }
-  .page1 .clicked {
-    -webkit-animation: jump .5s linear alternate infinite;
-    animation: jump .5s linear alternate infinite; }
 
 .page2 {
-  display: none;
-  opacity: 0;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-grid-rows: 4fr 1fr;
-  grid-template-rows: 4fr 1fr; }
-  .page2__playGround {
+  -ms-grid-rows: 15% 85%;
+  grid-template-rows: 15% 85%; }
+  .page2_header {
+    font-size: 50px;
+    padding: 1% 2%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .page2_gameContainer {
+    position: relative;
     display: -ms-grid;
     display: grid;
-    height: 100%;
+    grid-gap: 10px;
+    max-height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1% 5%; }
+  .page2_pokemonImage {
     width: 100%;
-    grid-gap: 5px; }
-  .page2__pokemonButton {
-    font-size: 20px;
-    color: white;
-    border-radius: 10px;
+    height: auto;
     padding: 0;
     -ms-grid-column-align: center;
     justify-self: center;
-    width: 100%;
-    height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%; }
-    .page2__pokemonButton.show {
-      -webkit-animation: show 0.3s ease forwards;
-      animation: show 0.3s ease forwards; }
-    .page2__pokemonButton.hide {
-      -webkit-animation: hide 0.3s ease forwards;
-      animation: hide 0.3s ease forwards; }
-
-@-webkit-keyframes show {
-  50% {
-    -webkit-transform: rotateY(90deg);
-    transform: rotateY(90deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg); } }
-
-@keyframes show {
-  50% {
-    -webkit-transform: rotateY(90deg);
-    transform: rotateY(90deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg); } }
-
-@-webkit-keyframes hide {
-  50% {
-    -webkit-transform: rotateY(90deg);
-    transform: rotateY(90deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg); } }
-
-@keyframes hide {
-  50% {
-    -webkit-transform: rotateY(90deg);
-    transform: rotateY(90deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg); } }
+    font-size: 20px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer; }
 
 .page3 {
-  display: none;
-  opacity: 0;
-  -ms-grid-rows: 20% 15% 15% 35% 15%;
-  grid-template-rows: 20% 15% 15% 35% 15%;
-  font-size: 2em;
-  color: white;
-  font-family: 'Nunito', sans-serif; }
-  .page3__count {
-    font-size: 200px;
-    background-color: rgba(0, 0, 0, 0.2);
-    text-shadow: 6px 6px 0 #2D59A8, 0 6px 0 #2D59A8,  -6px 6px 0 #2D59A8, -6px 0 0 #2D59A8,  -6px -6px 0 #2D59A8, 0 -6px 0 #2D59A8,  6px -6px 0 #2D59A8, 6px 0 0 #2D59A8; }
+  -ms-grid-rows: 15% 75% 10%;
+  grid-template-rows: 15% 75% 10%; }
+  .page3_header {
+    font-size: 70px;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .page3_details {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 20% 15% 50% 15%;
+    grid-template-rows: 20% 15% 50% 15%;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5); }
+    .page3_details-normal {
+      font-size: 40px; }
+    .page3_details-big {
+      font-size: 70px; }
+    .page3_details-huge {
+      font-size: 250px; }
+  .page3_newGame {
+    font-size: 25px;
+    padding: 1% 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-decoration: underline; }
