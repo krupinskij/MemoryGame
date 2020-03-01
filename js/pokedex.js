@@ -108,24 +108,11 @@ function openLoop() {
 
         context.drawImage(pokedexPokemon, 100, 170, 150, 150 );
 
-        /*
-
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                const parsedFile = JSON.parse(this.responseText);
-
-                const pokedexPokemonData = parsedFile.pokedexPokemons[pokedexPokemonNumber-1];
-                fillDescription(pokedexPokemonData);
-            }
-        };
-
-        xhttp.open("GET", "json/pokedexPokemon_data.json", true);
-        xhttp.send();
-
-        */
-
-        fillDescription(pokemons[pokemonNumber-1]);
+        fetch("http://" + document.domain + ":" + location.port + "/json/pokemon_data.json")
+        .then(resp => resp.json())
+        .then(pokemons => {
+          fillDescription(pokemons[pokemonNumber-1]);
+        })
 
         busy=false;
       }
