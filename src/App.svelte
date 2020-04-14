@@ -4,24 +4,25 @@
   import GamePage from "./pages/GamePage.svelte";
   import ResultPage from "./pages/ResultPage.svelte";
 
-//   import { FirebaseApp, User, Doc, Collection } from "sveltefire";
-//   import firebase from "firebase/app";
-//   import "firebase/firestore";
-//   import "firebase/auth";
-//   import "firebase/performance";
-//   import "firebase/analytics";
+  import { FirebaseApp, User, Doc, Collection } from "sveltefire";
+  import firebase from "firebase/app";
+  import "firebase/firestore";
+  import "firebase/auth";
+  import "firebase/performance";
+  import "firebase/analytics";
 
-//   const firebaseConfig = {
-//     apiKey: "AIzaSyAxrgJ51USj65rHbYIjEoX0XrMLbPHpnSI",
-//     authDomain: "pokemon-memory-game-34ac6.firebaseapp.com",
-//     databaseURL: "https://pokemon-memory-game-34ac6.firebaseio.com",
-//     projectId: "pokemon-memory-game-34ac6",
-//     storageBucket: "pokemon-memory-game-34ac6.appspot.com",
-//     messagingSenderId: "314667407796",
-//     appId: "1:314667407796:web:a8b4f315c817d15158fae1"
-//   };
+  var firebaseConfig = {
+    apiKey: "AIzaSyDh0iLtYQ8Q_vkRqA_Om0DhwWa28haMSWA",
+    authDomain: "pokemon-memory-game-1fa7f.firebaseapp.com",
+    databaseURL: "https://pokemon-memory-game-1fa7f.firebaseio.com",
+    projectId: "pokemon-memory-game-1fa7f",
+    storageBucket: "pokemon-memory-game-1fa7f.appspot.com",
+    messagingSenderId: "533361096933",
+    appId: "1:533361096933:web:55bb3184a73a32c5dd7c0c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
-//   firebase.initializeApp(firebaseConfig);
 </script>
 
 <style>
@@ -29,10 +30,10 @@
 </style>
 
 <main>
-  <!-- <FirebaseApp {firebase}> -->
+  <FirebaseApp {firebase}>
     <StartPage />
     <!-- <LevelPage/> -->
     <!-- <GamePage/> -->
     <!-- <ResultPage/> -->
-  <!-- </FirebaseApp> -->
+  </FirebaseApp>
 </main>
