@@ -2,3 +2,9 @@
 /public/build/
 
 .DS_Store
+
+#firebase files
+.firebase
+.firebaserc
+firestore.rules
+storage.rules
