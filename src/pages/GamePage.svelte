@@ -1,3 +1,55 @@
+<script>
+  import { page, level } from "../store.js";
+  import { onMount } from 'svelte';
+  import Card from "../components/Card.svelte";
+
+  let verticalLength = 5;
+  let horizontalLength = 4;
+  let species = 8;
+  let width = 35;
+
+  switch($level) {
+    case "easy": {
+      verticalLength = 4;
+      horizontalLength = 4;
+      species = 8;
+      width = 35;
+      break;
+    }
+    case "medium": {
+      verticalLength = 4;
+      horizontalLength = 6;
+      species = 12;
+      width = 55;
+      break;
+    }
+    case "hard": {
+      verticalLength = 4;
+      horizontalLength = 8;
+      species = 16;
+      width = 75;
+      break;
+    }
+    case "legendary": {
+      verticalLength = 6;
+      horizontalLength = 12;
+      species = 36;
+      width = 75;
+      break;
+    }
+  }
+
+  onMount(() => {
+    const constainer =  document.getElementById("container");
+    constainer.style.gridTemplate = `repeat(${verticalLength},1fr) / repeat(${horizontalLength},1fr)`;
+    constainer.style.maxWidth = `${width}%`;
+
+  })
+
+  
+
+</script>
+
 <style>
   .game-page {
     display: grid;
@@ -8,7 +60,7 @@
   .game-container {
     position: relative;
     display: grid;
-    grid-template: repeat(4,1fr) / repeat(4,1fr);
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
     grid-gap: 10px;
 
     max-width: 35%;
@@ -21,16 +73,14 @@
 
 <div class="page game-page">
 
-  <section class="header--sm">Połącz pokemony z ich imionami</section>
+  <section class="header--sm" on:click={ () => { page.set("result") } }>Połącz pokemony z ich imionami</section>
 
-  <section class="game-container">
-    {#each Array(16).fill(0).map((_, i) => i + 1) as number}
-      <Card {number}/>
+  <section id="container" class="game-container">
+    {#each Array(species * 2)
+      .fill(0)
+      .map((_, i) => i + 1) as number}
+      <Card {number} />
     {/each}
   </section>
 
 </div>
-
-<script>
-  import Card from '../components/Card.svelte';
-</script>

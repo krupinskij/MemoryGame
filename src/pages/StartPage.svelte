@@ -1,3 +1,7 @@
+<script>
+  import { page } from "../store.js";
+</script>
+
 <style>
   .startpage {
     display: grid;
@@ -14,6 +18,6 @@
   }
 </style>
 
-<div class="page startpage">
+<div class="page startpage" on:click={ () => { page.set("level") } }>
   <img class="name" src="/img/name.png" alt="Pokemon - Memory Game" />
 </div>

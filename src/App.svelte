@@ -4,6 +4,8 @@
   import GamePage from "./pages/GamePage.svelte";
   import ResultPage from "./pages/ResultPage.svelte";
 
+  import { page } from "./store.js";
+
   import { FirebaseApp, User, Doc, Collection, StorageRef } from "sveltefire";
   import firebase from "firebase/app";
   import "firebase/firestore";
@@ -21,18 +23,22 @@
     appId: "1:533361096933:web:55bb3184a73a32c5dd7c0c"
   };
   firebase.initializeApp(firebaseConfig);
-
 </script>
-
-<style>
-
-</style>
 
 <main>
   <FirebaseApp {firebase}>
-    <StartPage />
-    <!-- <LevelPage/> -->
-    <!-- <GamePage/> -->
-    <!-- <ResultPage/> -->
+    <body>
+      {#if $page === 'start'}
+        <StartPage />
+      {:else if $page === 'level'}
+        <LevelPage />
+      {:else if $page === 'game'}
+        <GamePage />
+      {:else if $page === 'result'}
+        <ResultPage />
+      {:else}
+        <div />
+      {/if}
+    </body>
   </FirebaseApp>
 </main>

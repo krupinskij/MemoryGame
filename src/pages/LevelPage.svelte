@@ -1,3 +1,36 @@
+<script>
+  import { page, level } from "../store.js";
+
+  const setLevel = newLevel => {
+    const pointer = document.getElementById("pokeball");
+    const image = document.getElementById("levelImage");
+    level.set(newLevel);
+    
+    switch(newLevel) {
+      case "easy": {
+        pointer.style.gridRow = "1/2";
+        image.src="img/levelImages/easy.gif";
+        break;
+      }
+      case "medium": {
+        pointer.style.gridRow = "2/3";
+        image.src="img/levelImages/medium.gif";
+        break;
+      }
+      case "hard": {
+        pointer.style.gridRow = "3/4";
+        image.src="img/levelImages/hard.gif";
+        break;
+      }
+      case "legendary": {
+        pointer.style.gridRow = "4/5";
+        image.src="img/levelImages/legendary.gif";
+        break;
+      }
+    }
+  }
+</script>
+
 <style>
   .level-page {
     display: grid;
@@ -94,10 +127,10 @@
       src="img/pokeball.png"
       alt="Pokeball pointing choosen level" />
 
-    <span id="easy" class="option option--easy">Łatwy</span>
-    <span id="medium" class="option option--medium">Średni</span>
-    <span id="hard" class="option option--hard">Trudny</span>
-    <span id="legendary" class="option option--legendary">Legendarny</span>
+    <span id="easy" class="option option--easy" on:click={ () => setLevel("easy") }>Łatwy</span>
+    <span id="medium" class="option option--medium" on:click={ () => setLevel("medium") }>Średni</span>
+    <span id="hard" class="option option--hard" on:click={ () => setLevel("hard") }>Trudny</span>
+    <span id="legendary" class="option option--legendary" on:click={ () => setLevel("legendary") }>Legendarny</span>
 
     <img
       id="levelImage"
@@ -107,6 +140,6 @@
 
   </section>
 
-  <section id="submitLevel" class="submitLevel">Graj!</section>
+  <section id="submitLevel" class="submitLevel" on:click={ () => { page.set("game") } }>Graj!</section>
 
 </div>

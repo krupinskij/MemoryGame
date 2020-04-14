@@ -1,4 +1,5 @@
 <script>
+  import { page, clickCounter } from "../store.js";
   import { StorageRef } from "sveltefire";
   import "firebase/storage";
   export let number;
@@ -12,7 +13,9 @@
   };
 
   const turnCard = () => {
-    showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
+    clickCounter.update(n => n + 1);
+    if($clickCounter === 10) page.set("result");
+    else showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
   };
 
   const showPokemonImage = (src) => {
