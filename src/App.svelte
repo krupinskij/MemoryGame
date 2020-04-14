@@ -4,7 +4,7 @@
   import GamePage from "./pages/GamePage.svelte";
   import ResultPage from "./pages/ResultPage.svelte";
 
-  import { FirebaseApp, User, Doc, Collection } from "sveltefire";
+  import { FirebaseApp, User, Doc, Collection, StorageRef } from "sveltefire";
   import firebase from "firebase/app";
   import "firebase/firestore";
   import "firebase/auth";
@@ -20,7 +20,6 @@
     messagingSenderId: "533361096933",
     appId: "1:533361096933:web:55bb3184a73a32c5dd7c0c"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
 </script>
