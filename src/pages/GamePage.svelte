@@ -39,11 +39,39 @@
     }
   }
 
+  const pokemonCards = [];
+
   onMount(() => {
     const constainer =  document.getElementById("container");
     constainer.style.gridTemplate = `repeat(${verticalLength},1fr) / repeat(${horizontalLength},1fr)`;
     constainer.style.maxWidth = `${width}%`;
+
     imagesAll.set(species * 2);
+
+    const idSet = new Set();
+    const positionSet = new Set();
+
+    for(let i =0; i<species; i++) {
+      let id = Math.ceil(Math.random() * 151);
+      while(idSet.has(id)) {
+        id = (id + 7) % game.speciesCounter;
+      }
+      idSet.add(id);
+
+      let position;
+      position = Math.floor(Math.random() * species*2);
+      while(positionSet.has(position)) {
+        position = (position + 7) % (species*2);
+      }
+      positionSet.add(position);
+      pokemonCards[position] = { id: id, type: "images"}
+      position = Math.floor(Math.random() * species*2);
+      while(positionSet.has(position)) {
+        position = (position + 7) % (species*2);
+      }
+      positionSet.add(position);
+      pokemonCards[position] = { id: id, type: "names"}
+    }
 
   })
 
@@ -75,10 +103,8 @@
   <section class="header--sm" on:click={ () => { page.set("result") } }>Połącz pokemony z ich imionami</section>
 
   <section id="container" class="game-container">
-    {#each Array(species * 2)
-      .fill(0)
-      .map((_, i) => i + 1) as number}
-      <Card {number} />
+    {#each pokemonCards as pokemonCard}
+      <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}
   </section>
 

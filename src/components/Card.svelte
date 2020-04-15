@@ -8,7 +8,7 @@
   } from "../store.js";
   import { StorageRef } from "sveltefire";
   import "firebase/storage";
-  export let number;
+  export let id, type;
 
   let imageSrc;
   let turnedDown = true;
@@ -25,12 +25,12 @@
 
   const turnCard = () => {
     clickCounter.update(n => n + 1);
-    if ($clickCounter === 10) page.set("result");
-    else showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
+    //if ($clickCounter === 10) page.set("result");
+    showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
   };
 
   const showPokemonImage = src => {
-    const image = document.getElementById(`image-${number}`);
+    const image = document.getElementById(`${type}-${id}`);
     const CARD_SIZE = 100;
     let width = CARD_SIZE;
     let fracPI = 0;
@@ -89,13 +89,13 @@
 <div class="card">
   <div class="image-container">
     <StorageRef
-      path={`images/${number}.png`}
+      path={`${type}/${id}.png`}
       let:downloadURL
       let:ref
       let:metadata>
       {loadImage(downloadURL)}
       <img
-        id={`image-${number}`}
+        id={`${type}-${id}`}
         src="../img/cardback.png"
         class="pokemon-image"
         alt="Pokemon"
