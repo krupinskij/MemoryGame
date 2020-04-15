@@ -1,5 +1,11 @@
 <script>
-  import { page, clickCounter } from "../store.js";
+  import {
+    page,
+    clickCounter,
+    imagesLoaded,
+    imagesAll,
+    loading
+  } from "../store.js";
   import { StorageRef } from "sveltefire";
   import "firebase/storage";
   export let number;
@@ -7,18 +13,23 @@
   let imageSrc;
   let turnedDown = true;
 
-  const setImageSrc = src => {
+  const loadImage = src => {
+    const image = new Image();
+    image.addEventListener("load", () => {
+      imagesLoaded.update(n => n + 1);
+    });
+    image.src = src;
     imageSrc = src;
     return "";
   };
 
   const turnCard = () => {
     clickCounter.update(n => n + 1);
-    if($clickCounter === 10) page.set("result");
+    if ($clickCounter === 10) page.set("result");
     else showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
   };
 
-  const showPokemonImage = (src) => {
+  const showPokemonImage = src => {
     const image = document.getElementById(`image-${number}`);
     const CARD_SIZE = 100;
     let width = CARD_SIZE;
@@ -73,31 +84,24 @@
 
     cursor: pointer;
   }
-
-  .hidden-image {
-    position: absolute;
-    top: -500px;
-  }
 </style>
 
 <div class="card">
   <div class="image-container">
     <StorageRef
-    path={`images/${number}.png`}
-    let:downloadURL
-    let:ref
-    let:metadata>
-    {setImageSrc(downloadURL)}
-    <img
-      id={`image-${number}`}
-      src="../img/cardback.png"
-      class="pokemon-image"
-      alt="Pokemon"
-      on:click={turnCard} />
-    <img src={downloadURL} class="hidden-image" alt="hidden image"/>
+      path={`images/${number}.png`}
+      let:downloadURL
+      let:ref
+      let:metadata>
+      {loadImage(downloadURL)}
+      <img
+        id={`image-${number}`}
+        src="../img/cardback.png"
+        class="pokemon-image"
+        alt="Pokemon"
+        on:click={turnCard} />
 
     </StorageRef>
   </div>
-  
 
 </div>

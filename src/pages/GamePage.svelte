@@ -1,5 +1,5 @@
 <script>
-  import { page, level } from "../store.js";
+  import { page, level, imagesAll, loading } from "../store.js";
   import { onMount } from 'svelte';
   import Card from "../components/Card.svelte";
 
@@ -43,10 +43,9 @@
     const constainer =  document.getElementById("container");
     constainer.style.gridTemplate = `repeat(${verticalLength},1fr) / repeat(${horizontalLength},1fr)`;
     constainer.style.maxWidth = `${width}%`;
+    imagesAll.set(species * 2);
 
   })
-
-  
 
 </script>
 

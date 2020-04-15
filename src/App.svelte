@@ -4,7 +4,9 @@
   import GamePage from "./pages/GamePage.svelte";
   import ResultPage from "./pages/ResultPage.svelte";
 
-  import { page } from "./store.js";
+  import Loading from "./components/Loading.svelte";
+
+  import { page, loading } from "./store.js";
 
   import { FirebaseApp, User, Doc, Collection, StorageRef } from "sveltefire";
   import firebase from "firebase/app";
@@ -40,5 +42,8 @@
         <div />
       {/if}
     </body>
+    {#if $loading}
+      <Loading />
+    {/if}
   </FirebaseApp>
 </main>
