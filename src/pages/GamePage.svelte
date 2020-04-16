@@ -55,7 +55,7 @@
     for(let i =0; i<species; i++) {
       let id = Math.ceil(Math.random() * 151);
       while(idSet.has(id)) {
-        id = (id + 7) % game.speciesCounter;
+        id = (id + 7) % species;
       }
       idSet.add(id);
 

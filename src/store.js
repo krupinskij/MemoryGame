@@ -19,3 +19,6 @@ imagesAll.subscribe(n => {
         loading.set(true);
     }
 })
+
+export const lastPokemon = writable(-1);
+export const singlePokemon = writable(false);

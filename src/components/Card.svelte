@@ -4,7 +4,9 @@
     clickCounter,
     imagesLoaded,
     imagesAll,
-    loading
+    loading,
+    lastPokemon,
+    singlePokemon
   } from "../store.js";
   import { StorageRef } from "sveltefire";
   import "firebase/storage";
@@ -12,6 +14,7 @@
 
   let imageSrc;
   let turnedDown = true;
+  let busy = false;
 
   const loadImage = src => {
     const image = new Image();
@@ -24,8 +27,12 @@
   };
 
   const turnCard = () => {
+    if(busy) return;
+    busy = true;
+
+    lastPokemon.set(id);
+    singlePokemon.update(w => !w);
     clickCounter.update(n => n + 1);
-    //if ($clickCounter === 10) page.set("result");
     showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
   };
 
@@ -57,6 +64,7 @@
           image.style.height = "auto";
 
           turnedDown = !turnedDown;
+          busy = false;
           clearInterval(showPokemonItv);
         }
       }

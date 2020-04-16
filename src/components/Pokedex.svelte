@@ -1,5 +1,7 @@
 <script>
-    const COVERWIDTH = 379;
+  import { lastPokemon, singlePokemon } from "../store.js";
+  import firebase from "firebase";
+  const COVERWIDTH = 379;
 
   let containerLeftPosition = -100;
   let isHiden = true;
@@ -12,14 +14,18 @@
 
   let isBack = true;
 
-  const pokedexInside = new Image(); 
+  const pokedexInside = new Image();
   pokedexInside.src = "img/pokedex/pokedex_inside.png";
-  const pokedexCoverBack = new Image(); 
+  const pokedexCoverBack = new Image();
   pokedexCoverBack.src = "img/pokedex/pokedex_cover_back.png";
-  const pokedexCoverFront = new Image(); 
+  const pokedexCoverFront = new Image();
   pokedexCoverFront.src = "img/pokedex/pokedex_cover_front.png";
 
+  let pokemonImage = new Image();
+  let pokemonData;
+
   const showPokedex = () => {
+      if(!$singlePokemon) return;
     if (busy) return;
     busy = true;
 
@@ -76,10 +82,6 @@
     const context = canvas.getContext("2d");
     let fracPI = 0;
 
-    //const card = game.lastCard;
-    //const pokemonNumber = card.id;
-    //pokedexPokemon.setAttribute("src", "img/pokemons/images/"+(pokemonNumber)+".png");
-
     const openCover = setInterval(function() {
       fracPI += 0.02;
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -115,13 +117,23 @@
         if (fracPI >= 1) {
           clearInterval(openCover);
 
-          // context.drawImage(pokedexPokemon, 100, 170, 150, 150 );
+          firebase
+            .storage()
+            .ref(`images/${$lastPokemon}.png`)
+            .getDownloadURL()
+            .then(url => {
+              pokemonImage.src = url;
+              context.drawImage(pokemonImage, 100, 170, 150, 150);
+            });
 
-          // fetch("http://" + document.domain + ":" + location.port + "/json/pokemon_data.json")
-          // .then(resp => resp.json())
-          // .then(pokemons => {
-          //   fillDescription(pokemons[pokemonNumber-1]);
-          // })
+          firebase
+            .firestore()
+            .collection("pokemon")
+            .doc(String($lastPokemon))
+            .get()
+            .then(resp => {
+              fillDescription(resp.data());
+            });
 
           busy = false;
         }
@@ -174,20 +186,66 @@
       }
     }, 8);
   };
+
+  const fillDescription = data => {
+
+      const canvas = document.getElementById("pokedex");
+    const context = canvas.getContext("2d");
+
+  let x=460;
+  let y=180;
+  const maxLineLengthE = 22;
+  const maxLineLengthD = 25;
+
+  context.fillStyle = "white";
+
+  context.font = "20pt Courier New";
+  context.fillText(data.name, x, y); y+=40;
+
+  context.font = "12pt Courier New";
+  context.fillText("Typ:", x, y); y+=20;
+  context.fillText(data.type, x, y); y+=40;
+
+  context.fillText("Ewolucja:", x, y); y+=20;
+  for(let i=0;i<data.evolution.length;i++) {
+
+    const wordsE = data.evolution[i].split(" ");
+    let lineE = (i+1) + ". ";
+    for(let j=0;j<wordsE.length;j++) {
+      lineE+=wordsE[j]+" ";
+
+      if(j===wordsE.length-1 || lineE.length+wordsE[j+1].length>maxLineLengthE) {
+        context.fillText(lineE, x, y); y+=20;
+        lineE="   ";
+      }
+    }
+  } y+=20;
+
+  context.font = "10pt Courier New";
+  const wordsD = data.description.split(" ");
+  let lineD = "";
+  for(let i=0;i<wordsD.length;i++) {
+    lineD+=wordsD[i]+" ";
+
+    if(i===wordsD.length-1 || lineD.length+wordsD[i+1].length>maxLineLengthD) {
+      context.fillText(lineD, x, y); y+=20;
+      lineD="";
+    }
+  }
+
+}
 </script>
 
 <style>
   .pokedex-container {
-
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     left: -100%;
-    top:0;
+    top: 0;
     height: 100vh;
     width: 100vw;
-
 
     background-color: rgba(0, 0, 0, 0.8);
 
@@ -219,8 +277,12 @@
     text-align: center;
     writing-mode: vertical-lr;
     z-index: 1;
+  }
 
-    cursor: not-allowed;
+  .pokedex-slider--on {
+      box-shadow: 0px 0px 30px rgba(150,150,150,0.8);
+      color: white;
+      cursor: pointer;
   }
 </style>
 
@@ -231,7 +293,7 @@
     </canvas>
 
   </section>
-  <section id="pokedexSlider" class="pokedex-slider" on:click={showPokedex}>
+  <section id="pokedexSlider" class="pokedex-slider" class:pokedex-slider--on={$singlePokemon} on:click={showPokedex}>
     Otwórz Pokedex
   </section>
 </div>
