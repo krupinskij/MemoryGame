@@ -2,6 +2,7 @@
   import { page, level, imagesAll, loading } from "../store.js";
   import { onMount } from 'svelte';
   import Card from "../components/Card.svelte";
+  import Pokedex from "../components/Pokedex.svelte";
 
   let verticalLength = 5;
   let horizontalLength = 4;
@@ -107,5 +108,7 @@
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}
   </section>
+
+  <Pokedex/>
 
 </div>

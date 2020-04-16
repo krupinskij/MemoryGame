@@ -1,6 +1,6 @@
 import { writable, get } from "svelte/store";
 
-export const page = writable("start");
+export const page = writable("game");
 export const level = writable("easy");
 export const clickCounter = writable(0);
 
