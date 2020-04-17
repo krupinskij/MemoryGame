@@ -1,6 +1,12 @@
 <script>
-  import { page, level, imagesAll, loading } from "../store.js";
-  import { onMount } from 'svelte';
+  import {
+    page,
+    level,
+    imagesAll,
+    loading,
+    pokemonDeletedCards
+  } from "../store.js";
+  import { onMount } from "svelte";
   import Card from "../components/Card.svelte";
   import Pokedex from "../components/Pokedex.svelte";
 
@@ -9,7 +15,7 @@
   let species = 8;
   let width = 35;
 
-  switch($level) {
+  switch ($level) {
     case "easy": {
       verticalLength = 4;
       horizontalLength = 4;
@@ -43,7 +49,7 @@
   const pokemonCards = [];
 
   onMount(() => {
-    const constainer =  document.getElementById("container");
+    const constainer = document.getElementById("container");
     constainer.style.gridTemplate = `repeat(${verticalLength},1fr) / repeat(${horizontalLength},1fr)`;
     constainer.style.maxWidth = `${width}%`;
 
@@ -52,31 +58,28 @@
     const idSet = new Set();
     const positionSet = new Set();
 
-    for(let i =0; i<species; i++) {
+    for (let i = 0; i < species; i++) {
       let id = Math.ceil(Math.random() * 151);
-      while(idSet.has(id)) {
+      while (idSet.has(id)) {
         id = ((id + 7) % 151) + 1;
       }
       idSet.add(id);
 
       let position;
-      position = Math.floor(Math.random() * species*2);
-      while(positionSet.has(position)) {
-        position = (position + 7) % (species*2);
+      position = Math.floor(Math.random() * species * 2);
+      while (positionSet.has(position)) {
+        position = (position + 7) % (species * 2);
       }
       positionSet.add(position);
-      pokemonCards[position] = { id: id, type: "images"}
-      position = Math.floor(Math.random() * species*2);
-      while(positionSet.has(position)) {
-        position = (position + 7) % (species*2);
+      pokemonCards[position] = { id: id, type: "images" };
+      position = Math.floor(Math.random() * species * 2);
+      while (positionSet.has(position)) {
+        position = (position + 7) % (species * 2);
       }
       positionSet.add(position);
-      pokemonCards[position] = { id: id, type: "names"}
+      pokemonCards[position] = { id: id, type: "names" };
     }
-    console.log(pokemonCards)
-
-  })
-
+  });
 </script>
 
 <style>
@@ -100,9 +103,11 @@
   }
 </style>
 
-<div class="page game-page">
+<div
+  class="page game-page"
+  class:page--hide={$pokemonDeletedCards !== 0 && $pokemonDeletedCards === $imagesAll}>
 
-  <section class="header--sm" on:click={ () => { page.set("result") } }>Połącz pokemony z ich imionami</section>
+  <section class="header--sm">Połącz pokemony z ich imionami</section>
 
   <section id="container" class="game-container">
     {#each pokemonCards as pokemonCard}
@@ -110,6 +115,6 @@
     {/each}
   </section>
 
-  <Pokedex/>
+  <Pokedex />
 
 </div>

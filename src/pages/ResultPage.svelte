@@ -1,5 +1,14 @@
 <script>
   import { page, clickCounter } from "../store.js";
+
+  let hide = false;
+
+  const switchPage = () => {
+    hide = true;
+    setTimeout(() => {
+      page.set("level");
+    }, 500);
+  };
 </script>
 
 <style>
@@ -41,7 +50,7 @@
   }
 </style>
 
-<div class="page result-page">
+<div class="page result-page" class:page--hide={hide}>
 
   <section class="header">Gratulacje!</section>
 
@@ -54,6 +63,6 @@
 
   </section>
 
-  <section class="newGame" on:click={() => { page.set("level"); }}>Zagraj jeszcze raz</section>
+  <section class="newGame" on:click={switchPage}>Zagraj jeszcze raz</section>
 
 </div>

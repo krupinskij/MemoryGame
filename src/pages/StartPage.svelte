@@ -1,5 +1,13 @@
 <script>
   import { page } from "../store.js";
+  let hide = false;
+
+  const switchPage = () => {
+    hide = true;
+    setTimeout(() => {
+      page.set("level");
+    }, 500);
+  };
 </script>
 
 <style>
@@ -18,6 +26,6 @@
   }
 </style>
 
-<div class="page startpage" on:click={ () => { page.set("level") } }>
+<div class="page startpage" class:page--hide={hide} on:click={switchPage}>
   <img class="name" src="/img/name.png" alt="Pokemon - Memory Game" />
 </div>
