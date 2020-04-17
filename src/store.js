@@ -1,6 +1,24 @@
 import { writable, get } from "svelte/store";
 
-export const page = writable("game");
+export const page = writable("start");
+
+page.subscribe(p => {
+    if(p === "level") {
+        level.set("easy")
+        clickCounter.set(0);
+        
+        loading.set(false)
+        imagesLoaded.set(0);
+        imagesAll.set(0);
+
+        lastPokemon.set(-1);
+        singlePokemon.set(false)
+        pokemonCheckQueue.set([]);
+        pokemonDeleteQueue.set([]);
+        pokemonTurnDownQueue.set([]);
+        pokemonDeletedCards.set(0);
+    }
+})
 export const level = writable("easy");
 export const clickCounter = writable(0);
 

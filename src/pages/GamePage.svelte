@@ -55,7 +55,7 @@
     for(let i =0; i<species; i++) {
       let id = Math.ceil(Math.random() * 151);
       while(idSet.has(id)) {
-        id = (id + 7) % species;
+        id = ((id + 7) % 151) + 1;
       }
       idSet.add(id);
 
@@ -73,6 +73,7 @@
       positionSet.add(position);
       pokemonCards[position] = { id: id, type: "names"}
     }
+    console.log(pokemonCards)
 
   })
 

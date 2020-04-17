@@ -1,5 +1,5 @@
 <script>
-  import { clickCounter } from "../store.js";
+  import { page, clickCounter } from "../store.js";
 </script>
 
 <style>
@@ -54,6 +54,6 @@
 
   </section>
 
-  <section class="newGame">Zagraj jeszcze raz</section>
+  <section class="newGame" on:click={() => { page.set("level"); }}>Zagraj jeszcze raz</section>
 
 </div>
