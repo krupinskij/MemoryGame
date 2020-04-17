@@ -8,7 +8,6 @@
 
   import { page, loading } from "./store.js";
 
-  import { FirebaseApp, User, Doc, Collection, StorageRef } from "sveltefire";
   import firebase from "firebase/app";
   import "firebase/firestore";
   import "firebase/auth";
@@ -28,8 +27,7 @@
 </script>
 
 <main>
-  <FirebaseApp {firebase}>
-    <body>
+    <div>
       {#if $page === 'start'}
         <StartPage />
       {:else if $page === 'level'}
@@ -41,9 +39,8 @@
       {:else}
         <div />
       {/if}
-    </body>
+    </div>
     {#if $loading}
       <Loading />
     {/if}
-  </FirebaseApp>
 </main>

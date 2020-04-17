@@ -19,7 +19,6 @@
   "dependencies": {
     "firebase": "^7.14.0",
     "firebase-tools": "^8.0.3",
-    "sirv-cli": "^0.4.4",
-    "sveltefire": "^0.1.4"
+    "sirv-cli": "^0.4.4"
   }
 }

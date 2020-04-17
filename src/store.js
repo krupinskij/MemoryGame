@@ -22,3 +22,29 @@ imagesAll.subscribe(n => {
 
 export const lastPokemon = writable(-1);
 export const singlePokemon = writable(false);
+export const pokemonCheckQueue = writable([]);
+export const pokemonDeleteQueue = writable([]);
+export const pokemonTurnDownQueue = writable([]);
+export const pokemonDeletedCards = writable(0);
+
+pokemonCheckQueue.subscribe(q => {
+    if(q.length === 0 || q.length%2!==0) return;
+
+    const p1 = q.shift();
+    const p2 = q.shift();
+
+    if(p1.id !== p2.id) {
+        pokemonTurnDownQueue.update(q => [p1, p2, ...q]);
+    }
+    else if(p1.id === p2.id && p1.type !== p2.type) {
+        pokemonDeleteQueue.update(q => [p1, p2, ...q]);
+    }
+})
+
+pokemonDeletedCards.subscribe(c => {
+    if(c !== 0 && c === get(imagesAll)) {
+        setTimeout(() => { 
+            page.set("result"); 
+        }, 1000);
+    }
+})

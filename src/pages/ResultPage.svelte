@@ -1,3 +1,7 @@
+<script>
+  import { clickCounter } from "../store.js";
+</script>
+
 <style>
   .result-page {
     display: grid;
@@ -45,7 +49,7 @@
 
     <span class="details--big">Przeszedłeś grę!</span>
     <span class="details--normal">Potrzebowałeś do tego:</span>
-    <span class="details--huge">{32}</span>
+    <span class="details--huge">{$clickCounter}</span>
     <span class="details--normal">kliknięć</span>
 
   </section>
