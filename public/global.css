@@ -1,0 +1,55 @@
+body {
+	background-image: url("./img/background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin: 0;
+	user-select: none;
+	outline: 0;
+	cursor: default;
+	font-family: 'Russo One', sans-serif;
+	color: white;
+}
+
+.page {
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+	
+	animation: show .5s
+}
+
+.page--hide {
+	animation: hide .5s
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+    100% {
+		opacity: 1;
+    }
+  }
+
+  @keyframes hide {
+	0% {
+		opacity: 1;
+	}
+    100% {
+		opacity: 0;
+    }
+  }
+
+.header {
+	font-size: 70px;
+
+    background-color: rgba(0,0,0,0.5);
+    padding: 0 15%;
+}
+
+.header--sm {
+	font-size: 50px;
+
+    padding: 1% 2%;
+    background-color: rgba(0,0,0,0.5);
+}
