@@ -42,7 +42,7 @@
 <style>
   .level-page {
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 75% 25%;
     place-items: center;
   }
 
@@ -53,6 +53,7 @@
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
     padding: 2%;
     width: 65%;
   }
@@ -107,9 +108,10 @@
   }
 
   .submitLevel {
-    font-size: 60px;
+    font-size: 50px;
 
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
     padding: 0 15%;
 
     cursor: pointer;
@@ -124,8 +126,6 @@
 </style>
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page level-page">
-
-  <section class="header">Wybierz poziom:</section>
 
   <section class="options-container">
 

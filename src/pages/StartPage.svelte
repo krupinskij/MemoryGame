@@ -20,6 +20,7 @@
 
   .name {
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
     max-height: 50%;
 
     padding: 2% 15%;

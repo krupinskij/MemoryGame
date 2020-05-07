@@ -13,7 +13,7 @@
 <style>
   .result-page {
     display: grid;
-    grid-template-rows: 15% 75% 10%;
+    grid-template-rows: 85% 15%;
     place-items: center;
   }
 
@@ -24,18 +24,19 @@
 
     width: 80%;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
   }
 
   .details--normal {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .details--big {
-    font-size: 70px;
+    font-size: 50px;
   }
 
   .details--huge {
-    font-size: 250px;
+    font-size: 200px;
   }
 
   .newGame {
@@ -43,6 +44,7 @@
 
     padding: 1% 5%;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
 
     cursor: pointer;
     text-decoration: underline;
@@ -50,8 +52,6 @@
 </style>
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page result-page">
-
-  <section class="header">Gratulacje!</section>
 
   <section class="details">
 

@@ -4,6 +4,7 @@
   import GamePage from "./pages/GamePage.svelte";
   import ResultPage from "./pages/ResultPage.svelte";
 
+  import Navbar from "./components/Navbar.svelte";
   import Loading from "./components/Loading.svelte";
 
   import { page, loading } from "./store.js";
@@ -26,18 +27,17 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 
-<main>
-    <div>
-      {#if $page === 'start'}
-        <StartPage/>
-      {:else if $page === 'level'}
-        <LevelPage />
-      {:else if $page === 'game'}
-        <GamePage />
-      {:else if $page === 'result'}
-        <ResultPage />
-      {:else}
-        <div />
-      {/if}
-    </div>
+<main class="game-container">
+  <Navbar />
+  {#if $page === 'start'}
+    <StartPage />
+  {:else if $page === 'level'}
+    <LevelPage />
+  {:else if $page === 'game'}
+    <GamePage />
+  {:else if $page === 'result'}
+    <ResultPage />
+  {:else}
+    <div />
+  {/if}
 </main>

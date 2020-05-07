@@ -90,7 +90,6 @@
 <style>
   .game-page {
     display: grid;
-    grid-template-rows: 15% 85%;
     place-items: center;
   }
 
@@ -102,15 +101,15 @@
 
     max-width: 35%;
     max-height: 100%;
+    height: min-content;
 
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 7px black;
     padding: 1% 5%;
   }
 </style>
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page game-page">
-
-  <section class="header--sm">Połącz pokemony z ich imionami</section>
 
   <section id="container" class="game-container">
     {#each pokemonCards as pokemonCard}
