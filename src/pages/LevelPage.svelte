@@ -1,6 +1,8 @@
 <script>
   import { page, level } from "../store.js";
 
+  import { fade } from 'svelte/transition';
+
   const setLevel = newLevel => {
     const pointer = document.getElementById("pokeball");
     const image = document.getElementById("levelImage");
@@ -30,10 +32,7 @@
     }
   };
 
-  let hide = false;
-
   const switchPage = () => {
-    hide = true;
     setTimeout(() => {
       page.set("game");
     }, 500);
@@ -124,7 +123,7 @@
   }
 </style>
 
-<div class="page level-page" class:page--hide={hide}>
+<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page level-page">
 
   <section class="header">Wybierz poziom:</section>
 

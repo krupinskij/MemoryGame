@@ -9,6 +9,9 @@
   import { onMount } from "svelte";
   import Card from "../components/Card.svelte";
   import Pokedex from "../components/Pokedex.svelte";
+  import Loading from "../components/Loading.svelte";
+
+  import { fade } from "svelte/transition";
 
   let verticalLength = 5;
   let horizontalLength = 4;
@@ -79,6 +82,8 @@
       positionSet.add(position);
       pokemonCards[position] = { id: id, type: "names" };
     }
+
+    console.log(pokemonCards);
   });
 </script>
 
@@ -103,9 +108,7 @@
   }
 </style>
 
-<div
-  class="page game-page"
-  class:page--hide={$pokemonDeletedCards !== 0 && $pokemonDeletedCards === $imagesAll}>
+<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page game-page">
 
   <section class="header--sm">Połącz pokemony z ich imionami</section>
 
@@ -116,5 +119,9 @@
   </section>
 
   <Pokedex />
+
+  {#if $loading}
+    <Loading />
+  {/if}
 
 </div>

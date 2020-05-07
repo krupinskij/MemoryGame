@@ -1,9 +1,9 @@
 <script>
   import { page } from "../store.js";
-  let hide = false;
+
+  import { fade } from 'svelte/transition';
 
   const switchPage = () => {
-    hide = true;
     setTimeout(() => {
       page.set("level");
     }, 500);
@@ -26,6 +26,6 @@
   }
 </style>
 
-<div class="page startpage" class:page--hide={hide} on:click={switchPage}>
+<div out:fade="{{ duration: 500 }}" class="page startpage" on:click={switchPage}>
   <img class="name" src="/img/name.png" alt="Pokemon - Memory Game" />
 </div>
