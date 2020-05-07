@@ -5,7 +5,7 @@ export const page = writable("start");
 page.subscribe(p => {
     if (p === "level") {
         level.set("easy")
-        clickCounter.set(0);
+        setTimeout(() => { clickCounter.set(0); }, 500)
 
         loading.set(false)
         imagesLoaded.set(0);

@@ -1,5 +1,7 @@
 <script>
   import { imagesLoaded, imagesAll } from "../store.js";
+
+  import { fade } from 'svelte/transition';
 </script>
 
 <div class="loading">

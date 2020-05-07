@@ -29,7 +29,7 @@
 <main>
     <div>
       {#if $page === 'start'}
-        <StartPage />
+        <StartPage/>
       {:else if $page === 'level'}
         <LevelPage />
       {:else if $page === 'game'}
@@ -40,7 +40,4 @@
         <div />
       {/if}
     </div>
-    {#if $loading}
-      <Loading />
-    {/if}
 </main>

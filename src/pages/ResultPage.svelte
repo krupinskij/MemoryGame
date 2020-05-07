@@ -1,10 +1,9 @@
 <script>
   import { page, clickCounter } from "../store.js";
 
-  let hide = false;
+  import { fade } from 'svelte/transition';
 
   const switchPage = () => {
-    hide = true;
     setTimeout(() => {
       page.set("level");
     }, 500);
@@ -50,7 +49,7 @@
   }
 </style>
 
-<div class="page result-page" class:page--hide={hide}>
+<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page result-page">
 
   <section class="header">Gratulacje!</section>
 
