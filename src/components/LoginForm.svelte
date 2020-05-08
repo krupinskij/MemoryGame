@@ -15,14 +15,14 @@
   
 </style>
 
-<div class="modal" transition:scale="{{ duration: 500 }}" on:click={ hideUserForm }>
+<div class="modal" transition:scale="{{ duration: 500 }}" on:click|self ={ hideUserForm }>
   <div class="form">
-    <h2 class="form__header">Log in</h2>
-    <div class="form__section">
+    <h2 class="form__header darken-bg">Log in</h2>
+    <div class="form__section darken-bg">
       <label class="form__label" for="username">Username: </label>
       <input class="form__input" type="text" id="username" />
     </div>
-    <div class="form__section">
+    <div class="form__section darken-bg">
       <label class="form__label" for="password">Password: </label>
       <input class="form__input" type="password" id="password" />
     </div>
