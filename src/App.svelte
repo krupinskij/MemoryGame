@@ -10,7 +10,9 @@
   import RegisterForm from "./components/RegisterForm.svelte";
 
   import { page } from "./store/game.js";
-  import { userForm } from "./store/user.js";
+  import { userForm, logged } from "./store/user.js";
+
+  import { onMount } from 'svelte';
 
   import firebase from "firebase/app";
   import "firebase/firestore";
@@ -28,6 +30,16 @@
     appId: "1:533361096933:web:55bb3184a73a32c5dd7c0c"
   };
   firebase.initializeApp(firebaseConfig);
+
+  onMount(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        logged.set(true);
+      } else {
+        logged.set(false);
+      }
+    })
+  });
 </script>
 
 <main>

@@ -1,7 +1,7 @@
 <script>
 
   import { scale } from 'svelte/transition';
-  import { userForm, logged } from '../store/user.js';
+  import { userForm } from '../store/user.js';
   import { page } from '../store/game.js';
 
   import firebase from "firebase";
@@ -33,7 +33,6 @@
           userForm.set({
             visible: false
           });
-          logged.set(true);
           page.set("start");
         },
         err => {
