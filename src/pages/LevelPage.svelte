@@ -1,5 +1,5 @@
 <script>
-  import { page, level } from "../store.js";
+  import { page, level } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
 

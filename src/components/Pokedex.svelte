@@ -1,5 +1,5 @@
 <script>
-  import { lastPokemon, singlePokemon } from "../store.js";
+  import { lastPokemon, singlePokemon } from "../store/pokemons.js";
   import firebase from "firebase";
   const COVERWIDTH = 379;
 

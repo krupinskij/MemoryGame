@@ -1,19 +1,16 @@
 <script>
+  import { page, clickCounter } from "../store/game.js";
+  import { imagesLoaded, imagesAll, loading } from "../store/images.js";
   import {
-    page,
-    clickCounter,
-    imagesLoaded,
-    imagesAll,
-    loading,
     lastPokemon,
     singlePokemon,
     pokemonCheckQueue,
     pokemonDeleteQueue,
     pokemonTurnDownQueue,
     pokemonDeletedCards
-  } from "../store.js";
+  } from "../store/pokemons.js";
   import firebase from "firebase";
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   export let id, type;
 
   let imageSrc;
@@ -134,7 +131,7 @@
       .getDownloadURL()
       .then(url => {
         console.log(url);
-        loadImage(url)
+        loadImage(url);
       });
   });
 </script>
@@ -163,12 +160,12 @@
 
 <div class="card">
   <div class="image-container">
-      <img
-        id={`${type}-${id}`}
-        src="../img/cardback.png"
-        class="pokemon-image"
-        alt="Pokemon"
-        on:click={turnCard} />
+    <img
+      id={`${type}-${id}`}
+      src="../img/cardback.png"
+      class="pokemon-image"
+      alt="Pokemon"
+      on:click={turnCard} />
   </div>
 
 </div>

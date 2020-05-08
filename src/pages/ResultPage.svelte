@@ -1,5 +1,5 @@
 <script>
-  import { page, clickCounter } from "../store.js";
+  import { page, clickCounter } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
 

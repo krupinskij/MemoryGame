@@ -9,7 +9,7 @@
   import LoginForm from "./components/LoginForm.svelte";
   import RegisterForm from "./components/RegisterForm.svelte";
 
-  import { page, loading } from "./store.js";
+  import { page } from "./store/game.js";
   import { userForm } from "./store/user.js";
 
   import firebase from "firebase/app";

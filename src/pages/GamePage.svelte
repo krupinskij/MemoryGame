@@ -1,12 +1,10 @@
 <script>
-  import {
-    page,
-    level,
-    imagesAll,
-    loading,
-    pokemonDeletedCards
-  } from "../store.js";
+  import { page, level } from "../store/game.js";
+  import { imagesAll, loading } from "../store/images.js";
+  import { pokemonDeletedCards } from "../store/pokemons.js";
+
   import { onMount } from "svelte";
+  
   import Card from "../components/Card.svelte";
   import Pokedex from "../components/Pokedex.svelte";
   import Loading from "../components/Loading.svelte";
@@ -107,7 +105,10 @@
   }
 </style>
 
-<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page game-page">
+<div
+  in:fade={{ delay: 500, duration: 1000 }}
+  out:fade={{ duration: 500 }}
+  class="page game-page">
 
   <section id="container" class="container darken-bg shadow">
     {#each pokemonCards as pokemonCard}
