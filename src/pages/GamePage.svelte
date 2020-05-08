@@ -93,7 +93,7 @@
     place-items: center;
   }
 
-  .game-container {
+  .container {
     position: relative;
     display: grid;
     grid-template: repeat(4, 1fr) / repeat(4, 1fr);
@@ -103,15 +103,13 @@
     max-height: 100%;
     height: min-content;
 
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 5px 7px black;
     padding: 1% 5%;
   }
 </style>
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page game-page">
 
-  <section id="container" class="game-container">
+  <section id="container" class="container darken-bg shadow">
     {#each pokemonCards as pokemonCard}
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}

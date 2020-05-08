@@ -23,8 +23,6 @@
     place-items: center;
 
     width: 80%;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 5px 7px black;
   }
 
   .details--normal {
@@ -43,8 +41,6 @@
     font-size: 25px;
 
     padding: 1% 5%;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 5px 7px black;
 
     cursor: pointer;
     text-decoration: underline;
@@ -53,7 +49,7 @@
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page result-page">
 
-  <section class="details">
+  <section class="details darken-bg shadow">
 
     <span class="details--big">Przeszedłeś grę!</span>
     <span class="details--normal">Potrzebowałeś do tego:</span>
@@ -62,6 +58,6 @@
 
   </section>
 
-  <section class="newGame" on:click={switchPage}>Zagraj jeszcze raz</section>
+  <section class="newGame darken-bg shadow" on:click={switchPage}>Zagraj jeszcze raz</section>
 
 </div>

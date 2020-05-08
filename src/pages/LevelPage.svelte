@@ -52,8 +52,6 @@
     grid-template: 1fr 1fr 1fr 1fr / 1fr 4fr 6fr;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 5px 7px black;
     padding: 2%;
     width: 65%;
   }
@@ -110,8 +108,6 @@
   .submitLevel {
     font-size: 50px;
 
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 5px 7px black;
     padding: 0 15%;
 
     cursor: pointer;
@@ -127,7 +123,7 @@
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page level-page">
 
-  <section class="options-container">
+  <section class="options-container darken-bg shadow">
 
     <img
       id="pokeball"
@@ -168,7 +164,7 @@
 
   </section>
 
-  <section id="submitLevel" class="submitLevel" on:click={switchPage}>
+  <section id="submitLevel" class="submitLevel darken-bg shadow" on:click={switchPage}>
     Graj!
   </section>
 

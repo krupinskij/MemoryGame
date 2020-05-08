@@ -10,6 +10,7 @@
   import RegisterForm from "./components/RegisterForm.svelte";
 
   import { page, loading } from "./store.js";
+  import { userForm } from "./store/user.js";
 
   import firebase from "firebase/app";
   import "firebase/firestore";
@@ -30,7 +31,7 @@
 </script>
 
 <main>
-  <div class="game-container">
+  <div class="game-container" class:blurred={ $userForm.visible }>
     <Navbar />
     {#if $page === 'start'}
       <StartPage />
@@ -45,5 +46,10 @@
     {/if}
   </div>
 
-  <RegisterForm />
+  {#if $userForm.type === 'register'}
+    <RegisterForm />
+  {:else if $userForm.type === 'login'}
+    <LoginForm/>
+  {/if}
+  
 </main>

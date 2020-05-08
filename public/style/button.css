@@ -1,0 +1,17 @@
+.button {
+    font-family: 'Russo One', sans-serif;
+	font-size: 30px;
+    
+	background-color: black;
+    color: white;
+    
+	border: 3px solid rgb(30, 30, 30);
+    border-radius: 5px;
+    
+	padding: 10px 15px;
+	margin: 10px 0;
+}
+
+.button--small {
+	font-size: 18px;
+}
