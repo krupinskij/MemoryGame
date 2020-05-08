@@ -1,6 +1,6 @@
 <script>
   import { scale } from "svelte/transition";
-  import { page } from "../store/game.js";
+  import { page } from "../store/project.js";
   import { userForm } from "../store/user.js";
 
   import firebase from "firebase";

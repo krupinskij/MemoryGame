@@ -1,8 +1,13 @@
 <script>
-  import { page } from "../store/project.js"; 
-  import { clickCounter, startTime, endTime } from "../store/game.js";
+  import { page } from "../store/project.js";
+  import { level, clickCounter, startTime, endTime } from "../store/game.js";
+  import { logged } from "../store/user.js";
 
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
+
+  import { onMount } from "svelte";
+
+  import firebase from "firebase";
 
   const switchPage = () => {
     setTimeout(() => {
@@ -12,15 +17,28 @@
 
   const getTime = (startTime, endTime) => {
     let time = endTime - startTime;
-    
-    const ms = time % 1000; 
+
+    const ms = time % 1000;
     time = Math.floor(time / 1000);
 
-    const s = time % 60; 
+    const s = time % 60;
     time = Math.floor(time / 60);
 
-    return `${ time }m ${ s }s ${ ms }ms`
-  }
+    return `${time}m ${s}s ${ms}ms`;
+  };
+
+  onMount(() => {
+    if (!$logged) return;
+
+    firebase
+      .firestore()
+      .collection($level)
+      .add({
+        user: firebase.auth().currentUser.uid,
+        time: $endTime - $startTime,
+        clicks: $clickCounter
+      });
+  });
 </script>
 
 <style>
@@ -32,7 +50,7 @@
 
   .details {
     display: grid;
-    grid-template-rows: 20% 15% 30% 15% 20%;;
+    grid-template-rows: 20% 15% 30% 15% 20%;
     place-items: center;
 
     width: 80%;
@@ -60,7 +78,10 @@
   }
 </style>
 
-<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page result-page">
+<div
+  in:fade={{ delay: 500, duration: 1000 }}
+  out:fade={{ duration: 500 }}
+  class="page result-page">
 
   <section class="details darken-bg shadow">
 
@@ -68,9 +89,13 @@
     <span class="details--normal">You've made:</span>
     <span class="details--huge">{$clickCounter}</span>
     <span class="details--normal">clicks!</span>
-    <span class="details--big">It took you { getTime($startTime, $endTime) }</span>
+    <span class="details--big">
+      It took you {getTime($startTime, $endTime)}
+    </span>
   </section>
 
-  <section class="newGame darken-bg shadow" on:click={switchPage}>Zagraj jeszcze raz</section>
+  <section class="newGame darken-bg shadow" on:click={switchPage}>
+    Zagraj jeszcze raz
+  </section>
 
 </div>

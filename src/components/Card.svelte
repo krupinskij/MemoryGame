@@ -1,5 +1,6 @@
 <script>
-  import { page, clickCounter } from "../store/game.js";
+  import { page } from "../store/project.js";
+  import { clickCounter } from "../store/game.js";
   import { imagesLoaded, imagesAll, loading } from "../store/images.js";
   import {
     lastPokemon,
