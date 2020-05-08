@@ -1,22 +1,21 @@
 body {
-	background-image: url("./img/background.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
 	margin: 0;
 	user-select: none;
 	outline: 0;
 	cursor: default;
 	font-family: 'Russo One', sans-serif;
 	color: white;
-
 	max-height: 100vh;
 	overflow: hidden;
 }
 
 .game-container {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("./img/background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 	height: 100vh;
+	filter: blur(5px);
 }
 
 .page {
@@ -25,15 +24,76 @@ body {
 
 .header {
 	font-size: 38px;
-
-    background-color: rgba(0,0,0,0.5);
-    box-shadow: 3px 5px 7px black;
-    padding: 0 15%;
+	background-color: rgba(0, 0, 0, 0.5);
+	box-shadow: 3px 5px 7px black;
+	padding: 0 15%;
 }
 
 .header--sm {
 	font-size: 30px;
+	padding: 1% 2%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
-    padding: 1% 2%;
-    background-color: rgba(0,0,0,0.5);
+.modal {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: grid;
+	place-items: center;
+}
+
+.form {
+	background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/form-bg.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	box-shadow: 3px 5px 7px black;
+	width: 50%;
+	padding: 20px 30px;
+}
+
+.form__header {
+	font-size: 50px;
+	text-align: center;
+	
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form__section {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin: 5px 0;
+	padding: 10px;
+}
+
+.form__label {
+	font-size: 30px;
+}
+
+.form__input {
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 30px;
+	font-family: 'Russo One', sans-serif;
+	padding: 2px 10px;
+}
+
+.form__submit {
+	width: 50%;
+	margin: 20px 25%;
+}
+
+.button {
+	color: white;
+	font-size: 30px;
+	font-family: 'Russo One', sans-serif;
+	background-color: black;
+	border-radius: 5px;
+	border: 3px solid rgb(30, 30, 30);
+	padding: 10px 0;
 }
