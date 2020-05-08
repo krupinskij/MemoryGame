@@ -10,6 +10,8 @@ export const pokemonDeleteQueue = writable([]);
 export const pokemonTurnDownQueue = writable([]);
 export const pokemonDeletedCards = writable(0);
 
+export const pokedexVisible = writable(false);
+
 pokemonCheckQueue.subscribe(q => {
   if (q.length === 0 || q.length % 2 !== 0) return;
 

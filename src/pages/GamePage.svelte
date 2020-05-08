@@ -1,7 +1,7 @@
 <script>
   import { page, level } from "../store/game.js";
   import { imagesAll, loading } from "../store/images.js";
-  import { pokemonDeletedCards } from "../store/pokemons.js";
+  import { pokemonDeletedCards, singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
   import { onMount } from "svelte";
   
@@ -116,8 +116,10 @@
     {/each}
   </section>
 
-  <Pokedex />
-
+  {#if $pokedexVisible}
+    <Pokedex />
+  {/if}
+    
   {#if $loading}
     <Loading />
   {/if}

@@ -2,6 +2,7 @@
 
   import { userForm, logged } from "../store/user.js";
   import { page } from "../store/game.js";
+  import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
   import firebase from "firebase";
 
@@ -17,6 +18,12 @@
       visible: true,
       type: "register"
     })
+  }
+
+  const showPokedex = () => {
+    if($singlePokemon) {
+      pokedexVisible.set(true);
+    }
   }
 
   const logout = () => {
@@ -63,6 +70,9 @@
 
 <div class="navbar">
   <div>
+    {#if $page === "game"}
+      <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedex }>Check in pokedex</button>
+    {/if}
   </div>
   <div class="user-panel">
     {#if $logged}
