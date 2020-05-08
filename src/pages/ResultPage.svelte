@@ -1,5 +1,6 @@
 <script>
-  import { page, clickCounter } from "../store/game.js";
+  import { page } from "../store/project.js"; 
+  import { clickCounter, startTime, endTime } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
 
@@ -8,6 +9,18 @@
       page.set("level");
     }, 500);
   };
+
+  const getTime = (startTime, endTime) => {
+    let time = endTime - startTime;
+    
+    const ms = time % 1000; 
+    time = Math.floor(time / 1000);
+
+    const s = time % 60; 
+    time = Math.floor(time / 60);
+
+    return `${ time }m ${ s }s ${ ms }ms`
+  }
 </script>
 
 <style>
@@ -19,7 +32,7 @@
 
   .details {
     display: grid;
-    grid-template-rows: 20% 15% 50% 15%;
+    grid-template-rows: 20% 15% 30% 15% 20%;;
     place-items: center;
 
     width: 80%;
@@ -51,11 +64,11 @@
 
   <section class="details darken-bg shadow">
 
-    <span class="details--big">Przeszedłeś grę!</span>
-    <span class="details--normal">Potrzebowałeś do tego:</span>
+    <span class="details--big">Congratulations!</span>
+    <span class="details--normal">You've made:</span>
     <span class="details--huge">{$clickCounter}</span>
-    <span class="details--normal">kliknięć</span>
-
+    <span class="details--normal">clicks!</span>
+    <span class="details--big">It took you { getTime($startTime, $endTime) }</span>
   </section>
 
   <section class="newGame darken-bg shadow" on:click={switchPage}>Zagraj jeszcze raz</section>

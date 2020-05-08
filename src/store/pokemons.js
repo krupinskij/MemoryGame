@@ -1,6 +1,7 @@
 import { writable, get } from "svelte/store";
 
-import { page } from "./game.js";
+import { page } from "./project.js";
+import { endTime } from "./game.js";
 import { imagesAll } from "./images.js";
 
 export const lastPokemon = writable(-1);
@@ -30,6 +31,7 @@ pokemonDeletedCards.subscribe(c => {
   if (c !== 0 && c === get(imagesAll)) {
     setTimeout(() => {
       page.set("result");
+      endTime.set(performance.now());
     }, 500);
   }
 });

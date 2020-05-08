@@ -1,5 +1,6 @@
 <script>
-  import { page, level } from "../store/game.js";
+  import { page } from "../store/project.js"; 
+  import { level } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
 
@@ -135,25 +136,25 @@
       id="easy"
       class="option option--easy"
       on:click={() => setLevel('easy')}>
-      Łatwy
+      Easy
     </span>
     <span
       id="medium"
       class="option option--medium"
       on:click={() => setLevel('medium')}>
-      Średni
+      Medium
     </span>
     <span
       id="hard"
       class="option option--hard"
       on:click={() => setLevel('hard')}>
-      Trudny
+      Hard
     </span>
     <span
       id="legendary"
       class="option option--legendary"
       on:click={() => setLevel('legendary')}>
-      Legendarny
+      Legendary
     </span>
 
     <img

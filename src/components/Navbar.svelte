@@ -1,7 +1,7 @@
 <script>
 
   import { userForm, logged } from "../store/user.js";
-  import { page } from "../store/game.js";
+  import { page } from "../store/project.js";
   import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
   import firebase from "firebase";

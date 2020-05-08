@@ -9,7 +9,7 @@
   import LoginForm from "./components/LoginForm.svelte";
   import RegisterForm from "./components/RegisterForm.svelte";
 
-  import { page } from "./store/game.js";
+  import { page } from "./store/project.js";
   import { userForm, logged } from "./store/user.js";
 
   import { onMount } from 'svelte';

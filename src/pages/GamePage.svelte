@@ -1,5 +1,6 @@
 <script>
-  import { page, level } from "../store/game.js";
+  import { page } from "../store/project.js"; 
+  import { level } from "../store/game.js";
   import { imagesAll, loading } from "../store/images.js";
   import { pokemonDeletedCards, singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
