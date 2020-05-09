@@ -9,7 +9,6 @@ export const singlePokemon = writable(false);
 export const pokemonCheckQueue = writable([]);
 export const pokemonDeleteQueue = writable([]);
 export const pokemonTurnDownQueue = writable([]);
-export const pokemonDeletedCards = writable(0);
 
 export const pokedexVisible = writable(false);
 
@@ -27,12 +26,12 @@ pokemonCheckQueue.subscribe(q => {
   }
 })
 
-pokemonDeletedCards.subscribe(c => {
-  if (c !== 0 && c === get(imagesAll)) {
+pokemonDeleteQueue.subscribe(q => {
+  if (q.length !== 0 && q.length === get(imagesAll)) {
+    endTime.set(performance.now());
     setTimeout(() => {
       page.set("result");
-      endTime.set(performance.now());
-    }, 500);
+    }, 1000);
   }
 });
 
@@ -42,5 +41,4 @@ export const resetPokemons = () => {
   pokemonCheckQueue.set([]);
   pokemonDeleteQueue.set([]);
   pokemonTurnDownQueue.set([]);
-  pokemonDeletedCards.set(0);
 }

@@ -7,8 +7,7 @@
     singlePokemon,
     pokemonCheckQueue,
     pokemonDeleteQueue,
-    pokemonTurnDownQueue,
-    pokemonDeletedCards
+    pokemonTurnDownQueue
   } from "../store/pokemons.js";
   import firebase from "firebase";
   import { onMount } from "svelte";
@@ -98,7 +97,6 @@
         (q[1].id === id && q[1].type === type))
     ) {
       busy = true;
-      pokemonDeletedCards.update(c => c + 1);
 
       setTimeout(() => {
         showPokemonImage("../img/cardback.png");
