@@ -18,6 +18,13 @@
 .button:hover {
 	border-color: white;
 	background-color: rgb(20, 20, 20);
+	z-index: 1;
+}
+
+.button--active {
+	border-color: white;
+	background-color: rgb(20, 20, 20);
+	z-index: 1;
 }
 
 .button:active {
@@ -28,4 +35,26 @@
 	color: rgb(75, 75, 75) !important;
 	background-color: rgb(20, 20, 20) !important;
 	border-color: rgb(30, 30, 30) !important;
+}
+
+.button-group {
+	display: flex;
+	gap: 0;
+}
+
+.button--first {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-right: -3px;
+}
+
+.button--center {
+	border-radius: 0;
+	
+	margin-right: -3px;
+}
+
+.button--last {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }

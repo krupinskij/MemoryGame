@@ -6,11 +6,15 @@
 
   import Navbar from "./components/Navbar.svelte";
 
-  import LoginForm from "./components/LoginForm.svelte";
-  import RegisterForm from "./components/RegisterForm.svelte";
+  import LoginModal from "./components/modals/LoginModal.svelte";
+  import RegisterModal from "./components/modals/RegisterModal.svelte";
+  import RankingModal from "./components/modals/RankingModal.svelte";
+  import PokedexModal from "./components/modals/PokedexModal.svelte";
+  import LoadingModal from "./components/modals/LoadingModal.svelte";
 
   import { page } from "./store/project.js";
-  import { userForm, logged } from "./store/user.js";
+  import { logged } from "./store/user.js";
+  import { modal } from "./store/modal.js";
 
   import { onMount } from 'svelte';
 
@@ -43,7 +47,7 @@
 </script>
 
 <main>
-  <div class="game-container" class:blurred={ $userForm.visible }>
+  <div class="game-container" class:blurred={ $modal.visible }>
     <Navbar />
     {#if $page === 'start'}
       <StartPage />
@@ -58,10 +62,16 @@
     {/if}
   </div>
 
-  {#if $userForm.type === 'register'}
-    <RegisterForm />
-  {:else if $userForm.type === 'login'}
-    <LoginForm/>
+  {#if $modal.type === 'register'}
+    <RegisterModal />
+  {:else if $modal.type === 'login'}
+    <LoginModal/>
+  {:else if $modal.type === 'pokedex'}
+    <PokedexModal/>
+  {:else if $modal.type === 'ranking'}
+    <RankingModal/>
+  {:else if $modal.type === 'loading'}
+    <LoadingModal/>
   {/if}
   
 </main>

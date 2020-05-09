@@ -1,28 +1,39 @@
 <script>
 
-  import { userForm, logged } from "../store/user.js";
+  import { logged } from "../store/user.js";
+  import { modal } from '../store/modal.js';
   import { page } from "../store/project.js";
   import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
   import firebase from "firebase";
 
-  const showLoginForm = () => {
-    userForm.set({
+  const showLoginModal = () => {
+    modal.set({
       visible: true,
       type: "login"
     })
   }
 
-  const showRegisterForm = () => {
-    userForm.set({
+  const showRegisterModal = () => {
+    modal.set({
       visible: true,
       type: "register"
     })
   }
 
-  const showPokedex = () => {
+  const showRankingModal = () => {
+    modal.set({
+      visible: true,
+      type: "ranking"
+    })
+  }
+
+  const showPokedexModal = () => {
     if($singlePokemon) {
-      pokedexVisible.set(true);
+      modal.set({
+        visible: true,
+        type: "pokedex"
+      })
     }
   }
 
@@ -71,16 +82,17 @@
 <div class="navbar">
   <div>
     {#if $page === "game"}
-      <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedex }>Check in pokedex</button>
+      <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedexModal }>Check in pokedex</button>
     {/if}
   </div>
   <div class="user-panel">
     {#if $logged}
       <label class="username">Hi, { getUsername(firebase.auth().currentUser.email) }!</label>
+      <button class="button button--small" on:click={ showRankingModal }>Show ranking</button>
       <button class="button button--small" on:click={ logout }>Log Out</button>
     {:else}
-      <button class="button button--small" on:click={ showLoginForm }>Log In</button>
-      <button class="button button--small" on:click={ showRegisterForm }>Sign Up</button>
+      <button class="button button--small" on:click={ showLoginModal }>Log In</button>
+      <button class="button button--small" on:click={ showRegisterModal }>Sign Up</button>
     {/if}
     
   </div>

@@ -1,14 +1,12 @@
 <script>
   import { page } from "../store/project.js"; 
   import { level } from "../store/game.js";
-  import { imagesAll, loading } from "../store/images.js";
-  import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
+  import { imagesAll } from "../store/images.js";
+  import { singlePokemon } from "../store/pokemons.js";
 
   import { onMount } from "svelte";
   
   import Card from "../components/Card.svelte";
-  import Pokedex from "../components/Pokedex.svelte";
-  import Loading from "../components/Loading.svelte";
 
   import { fade } from "svelte/transition";
 
@@ -116,13 +114,5 @@
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}
   </section>
-
-  {#if $pokedexVisible}
-    <Pokedex />
-  {/if}
-    
-  {#if $loading}
-    <Loading />
-  {/if}
 
 </div>

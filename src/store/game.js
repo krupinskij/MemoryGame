@@ -9,5 +9,9 @@ export const endTime = writable(0);
 
 export const resetGame = () => {
   level.set("easy")
-  setTimeout(() => { clickCounter.set(0); }, 500)
+  setTimeout(() => { 
+    clickCounter.set(0); 
+    startTime.set(0);
+    endTime.set(0);
+  }, 500)
 }

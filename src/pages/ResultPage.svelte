@@ -27,6 +27,10 @@
     return `${time}m ${s}s ${ms}ms`;
   };
 
+  const getUsername = email => {
+    return email.substr(0, email.length - 8);
+  }
+
   onMount(() => {
     if (!$logged) return;
 
@@ -35,6 +39,7 @@
       .collection($level)
       .add({
         user: firebase.auth().currentUser.uid,
+        username: getUsername(firebase.auth().currentUser.email),
         time: $endTime - $startTime,
         clicks: $clickCounter
       });

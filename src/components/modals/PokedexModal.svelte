@@ -1,5 +1,6 @@
 <script>
-  import { lastPokemon, pokedexVisible } from "../store/pokemons.js";
+  import { lastPokemon } from "../../store/pokemons.js";
+  import { modal } from "../../store/modal.js";
   import { scale } from "svelte/transition";
 
   import { onMount } from "svelte";
@@ -128,7 +129,9 @@
 
         if (fracPI <= 0) {
           clearInterval(closeCover);
-          pokedexVisible.set(false);
+          modal.set({
+            visible: false
+          });
         }
       }
     }, 8);
