@@ -1,5 +1,6 @@
 <script>
-  import { page, level } from "../store.js";
+  import { page } from "../store/project.js"; 
+  import { level } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
 
@@ -42,7 +43,7 @@
 <style>
   .level-page {
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 75% 25%;
     place-items: center;
   }
 
@@ -52,7 +53,6 @@
     grid-template: 1fr 1fr 1fr 1fr / 1fr 4fr 6fr;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 2%;
     width: 65%;
   }
@@ -107,9 +107,8 @@
   }
 
   .submitLevel {
-    font-size: 60px;
+    font-size: 50px;
 
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 0 15%;
 
     cursor: pointer;
@@ -125,9 +124,7 @@
 
 <div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page level-page">
 
-  <section class="header">Wybierz poziom:</section>
-
-  <section class="options-container">
+  <section class="options-container darken-bg shadow">
 
     <img
       id="pokeball"
@@ -139,25 +136,25 @@
       id="easy"
       class="option option--easy"
       on:click={() => setLevel('easy')}>
-      Łatwy
+      Easy
     </span>
     <span
       id="medium"
       class="option option--medium"
       on:click={() => setLevel('medium')}>
-      Średni
+      Medium
     </span>
     <span
       id="hard"
       class="option option--hard"
       on:click={() => setLevel('hard')}>
-      Trudny
+      Hard
     </span>
     <span
       id="legendary"
       class="option option--legendary"
       on:click={() => setLevel('legendary')}>
-      Legendarny
+      Legendary
     </span>
 
     <img
@@ -168,7 +165,7 @@
 
   </section>
 
-  <section id="submitLevel" class="submitLevel" on:click={switchPage}>
+  <section id="submitLevel" class="submitLevel darken-bg shadow" on:click={switchPage}>
     Graj!
   </section>
 

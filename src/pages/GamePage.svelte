@@ -1,15 +1,12 @@
 <script>
-  import {
-    page,
-    level,
-    imagesAll,
-    loading,
-    pokemonDeletedCards
-  } from "../store.js";
+  import { page } from "../store/project.js"; 
+  import { level } from "../store/game.js";
+  import { imagesAll } from "../store/images.js";
+  import { singlePokemon } from "../store/pokemons.js";
+
   import { onMount } from "svelte";
+  
   import Card from "../components/Card.svelte";
-  import Pokedex from "../components/Pokedex.svelte";
-  import Loading from "../components/Loading.svelte";
 
   import { fade } from "svelte/transition";
 
@@ -82,19 +79,16 @@
       positionSet.add(position);
       pokemonCards[position] = { id: id, type: "names" };
     }
-
-    console.log(pokemonCards);
   });
 </script>
 
 <style>
   .game-page {
     display: grid;
-    grid-template-rows: 15% 85%;
     place-items: center;
   }
 
-  .game-container {
+  .container {
     position: relative;
     display: grid;
     grid-template: repeat(4, 1fr) / repeat(4, 1fr);
@@ -102,26 +96,21 @@
 
     max-width: 35%;
     max-height: 100%;
+    height: min-content;
 
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 1% 5%;
   }
 </style>
 
-<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page game-page">
+<div
+  in:fade={{ delay: 500, duration: 1000 }}
+  out:fade={{ duration: 500 }}
+  class="page game-page">
 
-  <section class="header--sm">Połącz pokemony z ich imionami</section>
-
-  <section id="container" class="game-container">
+  <section id="container" class="container darken-bg shadow">
     {#each pokemonCards as pokemonCard}
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}
   </section>
-
-  <Pokedex />
-
-  {#if $loading}
-    <Loading />
-  {/if}
 
 </div>

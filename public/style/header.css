@@ -1,0 +1,9 @@
+.header {
+	font-size: 38px;
+	padding: 0 15%;
+}
+
+.header--sm {
+	font-size: 30px;
+	padding: 1% 2%;
+}

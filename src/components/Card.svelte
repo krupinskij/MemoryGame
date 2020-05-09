@@ -1,19 +1,16 @@
 <script>
+  import { page } from "../store/project.js";
+  import { clickCounter } from "../store/game.js";
+  import { imagesLoaded, imagesAll } from "../store/images.js";
   import {
-    page,
-    clickCounter,
-    imagesLoaded,
-    imagesAll,
-    loading,
     lastPokemon,
     singlePokemon,
     pokemonCheckQueue,
     pokemonDeleteQueue,
-    pokemonTurnDownQueue,
-    pokemonDeletedCards
-  } from "../store.js";
+    pokemonTurnDownQueue
+  } from "../store/pokemons.js";
   import firebase from "firebase";
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   export let id, type;
 
   let imageSrc;
@@ -100,7 +97,6 @@
         (q[1].id === id && q[1].type === type))
     ) {
       busy = true;
-      pokemonDeletedCards.update(c => c + 1);
 
       setTimeout(() => {
         showPokemonImage("../img/cardback.png");
@@ -133,8 +129,7 @@
       .ref(`${type}/${id}.png`)
       .getDownloadURL()
       .then(url => {
-        console.log(url);
-        loadImage(url)
+        loadImage(url);
       });
   });
 </script>
@@ -163,12 +158,12 @@
 
 <div class="card">
   <div class="image-container">
-      <img
-        id={`${type}-${id}`}
-        src="../img/cardback.png"
-        class="pokemon-image"
-        alt="Pokemon"
-        on:click={turnCard} />
+    <img
+      id={`${type}-${id}`}
+      src="../img/cardback.png"
+      class="pokemon-image"
+      alt="Pokemon"
+      on:click={turnCard} />
   </div>
 
 </div>
