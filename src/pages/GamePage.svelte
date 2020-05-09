@@ -79,8 +79,6 @@
       positionSet.add(position);
       pokemonCards[position] = { id: id, type: "names" };
     }
-
-    console.log(pokemonCards);
   });
 </script>
 

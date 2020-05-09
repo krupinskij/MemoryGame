@@ -129,7 +129,6 @@
       .ref(`${type}/${id}.png`)
       .getDownloadURL()
       .then(url => {
-        console.log(url);
         loadImage(url);
       });
   });
