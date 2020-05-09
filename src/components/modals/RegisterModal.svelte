@@ -62,7 +62,7 @@
       <label class="modal__label" for="repeat">Repeat password: </label>
       <input class="modal__input" type="password" id="repeat" bind:value={ repeat } />
     </div>
-    <input type="submir" class="button modal__submit" value="Sign Up!"/>
+    <input type="submit" class="button modal__submit" value="Sign Up!"/>
 
     <div class="modal__error">{error}</div>
   </form>
