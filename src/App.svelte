@@ -5,6 +5,7 @@
   import ResultPage from "./pages/ResultPage.svelte";
 
   import Navbar from "./components/Navbar.svelte";
+  import Footer from "./components/Footer.svelte";
 
   import LoginModal from "./components/modals/LoginModal.svelte";
   import RegisterModal from "./components/modals/RegisterModal.svelte";
@@ -60,6 +61,7 @@
     {:else}
       <div />
     {/if}
+    <Footer />
   </div>
 
   {#if $modal.type === 'register'}

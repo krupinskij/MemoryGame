@@ -64,9 +64,6 @@
     width: calc(100% - 20px);
     padding: 10px;
 
-    background-color: rgb(0,0,0,0.7);
-    box-shadow: 3px 5px 7px black;
-
     display: flex;
     justify-content: space-between;
   }
@@ -82,7 +79,7 @@
   }
 </style>
 
-<div class="navbar">
+<div class="navbar darken-bg shadow">
   <div>
     {#if $page === "game"}
       <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedexModal }>{ _("Check in pokedex") }</button>

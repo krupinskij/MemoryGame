@@ -4,7 +4,7 @@ export default {
         // navbar
         ["Log In", "Zaloguj się"],
         ["Sign Up", "Zarejestruj się"],
-        ["Hi", "Witaj"],
+        ["Hi", "Hej"],
         ["Show ranking", "Pokaż ranking"],
         ["Log Out", "Wyloguj się"],
         ["Check in pokedex", "Otwórz pokedex"],
