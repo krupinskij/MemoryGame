@@ -2,7 +2,7 @@
   import _ from "../../translator/Translator.js";
 
   import { scale } from "svelte/transition";
-  import { page } from "../../store/project.js";
+  import { page, lang } from "../../store/project.js";
   import { modal } from "../../store/modal.js";
 
   import firebase from "firebase";
@@ -34,13 +34,22 @@
         }
       );
   };
+
+  $: _logIn = _("Log In", $lang);
+  $: _username = _("Username", $lang);
+  $: _password = _("Password", $lang);
 </script>
 
-<div class="modal" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
-  <form class="modal__content modal__content--login shadow" on:submit|preventDefault={login}>
-    <h2 class="modal__header darken-bg">{ _("Log In") }</h2>
+<div
+  class="modal"
+  transition:scale={{ duration: 500 }}
+  on:click|self={hideModal}>
+  <form
+    class="modal__content modal__content--login shadow"
+    on:submit|preventDefault={login}>
+    <h2 class="modal__header darken-bg">{_logIn}</h2>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="username">{ _("Username") }:</label>
+      <label class="modal__label" for="username">{_username}:</label>
       <input
         class="modal__input"
         type="text"
@@ -48,14 +57,14 @@
         bind:value={username} />
     </div>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="password">{ _("Password") }:</label>
+      <label class="modal__label" for="password">{_password}:</label>
       <input
         class="modal__input"
         type="password"
         id="password"
         bind:value={password} />
     </div>
-    <input type="submit" class="button modal__submit" value={ _("Log In") + "!"}/>
+    <input type="submit" class="button modal__submit" value={_logIn + '!'} />
 
     <div class="modal__error">{error}</div>
   </form>

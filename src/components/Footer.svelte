@@ -1,5 +1,5 @@
 <script>
-  import { lang } from "../translator/Translator.js";
+  import { lang } from "../store/project.js";
 </script>
 
 <style>
@@ -33,6 +33,7 @@
 		width: auto;
 		height: 20px;
 		margin: 0;
+		cursor: pointer;
 	}
 
 	.link {

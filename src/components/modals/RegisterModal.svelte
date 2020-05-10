@@ -3,7 +3,7 @@
 
   import { scale } from 'svelte/transition';
   import { modal } from '../../store/modal.js';
-  import { page } from '../../store/project.js';
+  import { page, lang } from '../../store/project.js';
 
   import firebase from "firebase";
 
@@ -42,28 +42,30 @@
       );
   };
 
-</script>
+  $: _register = _("Register", $lang);
+  $: _username = _("Username", $lang);
+  $: _password = _("Password", $lang);
+  $: _repeatPassword = _("Repeat password", $lang);
+  $: _signUp = _("Sign Up", $lang);
 
-<style>
-  
-</style>
+</script>
 
 <div class="modal" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
   <form class="modal__content modal__content--register shadow" on:click|preventDefault={ register }>
-    <h2 class="modal__header darken-bg">{ _("Register") }</h2>
+    <h2 class="modal__header darken-bg">{ _register }</h2>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="username">{ _("Username") }: </label>
+      <label class="modal__label" for="username">{ _username }: </label>
       <input class="modal__input" type="text" id="username" bind:value={ username } />
     </div>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="password">{ _("Password") }: </label>
+      <label class="modal__label" for="password">{ _password }: </label>
       <input class="modal__input" type="password" id="password" bind:value={ password } />
     </div>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="repeat">{ _("Repeat password") }: </label>
+      <label class="modal__label" for="repeat">{ _repeatPassword }: </label>
       <input class="modal__input" type="password" id="repeat" bind:value={ repeat } />
     </div>
-    <input type="submit" class="button modal__submit" value={ _("Sign Up") + "!"}/>
+    <input type="submit" class="button modal__submit" value={ _signUp + "!"}/>
 
     <div class="modal__error">{error}</div>
   </form>

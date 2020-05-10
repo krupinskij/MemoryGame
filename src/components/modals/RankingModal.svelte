@@ -1,6 +1,8 @@
 <script>
   import _ from "../../translator/Translator.js";
+
   import { scale } from "svelte/transition";
+  import { lang } from "../../store/project.js"
   import { modal } from "../../store/modal.js";
 
   import firebase from "firebase";
@@ -97,6 +99,20 @@
 
   onMount(getData);
 
+  $: _bestResults = _("Best results", $lang);
+
+  $: _user = _("User", $lang);
+  $: _time = _("Time", $lang);
+  $: _clicks = _("Clicks", $lang);
+
+  $: _me = _("Me", $lang);
+  $: _all = _("All", $lang);
+
+  $: _easy = _("Easy", $lang);
+  $: _medium = _("Medium", $lang);
+  $: _hard = _("Hard", $lang);
+  $: _legendary = _("Legendary", $lang);
+
 </script>
 
 <div
@@ -104,13 +120,13 @@
   transition:scale={{ duration: 500 }}
   on:click|self={hideModal}>
   <div class="modal__content modal__content--ranking">
-    <h2 class="modal__header darken-bg">{ _("Best results") }</h2>
+    <h2 class="modal__header darken-bg">{ _bestResults }</h2>
     <table class="table">
       <thead class="darken-bg">
         <tr>
-          <th class="table__header">{ _("User") }</th>
-          <th class="table__header">{ _("Time") }</th>
-          <th class="table__header">{ _("Clicks") }</th>
+          <th class="table__header">{ _user }</th>
+          <th class="table__header">{ _time }</th>
+          <th class="table__header">{ _clicks }</th>
         </tr>
       </thead>
       <tbody>
@@ -132,7 +148,7 @@
           on:click={() => {
             setWho('me');
           }}>
-          { _("Me") }
+          { _me }
         </button>
         <button
           class="button button--small button--last"
@@ -140,7 +156,7 @@
           on:click={() => {
             setWho('all');
           }}>
-          { _("All") }
+          { _all }
         </button>
       </div>
       <div class="button-group">
@@ -150,7 +166,7 @@
           on:click={() => {
             setOrder('time', 'clicks');
           }}>
-          { _("Time") }
+          { _time }
         </button>
         <button
           class="button button--small button--last"
@@ -158,7 +174,7 @@
           on:click={() => {
             setOrder('clicks', 'time');
           }}>
-          { _("Clicks") }
+          { _clicks }
         </button>
       </div>
       <div class="button-group">
@@ -168,7 +184,7 @@
           on:click={() => {
             setLevel('easy');
           }}>
-          { _("Easy") }
+          { _easy }
         </button>
         <button
           class="button button--small button--center"
@@ -176,7 +192,7 @@
           on:click={() => {
             setLevel('medium');
           }}>
-          { _("Medium") }
+          { _medium }
         </button>
         <button
           class="button button--small button--center"
@@ -184,7 +200,7 @@
           on:click={() => {
             setLevel('hard');
           }}>
-          { _("Hard") }
+          { _hard }
         </button>
         <button
           class="button button--small button--last"
@@ -192,7 +208,7 @@
           on:click={() => {
             setLevel('legendary');
           }}>
-          { _("Legendary") }
+          { _legendary }
         </button>
       </div>
     </div>
