@@ -1,4 +1,5 @@
 <script>
+  import _ from "../translator/Translator.js";
   import { page } from "../store/project.js"; 
   import { level } from "../store/game.js";
 
@@ -136,25 +137,25 @@
       id="easy"
       class="option option--easy"
       on:click={() => setLevel('easy')}>
-      Easy
+      { _("Easy") }
     </span>
     <span
       id="medium"
       class="option option--medium"
       on:click={() => setLevel('medium')}>
-      Medium
+      { _("Medium") }
     </span>
     <span
       id="hard"
       class="option option--hard"
       on:click={() => setLevel('hard')}>
-      Hard
+      { _("Hard") }
     </span>
     <span
       id="legendary"
       class="option option--legendary"
       on:click={() => setLevel('legendary')}>
-      Legendary
+      { _("Legendary") }
     </span>
 
     <img
@@ -166,7 +167,7 @@
   </section>
 
   <section id="submitLevel" class="submitLevel darken-bg shadow" on:click={switchPage}>
-    Graj!
+    { _("Play") }!
   </section>
 
 </div>

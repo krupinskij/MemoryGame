@@ -5,6 +5,9 @@
   import { page } from "../store/project.js";
   import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
 
+  import _ from "../translator/Translator.js";
+
+
   import firebase from "firebase";
 
   const showLoginModal = () => {
@@ -82,17 +85,17 @@
 <div class="navbar">
   <div>
     {#if $page === "game"}
-      <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedexModal }>Check in pokedex</button>
+      <button class="button button--small" class:button--disabled={ !$singlePokemon } on:click={ showPokedexModal }>{ _("Check in pokedex") }</button>
     {/if}
   </div>
   <div class="user-panel">
     {#if $logged}
-      <label class="username">Hi, { getUsername(firebase.auth().currentUser.email) }!</label>
-      <button class="button button--small" on:click={ showRankingModal }>Show ranking</button>
-      <button class="button button--small" on:click={ logout }>Log Out</button>
+      <label class="username">{ _("Hi") }, { getUsername(firebase.auth().currentUser.email) }!</label>
+      <button class="button button--small" on:click={ showRankingModal }>{ _("Show ranking") }</button>
+      <button class="button button--small" on:click={ logout }>{ _("Log Out") }</button>
     {:else}
-      <button class="button button--small" on:click={ showLoginModal }>Log In</button>
-      <button class="button button--small" on:click={ showRegisterModal }>Sign Up</button>
+      <button class="button button--small" on:click={ showLoginModal }>{ _("Log In")}</button>
+      <button class="button button--small" on:click={ showRegisterModal }>{ _("Sign Up") }</button>
     {/if}
     
   </div>

@@ -1,4 +1,5 @@
 <script>
+  import _ from "../../translator/Translator.js";
   import { scale } from "svelte/transition";
   import { modal } from "../../store/modal.js";
 
@@ -103,13 +104,13 @@
   transition:scale={{ duration: 500 }}
   on:click|self={hideModal}>
   <div class="modal__content modal__content--ranking">
-    <h2 class="modal__header darken-bg">Best results</h2>
+    <h2 class="modal__header darken-bg">{ _("Best results") }</h2>
     <table class="table">
       <thead class="darken-bg">
         <tr>
-          <th class="table__header">User</th>
-          <th class="table__header">Time</th>
-          <th class="table__header">Clicks</th>
+          <th class="table__header">{ _("User") }</th>
+          <th class="table__header">{ _("Time") }</th>
+          <th class="table__header">{ _("Clicks") }</th>
         </tr>
       </thead>
       <tbody>
@@ -131,7 +132,7 @@
           on:click={() => {
             setWho('me');
           }}>
-          Me
+          { _("Me") }
         </button>
         <button
           class="button button--small button--last"
@@ -139,7 +140,7 @@
           on:click={() => {
             setWho('all');
           }}>
-          All
+          { _("All") }
         </button>
       </div>
       <div class="button-group">
@@ -149,7 +150,7 @@
           on:click={() => {
             setOrder('time', 'clicks');
           }}>
-          By time
+          { _("Time") }
         </button>
         <button
           class="button button--small button--last"
@@ -157,7 +158,7 @@
           on:click={() => {
             setOrder('clicks', 'time');
           }}>
-          By clicks
+          { _("Clicks") }
         </button>
       </div>
       <div class="button-group">
@@ -167,7 +168,7 @@
           on:click={() => {
             setLevel('easy');
           }}>
-          Easy
+          { _("Easy") }
         </button>
         <button
           class="button button--small button--center"
@@ -175,7 +176,7 @@
           on:click={() => {
             setLevel('medium');
           }}>
-          Medium
+          { _("Medium") }
         </button>
         <button
           class="button button--small button--center"
@@ -183,7 +184,7 @@
           on:click={() => {
             setLevel('hard');
           }}>
-          Hard
+          { _("Hard") }
         </button>
         <button
           class="button button--small button--last"
@@ -191,7 +192,7 @@
           on:click={() => {
             setLevel('legendary');
           }}>
-          Legendary
+          { _("Legendary") }
         </button>
       </div>
     </div>

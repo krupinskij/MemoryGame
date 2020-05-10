@@ -1,4 +1,5 @@
 <script>
+  import _ from "../../translator/Translator.js";
 
   import { scale } from 'svelte/transition';
   import { modal } from '../../store/modal.js';
@@ -49,20 +50,20 @@
 
 <div class="modal" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
   <form class="modal__content modal__content--register shadow" on:click|preventDefault={ register }>
-    <h2 class="modal__header darken-bg">Register</h2>
+    <h2 class="modal__header darken-bg">{ _("Register") }</h2>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="username">Username: </label>
+      <label class="modal__label" for="username">{ _("Username") }: </label>
       <input class="modal__input" type="text" id="username" bind:value={ username } />
     </div>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="password">Password: </label>
+      <label class="modal__label" for="password">{ _("Password") }: </label>
       <input class="modal__input" type="password" id="password" bind:value={ password } />
     </div>
     <div class="modal__section darken-bg">
-      <label class="modal__label" for="repeat">Repeat password: </label>
+      <label class="modal__label" for="repeat">{ _("Repeat password") }: </label>
       <input class="modal__input" type="password" id="repeat" bind:value={ repeat } />
     </div>
-    <input type="submit" class="button modal__submit" value="Sign Up!"/>
+    <input type="submit" class="button modal__submit" value={ _("Sign Up") + "!"}/>
 
     <div class="modal__error">{error}</div>
   </form>
