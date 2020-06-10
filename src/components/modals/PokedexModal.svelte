@@ -81,7 +81,7 @@
 
           firebase
             .firestore()
-            .collection("pokemon")
+            .collection(`pokemon-${$lang}`)
             .doc(String($lastPokemon))
             .get()
             .then(resp => {
