@@ -1,5 +1,6 @@
 <script>
-  import { page } from "../store/project.js";
+  import _ from "../translator/Translator.js";
+  import { page, lang } from "../store/project.js";
   import { level, clickCounter, startTime, endTime } from "../store/game.js";
   import { logged } from "../store/user.js";
 
@@ -44,6 +45,12 @@
         clicks: $clickCounter
       });
   });
+
+  $: _congratulations = _("Congratulations", $lang);
+  $: _youveMade = _("You've made", $lang);
+  $: _clicks = _("clicks", $lang);
+  $: _itTooksYou = _("It tooks you", $lang);
+  $: _playOnceAgain = _("Play once again", $lang);
 </script>
 
 <style>
@@ -90,17 +97,17 @@
 
   <section class="details darken-bg shadow">
 
-    <span class="details--big">Congratulations!</span>
-    <span class="details--normal">You've made:</span>
+    <span class="details--big">{ _congratulations }!</span>
+    <span class="details--normal">{ _youveMade }:</span>
     <span class="details--huge">{$clickCounter}</span>
-    <span class="details--normal">clicks!</span>
+    <span class="details--normal">{ _clicks }!</span>
     <span class="details--big">
-      It took you {getTime($startTime, $endTime)}
+      { _itTooksYou } {getTime($startTime, $endTime)}
     </span>
   </section>
 
   <section class="newGame darken-bg shadow" on:click={switchPage}>
-    Zagraj jeszcze raz
+    { _playOnceAgain }!
   </section>
 
 </div>
