@@ -7,6 +7,7 @@
   import _ from "../translator/Translator.js";
 
   import firebase from "firebase";
+  import "firebase/auth";
 
   const showLoginModal = () => {
     modal.set({

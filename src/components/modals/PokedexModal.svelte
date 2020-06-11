@@ -9,6 +9,8 @@
   import { onMount } from "svelte";
 
   import firebase from "firebase";
+  import "firebase/firestore";
+  import "firebase/storage";
   const COVERWIDTH = 379;
 
   let coverLeftPosition = 2;

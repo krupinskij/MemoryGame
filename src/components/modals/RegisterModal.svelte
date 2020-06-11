@@ -6,6 +6,7 @@
   import { page, lang } from '../../store/project.js';
 
   import firebase from "firebase";
+  import "firebase/auth";
 
   const hideModal = () => {
     modal.set({

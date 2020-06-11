@@ -9,6 +9,8 @@
   import { onMount } from "svelte";
 
   import firebase from "firebase";
+  import "firebase/firestore";
+  import "firebase/auth";
 
   const switchPage = () => {
     setTimeout(() => {

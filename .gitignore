@@ -8,3 +8,5 @@
 .firebaserc
 firestore.rules
 storage.rules
+firebase.config.js
+firebase.*

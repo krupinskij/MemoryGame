@@ -9,7 +9,10 @@
     pokemonDeleteQueue,
     pokemonTurnDownQueue
   } from "../store/pokemons.js";
+
   import firebase from "firebase";
+  import "firebase/storage";
+
   import { onMount } from "svelte";
   export let id, type;
 
