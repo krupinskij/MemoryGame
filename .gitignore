@@ -6,7 +6,6 @@
 #firebase files
 .firebase
 .firebaserc
-firestore.rules
-storage.rules
-firebase.config.js
 firebase.*
+firestore*
+storage.*
