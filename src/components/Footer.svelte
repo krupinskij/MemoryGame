@@ -1,60 +1,25 @@
 <script>
   import { lang } from "../store/project.js";
+  import _ from "../translator/Translator.js";
+
+	
+  $: _madeBy = _("Made By", $lang);
 </script>
 
-<style>
-	.footer {
-		position: absolute;
-		bottom: 0;
-		width: calc(100% - 20px);
-    padding: 0 10px;
-
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.flags {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-
-	.flag {
-		width: min-content;
-		height: 20px;
-		padding: 0;
-		border: 0;
-		margin: 5px;
-	}
-
-	.img-flag {
-		width: auto;
-		height: 20px;
-		margin: 0;
-		cursor: pointer;
-	}
-
-	.link {
-		color: white;
-	}
-</style>
-
-<div class="footer darken-bg shadow">
-  <div class="flags" >
-		<button class="flag" on:click={ () => { lang.set("en") }}>
+<div class="footer">
+  <div class="button-group" >
+		<button class="mx-2" on:click={ () => { lang.set("en") }}>
 			<img
-				class="img-flag"
+				class="w-auto h-5"
       	src="img/lang/english-lang.svg"
       	alt="English lang" />
 		</button>
-		<button class="flag" on:click={ () => { lang.set("pl") }}>
+		<button class="mx-2" on:click={ () => { lang.set("pl") }}>
 			<img
-				class="img-flag"
+				class="w-auto h-5"
       	src="img/lang/polish-lang.svg"
       	alt="Polish lang" />
 		</button>
 	</div>
-  <div><a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2020</div>
+  <div class="addon">{_madeBy} <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
 </div>

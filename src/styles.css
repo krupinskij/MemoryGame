@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.game {
+  @apply bg-game bg-no-repeat bg-cover bg-center h-screen grid grid-rows-game;
+}
+
+.component {
+  @apply bg-component shadow-component
+}
+
+.navbar, .footer {
+  @apply component rounded m-2 p-2 flex justify-between items-center;
+}
+
+.buttons-group {
+  @apply flex items-center content-center;
+}
+
+.button {
+  @apply bg-black border-black hover:border-white border-4 rounded h-12 px-4 mx-2 text-lg;
+}
+
+.greet {
+  @apply text-xl mx-4;
+}
+
+.addon {
+  @apply text-base mx-4;
+}
+
+.link {
+  @apply underline;
+}

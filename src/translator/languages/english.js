@@ -9,6 +9,9 @@ export default {
         ["Log Out", "Log Out"],
         ["Check in pokedex", "Check in pokedex"],
 
+        // footer
+        ["Made By", "made by"],
+
         // loading modal
         ["Loading", "Loading"],
 
