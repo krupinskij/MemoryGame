@@ -3,9 +3,5 @@
 
 .DS_Store
 
-#firebase files
-.firebase
-.firebaserc
-firebase.*
-firestore*
-storage.*
+# Enviroment
+.env
