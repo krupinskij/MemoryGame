@@ -7,7 +7,7 @@
 }
 
 .component {
-  @apply bg-component shadow-component
+  @apply bg-component shadow-component;
 }
 
 .navbar, .footer {
@@ -32,4 +32,48 @@
 
 .link {
   @apply underline;
+}
+
+.page {
+  @apply flex flex-col items-center justify-center gap-8;
+}
+
+.component-narrow {
+  @apply component w-1/2 p-6 rounded-lg flex items-center justify-center;
+}
+
+.component-mid {
+  @apply component w-2/3 p-6 rounded-lg flex items-center justify-center;
+}
+
+.component-wide {
+  @apply component w-11/12 p-6 rounded-lg grid items-center justify-center;
+}
+
+.grid-template-4-4 {
+  @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
+}
+
+.grid-template-4-6 {
+  @apply grid-rows-4 grid-cols-6 max-h-4-6 max-w-4-6;
+}
+
+.grid-template-4-8 {
+  @apply grid-rows-4 grid-cols-8 max-h-4-8 max-w-4-8;
+}
+
+.grid-template-6-12 {
+  @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+}
+
+.card-container {
+  @apply aspect-w-1 aspect-h-1;
+}
+
+.card {
+  @apply grid place-items-center p-1;
+}
+
+.card-image {
+  @apply w-full h-auto border-white border-2 rounded-lg cursor-pointer;
 }

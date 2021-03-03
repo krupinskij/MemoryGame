@@ -95,20 +95,19 @@
 <div
   in:fade={{ delay: 500, duration: 1000 }}
   out:fade={{ duration: 500 }}
-  class="page result-page">
+  class="page">
 
-  <section class="details darken-bg shadow">
-
-    <span class="details--big">{ _congratulations }!</span>
-    <span class="details--normal">{ _youveMade }:</span>
-    <span class="details--huge">{$clickCounter}</span>
-    <span class="details--normal">{ _clicks }!</span>
-    <span class="details--big">
+    <section class="component-wide text-5xl">{ _congratulations }!</section>
+    <section class="component-mid flex-col">
+      <div class="text-3xl">{ _youveMade }:</div>
+      <div class="text-9xl">{$clickCounter}</div>
+      <div class="text-3xl">{ _clicks }!</div>
+    </section>
+    <section class="component-wide text-4xl">
       { _itTooksYou } {getTime($startTime, $endTime)}
-    </span>
-  </section>
+    </section>
 
-  <section class="newGame darken-bg shadow" on:click={switchPage}>
+  <section class="component-narrow cursor-pointer text-4xl underline" on:click={switchPage}>
     { _playOnceAgain }!
   </section>
 
