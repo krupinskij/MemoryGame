@@ -41,32 +41,21 @@
   $: _password = _("Password", $lang);
 </script>
 
-<div
-  class="modal"
-  transition:scale={{ duration: 500 }}
-  on:click|self={hideModal}>
-  <form
-    class="modal__content modal__content--login shadow"
-    on:submit|preventDefault={login}>
-    <h2 class="modal__header darken-bg">{_logIn}</h2>
-    <div class="modal__section darken-bg">
-      <label class="modal__label" for="username">{_username}:</label>
-      <input
-        class="modal__input"
-        type="text"
-        id="username"
-        bind:value={username} />
+<div class="modal-container" transition:scale={{ duration: 500 }} on:click|self={hideModal}>
+  <form class="modal bg-login" on:submit|preventDefault={login}>
+    <h2 class="modal-header">{_logIn}</h2>
+    <div class="modal-field">
+      <label class="modal-field-label" for="username">{_username}:</label>
+      <input class="modal-field-input" type="text" id="username" bind:value={username} />
     </div>
-    <div class="modal__section darken-bg">
-      <label class="modal__label" for="password">{_password}:</label>
-      <input
-        class="modal__input"
-        type="password"
-        id="password"
-        bind:value={password} />
+    <div class="modal-field">
+      <label class="modal-field-label" for="password">{_password}:</label>
+      <input class="modal-field-input" type="password" id="password" bind:value={password} />
     </div>
-    <input type="submit" class="button modal__submit" value={_logIn + '!'} />
+    <div class="modal-buttons">
+      <input type="submit" class="button" value={_logIn + '!'} />
+    </div>
 
-    <div class="modal__error">{error}</div>
+    <div class="modal-error">{error}</div>
   </form>
 </div>

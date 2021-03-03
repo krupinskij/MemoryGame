@@ -215,7 +215,7 @@
 </style>
 
 <div
-  class="modal"
+  class="modal-container"
   transition:scale={{ duration: 500 }}
   on:click|self={hidePokedex}>
   <canvas id="pokedex" class="pokedex" width="750" height="550">
