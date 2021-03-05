@@ -4442,7 +4442,7 @@ video {
 }
 
 .bg-loading {
-  background-image: url('/img/background/bg-loading.gif');
+  background-image: url('/img/background/bg-loading.webp');
 }
 
 .bg-login {
@@ -35781,7 +35781,7 @@ body {
   }
 
   .sm\:bg-loading {
-    background-image: url('/img/background/bg-loading.gif');
+    background-image: url('/img/background/bg-loading.webp');
   }
 
   .sm\:bg-login {
@@ -66626,7 +66626,7 @@ body {
   }
 
   .md\:bg-loading {
-    background-image: url('/img/background/bg-loading.gif');
+    background-image: url('/img/background/bg-loading.webp');
   }
 
   .md\:bg-login {
@@ -97471,7 +97471,7 @@ body {
   }
 
   .lg\:bg-loading {
-    background-image: url('/img/background/bg-loading.gif');
+    background-image: url('/img/background/bg-loading.webp');
   }
 
   .lg\:bg-login {
@@ -128316,7 +128316,7 @@ body {
   }
 
   .xl\:bg-loading {
-    background-image: url('/img/background/bg-loading.gif');
+    background-image: url('/img/background/bg-loading.webp');
   }
 
   .xl\:bg-login {
@@ -159161,7 +159161,7 @@ body {
   }
 
   .\32xl\:bg-loading {
-    background-image: url('/img/background/bg-loading.gif');
+    background-image: url('/img/background/bg-loading.webp');
   }
 
   .\32xl\:bg-login {

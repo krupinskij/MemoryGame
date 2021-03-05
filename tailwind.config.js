@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'game': "url('/img/background/bg-game.png')",
-        'loading': "url('/img/background/bg-loading.gif')",
+        'loading': "url('/img/background/bg-loading.webp')",
         'login': "url('/img/background/bg-login.gif')",
         'ranking': "url('/img/background/bg-ranking.gif')",
         'register': "url('/img/background/bg-register.gif')"
