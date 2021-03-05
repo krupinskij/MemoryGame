@@ -115,99 +115,56 @@
 
 </script>
 
-<div
-  class="modal"
-  transition:scale={{ duration: 500 }}
-  on:click|self={hideModal}>
-  <div class="modal__content modal__content--ranking">
-    <h2 class="modal__header darken-bg">{ _bestResults }</h2>
-    <table class="table">
-      <thead class="darken-bg">
+<div class="modal-container" transition:scale={{ duration: 500 }} on:click|self={hideModal}>
+  <div class="modal bg-ranking">
+    <h2 class="modal-header">{ _bestResults }</h2>
+    <table class="component">
+      <thead>
         <tr>
-          <th class="table__header">{ _user }</th>
-          <th class="table__header">{ _time }</th>
-          <th class="table__header">{ _clicks }</th>
+          <th class="table-header">{ _user }</th>
+          <th class="table-header">{ _time }</th>
+          <th class="table-header">{ _clicks }</th>
         </tr>
       </thead>
       <tbody>
         {#each results as result}
-          <tr class="darken-bg">
-            <td class="table__data">{result.username}</td>
-            <td class="table__data">{result.time}</td>
-            <td class="table__data">{result.clicks}</td>
+          <tr>
+            <td class="table-data">{result.username}</td>
+            <td class="table-data">{result.time}</td>
+            <td class="table-data">{result.clicks}</td>
           </tr>
         {/each}
       </tbody>
     </table>
 
-    <div class="modal__buttons">
-      <div class="button-group">
-        <button
-          class="button button--small button--first"
-          class:button--active={who === 'me'}
-          on:click={() => {
-            setWho('me');
-          }}>
+    <div class="modal-buttons">
+      <div class="buttons-group-merged">
+        <button class="button" class:button--active={who === 'me'} on:click={() => { setWho('me'); }}>
           { _me }
         </button>
-        <button
-          class="button button--small button--last"
-          class:button--active={who === 'all'}
-          on:click={() => {
-            setWho('all');
-          }}>
+        <button class="button" class:button--active={who === 'all'} on:click={() => { setWho('all'); }}>
           { _all }
         </button>
       </div>
-      <div class="button-group">
-        <button
-          class="button button--small button--first"
-          class:button--active={order === 'time'}
-          on:click={() => {
-            setOrder('time', 'clicks');
-          }}>
+      <div class="buttons-group-merged">
+        <button class="button" class:button--active={order === 'time'} on:click={() => { setOrder('time', 'clicks'); }}>
           { _time }
         </button>
-        <button
-          class="button button--small button--last"
-          class:button--active={order === 'clicks'}
-          on:click={() => {
-            setOrder('clicks', 'time');
-          }}>
+        <button class="button" class:button--active={order === 'clicks'} on:click={() => { setOrder('clicks', 'time'); }}>
           { _clicks }
         </button>
       </div>
-      <div class="button-group">
-        <button
-          class="button button--small button--first"
-          class:button--active={level === 'easy'}
-          on:click={() => {
-            setLevel('easy');
-          }}>
+      <div class="buttons-group-merged">
+        <button class="button" class:button--active={level === 'easy'} on:click={() => { setLevel('easy'); }}>
           { _easy }
         </button>
-        <button
-          class="button button--small button--center"
-          class:button--active={level === 'medium'}
-          on:click={() => {
-            setLevel('medium');
-          }}>
+        <button class="button" class:button--active={level === 'medium'} on:click={() => { setLevel('medium'); }}>
           { _medium }
         </button>
-        <button
-          class="button button--small button--center"
-          class:button--active={level === 'hard'}
-          on:click={() => {
-            setLevel('hard');
-          }}>
+        <button class="button" class:button--active={level === 'hard'} on:click={() => { setLevel('hard'); }}>
           { _hard }
         </button>
-        <button
-          class="button button--small button--last"
-          class:button--active={level === 'legendary'}
-          on:click={() => {
-            setLevel('legendary');
-          }}>
+        <button class="button" class:button--active={level === 'legendary'} on:click={() => { setLevel('legendary'); }}>
           { _legendary }
         </button>
       </div>

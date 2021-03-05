@@ -51,23 +51,25 @@
 
 </script>
 
-<div class="modal" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
-  <form class="modal__content modal__content--register shadow" on:click|preventDefault={ register }>
-    <h2 class="modal__header darken-bg">{ _register }</h2>
-    <div class="modal__section darken-bg">
-      <label class="modal__label" for="username">{ _username }: </label>
-      <input class="modal__input" type="text" id="username" bind:value={ username } />
+<div class="modal-container" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
+  <form class="modal bg-register" on:click|preventDefault={ register }>
+    <h2 class="modal-header">{ _register }</h2>
+    <div class="modal-field">
+      <label class="modal-field-label" for="username">{ _username }: </label>
+      <input class="modal-field-input" type="text" id="username" bind:value={ username } />
     </div>
-    <div class="modal__section darken-bg">
-      <label class="modal__label" for="password">{ _password }: </label>
-      <input class="modal__input" type="password" id="password" bind:value={ password } />
+    <div class="modal-field">
+      <label class="modal-field-label" for="password">{ _password }: </label>
+      <input class="modal-field-input" type="password" id="password" bind:value={ password } />
     </div>
-    <div class="modal__section darken-bg">
-      <label class="modal__label" for="repeat">{ _repeatPassword }: </label>
-      <input class="modal__input" type="password" id="repeat" bind:value={ repeat } />
+    <div class="modal-field">
+      <label class="modal-field-label" for="repeat">{ _repeatPassword }: </label>
+      <input class="modal-field-input" type="password" id="repeat" bind:value={ repeat } />
     </div>
-    <input type="submit" class="button modal__submit" value={ _signUp + "!"}/>
+    <div class="modal-buttons">
+      <input type="submit" class="button" value={ _signUp + "!"}/>
+    </div>
 
-    <div class="modal__error">{error}</div>
+    <div class="modal-error">{error}</div>
   </form>
 </div>

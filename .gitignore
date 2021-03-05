@@ -1,11 +1,8 @@
 /node_modules/
 /public/build/
+/public/styles.css
 
 .DS_Store
 
-#firebase files
-.firebase
-.firebaserc
-firebase.*
-firestore*
-storage.*
+# Enviroment
+.env

@@ -49,10 +49,6 @@
   const pokemonCards = [];
 
   onMount(() => {
-    const constainer = document.getElementById("container");
-    constainer.style.gridTemplate = `repeat(${verticalLength},1fr) / repeat(${horizontalLength},1fr)`;
-    constainer.style.maxWidth = `${width}%`;
-
     imagesAll.set(species * 2);
 
     const idSet = new Set();
@@ -82,32 +78,12 @@
   });
 </script>
 
-<style>
-  .game-page {
-    display: grid;
-    place-items: center;
-  }
-
-  .container {
-    position: relative;
-    display: grid;
-    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
-    grid-gap: 10px;
-
-    max-width: 35%;
-    max-height: 100%;
-    height: min-content;
-
-    padding: 1% 5%;
-  }
-</style>
-
 <div
   in:fade={{ delay: 500, duration: 1000 }}
   out:fade={{ duration: 500 }}
-  class="page game-page">
+  class="page">
 
-  <section id="container" class="container darken-bg shadow">
+  <section id="container" class="component-wide {`grid-template-${verticalLength}-${horizontalLength}`}">
     {#each pokemonCards as pokemonCard}
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}

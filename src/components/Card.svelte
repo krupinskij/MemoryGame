@@ -137,34 +137,12 @@
   });
 </script>
 
-<style>
-  .image-container {
-    display: grid;
-    place-items: center;
-  }
-
-  .pokemon-image {
-    width: 100%;
-    height: auto;
-    padding: 0;
-    justify-self: center;
-
-    font-size: 20px;
-    color: white;
-
-    border: 2px solid white;
-    border-radius: 10px;
-
-    cursor: pointer;
-  }
-</style>
-
-<div class="card">
-  <div class="image-container">
+<div class="card-container">
+  <div class="card">
     <img
       id={`${type}-${id}`}
       src="../img/cardback.png"
-      class="pokemon-image"
+      class="card-image"
       alt="Pokemon"
       on:click={turnCard} />
   </div>

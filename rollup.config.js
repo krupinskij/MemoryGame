@@ -4,6 +4,11 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
+import replace from '@rollup/plugin-replace';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -15,6 +20,15 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({
+			API_KEY: JSON.stringify(process.env.API_KEY),
+			AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
+			DATABASE_URL: JSON.stringify(process.env.DATABASE_URL),
+			PROJECT_ID: JSON.stringify(process.env.PROJECT_ID),
+			STORAGE_BUCKET: JSON.stringify(process.env.STORAGE_BUCKET),
+			MESSAGING_SENDER_ID: JSON.stringify(process.env.MESSAGING_SENDER_ID),
+			APP_ID: JSON.stringify(process.env.APP_ID)
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,

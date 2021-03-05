@@ -36,7 +36,7 @@
 </script>
 
 <main>
-  <div class="game-container" class:blurred={ $modal.visible }>
+  <div class="game" class:blurred={ $modal.visible }>
     <Navbar />
     {#if $page === 'start'}
       <StartPage />

@@ -2,7 +2,7 @@
   import { logged } from "../store/user.js";
   import { modal } from "../store/modal.js";
   import { page, lang } from "../store/project.js";
-  import { singlePokemon, pokedexVisible } from "../store/pokemons.js";
+  import { singlePokemon } from "../store/pokemons.js";
 
   import _ from "../translator/Translator.js";
 
@@ -65,54 +65,33 @@
   $: _signUp = _("Sign Up", $lang);
 </script>
 
-<style>
-  .navbar {
-    top: 0;
-    width: calc(100% - 20px);
-    padding: 10px;
-
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .user-panel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .username {
-    font-size: 28px;
-  }
-</style>
-
-<div class="navbar darken-bg shadow">
-  <div>
+<div class="navbar">
+  <div class="buttons-group">
     {#if $page === 'game'}
       <button
-        class="button button--small"
-        class:button--disabled={!$singlePokemon}
+        class="button"
+        disabled={!$singlePokemon}
         on:click={showPokedexModal}>
         {_checkInPokedex}
       </button>
     {/if}
   </div>
-  <div class="user-panel">
+  <div class="buttons-group">
     {#if $logged}
-      <label class="username">
+      <label class="greet">
         {_hi}, {getUsername(firebase.auth().currentUser.email)}!
       </label>
-      <button class="button button--small" on:click={showRankingModal}>
+      <button class="button" on:click={showRankingModal}>
         {_showRanking}
       </button>
-      <button class="button button--small" on:click={logout}>
+      <button class="button" on:click={logout}>
         {_logOut}
       </button>
     {:else}
-      <button class="button button--small" on:click={showLoginModal}>
+      <button class="button" on:click={showLoginModal}>
         {_logIn}
       </button>
-      <button class="button button--small" on:click={showRegisterModal}>
+      <button class="button" on:click={showRegisterModal}>
         {_signUp}
       </button>
     {/if}

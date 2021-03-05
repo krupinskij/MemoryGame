@@ -10,21 +10,9 @@
   };
 </script>
 
-<style>
-  .startpage {
-    display: grid;
-    place-items: center;
 
-    cursor: pointer;
-  }
-
-  .name {
-    max-height: 50%;
-
-    padding: 2% 15%;
-  }
-</style>
-
-<div out:fade="{{ duration: 500 }}" class="page startpage" on:click={switchPage}>
-  <img class="name darken-bg shadow" src="/img/name.png" alt="Pokemon - Memory Game" />
+<div out:fade="{{ duration: 500 }}" class="page" on:click={switchPage}>
+  <div class="component-mid cursor-pointer">
+    <img src="/img/name.png" alt="Pokemon - Memory Game" />
+  </div>
 </div>

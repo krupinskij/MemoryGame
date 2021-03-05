@@ -48,20 +48,10 @@
 </script>
 
 <style>
-  .level-page {
-    display: grid;
-    grid-template-rows: 75% 25%;
-    place-items: center;
-  }
-
   .options-container {
     display: grid;
-
     grid-template: 1fr 1fr 1fr 1fr / 1fr 4fr 6fr;
     align-items: center;
-
-    padding: 2%;
-    width: 65%;
   }
 
   .pointer {
@@ -113,15 +103,6 @@
     height: 20rem;
   }
 
-  .submitLevel {
-    font-size: 50px;
-
-    padding: 0 15%;
-
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
   @keyframes jump {
     100% {
       transform: translate3d(0, -30%, 0);
@@ -129,9 +110,9 @@
   }
 </style>
 
-<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page level-page">
+<div in:fade="{{ delay: 500, duration: 1000 }}" out:fade="{{ duration: 500 }}" class="page">
 
-  <section class="options-container darken-bg shadow">
+  <section class="component-mid options-container">
 
     <img
       id="pokeball"
@@ -172,7 +153,7 @@
 
   </section>
 
-  <section id="submitLevel" class="submitLevel darken-bg shadow" on:click={switchPage}>
+  <section id="submitLevel" class="component-narrow cursor-pointer text-4xl underline" on:click={switchPage}>
     { _play }!
   </section>
 
