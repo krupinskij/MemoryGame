@@ -7,7 +7,7 @@
 </script>
 
 <div class="footer">
-  <div class="button-group" >
+  <div class="buttons-group" >
 		<button class="mx-2" on:click={ () => { lang.set("en") }}>
 			<img
 				class="w-auto h-5"
