@@ -6,3 +6,6 @@
 
 # Enviroment
 .env
+
+# Firebase
+/.firebase

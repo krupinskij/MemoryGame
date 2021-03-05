@@ -1,8 +1,22 @@
 # Pokemon Memory Game
-Memory Game based in pokemon world
+Memory Game based in Pokemon world
+
+# Website
+https://pokemon-memory-game-1fa7f.web.app/
 
 ## Installation
 Download or clone repository
+
+Add .env file with custom Firebase api keys
+```
+API_KEY=...
+AUTH_DOMAIN=...
+DATABASE_URL=...
+PROJECT_ID=...
+STORAGE_BUCKET=...
+MESSAGING_SENDER_ID=...
+APP_ID=...
+```
 
 Run
 ```bash
