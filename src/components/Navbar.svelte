@@ -70,7 +70,7 @@
     {#if $page === 'game'}
       <button
         class="button"
-        class:button--disabled={!$singlePokemon}
+        disabled={!$singlePokemon}
         on:click={showPokedexModal}>
         {_checkInPokedex}
       </button>

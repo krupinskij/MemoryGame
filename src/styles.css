@@ -96,6 +96,12 @@ body {
   @apply bg-black border-black border-4 rounded h-12 px-4 mx-2 text-lg;
 }
 
+.button:disabled {
+  color: gray;
+  background-color: rgb(60, 60, 60);
+  border-color: rgb(60, 60, 60);
+}
+
 .button:hover {
   @apply border-white rounded;
   z-index: 10;
