@@ -19,5 +19,5 @@
       	alt="Polish lang" />
 		</button>
 	</div>
-  <div class="addon"><Translate token="Made By"/> <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
+  <div class="addon"><Translate token="FOOTER__MADE_BY"/> <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
 </div>

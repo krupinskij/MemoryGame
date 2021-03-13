@@ -1,9 +1,8 @@
 <script>
   import { lang } from "../../store/project.js";
-  import _ from "../../translator/Translator.js";
+  import _ from "../Translator";
 
 	export let token;
-  console.log(token);
   $: _translated = _(token, $lang);
 </script>
 
