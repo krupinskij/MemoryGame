@@ -1,9 +1,7 @@
 <script>
   import { lang } from "../store/project.js";
-  import _ from "../translator/Translator.js";
+	import Translate from "../i18n/components/Translate.svelte";
 
-	
-  $: _madeBy = _("Made By", $lang);
 </script>
 
 <div class="footer">
@@ -21,5 +19,5 @@
       	alt="Polish lang" />
 		</button>
 	</div>
-  <div class="addon">{_madeBy} <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
+  <div class="addon"><Translate token="Made By"/> <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
 </div>
