@@ -1,8 +1,7 @@
 <script>
-  import _ from "../../translator/Translator.js";
+	import Translate from "../../i18n/components/Translate.svelte";
 
   import { scale } from "svelte/transition";
-  import { lang } from "../../store/project.js"
   import { modal } from "../../store/modal.js";
 
   import firebase from "firebase";
@@ -98,32 +97,17 @@
   };
 
   onMount(getData);
-
-  $: _bestResults = _("Best results", $lang);
-
-  $: _user = _("User", $lang);
-  $: _time = _("Time", $lang);
-  $: _clicks = _("Clicks", $lang);
-
-  $: _me = _("Me", $lang);
-  $: _all = _("All", $lang);
-
-  $: _easy = _("Easy", $lang);
-  $: _medium = _("Medium", $lang);
-  $: _hard = _("Hard", $lang);
-  $: _legendary = _("Legendary", $lang);
-
 </script>
 
 <div class="modal-container" transition:scale={{ duration: 500 }} on:click|self={hideModal}>
   <div class="modal bg-ranking">
-    <h2 class="modal-header">{ _bestResults }</h2>
+    <h2 class="modal-header"><Translate token="RANKING_MODAL__BEST_RESULTS"></Translate></h2>
     <table class="component">
       <thead>
         <tr>
-          <th class="table-header">{ _user }</th>
-          <th class="table-header">{ _time }</th>
-          <th class="table-header">{ _clicks }</th>
+          <th class="table-header"><Translate token="RANKING_MODAL__USER"></Translate></th>
+          <th class="table-header"><Translate token="RANKING_MODAL__TIME"></Translate></th>
+          <th class="table-header"><Translate token="RANKING_MODAL__CLICKS"></Translate></th>
         </tr>
       </thead>
       <tbody>
@@ -140,32 +124,32 @@
     <div class="modal-buttons">
       <div class="buttons-group-merged">
         <button class="button" class:button--active={who === 'me'} on:click={() => { setWho('me'); }}>
-          { _me }
+          <Translate token="RANKING_MODAL__ME"></Translate>
         </button>
         <button class="button" class:button--active={who === 'all'} on:click={() => { setWho('all'); }}>
-          { _all }
+          <Translate token="RANKING_MODAL__ALL"></Translate>
         </button>
       </div>
       <div class="buttons-group-merged">
         <button class="button" class:button--active={order === 'time'} on:click={() => { setOrder('time', 'clicks'); }}>
-          { _time }
+          <Translate token="RANKING_MODAL__TIME"></Translate>
         </button>
         <button class="button" class:button--active={order === 'clicks'} on:click={() => { setOrder('clicks', 'time'); }}>
-          { _clicks }
+          <Translate token="RANKING_MODAL__CLICKS"></Translate>
         </button>
       </div>
       <div class="buttons-group-merged">
         <button class="button" class:button--active={level === 'easy'} on:click={() => { setLevel('easy'); }}>
-          { _easy }
+          <Translate token="RANKING_MODAL__EASY"></Translate>
         </button>
         <button class="button" class:button--active={level === 'medium'} on:click={() => { setLevel('medium'); }}>
-          { _medium }
+          <Translate token="RANKING_MODAL__MEDIUM"></Translate>
         </button>
         <button class="button" class:button--active={level === 'hard'} on:click={() => { setLevel('hard'); }}>
-          { _hard }
+          <Translate token="RANKING_MODAL__HARD"></Translate>
         </button>
         <button class="button" class:button--active={level === 'legendary'} on:click={() => { setLevel('legendary'); }}>
-          { _legendary }
+          <Translate token="RANKING_MODAL__LEGENDARY"></Translate>
         </button>
       </div>
     </div>

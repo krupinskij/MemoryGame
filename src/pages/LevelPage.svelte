@@ -1,6 +1,7 @@
 <script>
-  import _ from "../translator/Translator.js";
-  import { page, lang } from "../store/project.js"; 
+	import Translate from "../i18n/components/Translate.svelte";
+  
+  import { page } from "../store/project.js"; 
   import { level } from "../store/game.js";
 
   import { fade } from 'svelte/transition';
@@ -39,12 +40,6 @@
       page.set("game");
     }, 500);
   };
-
-  $: _easy = _("Easy", $lang);
-  $: _medium = _("Medium", $lang);
-  $: _hard = _("Hard", $lang);
-  $: _legendary = _("Legendary", $lang);
-  $: _play = _("Play", $lang);
 </script>
 
 <style>
@@ -124,25 +119,25 @@
       id="easy"
       class="option option--easy"
       on:click={() => setLevel('easy')}>
-      { _easy }
+      <Translate token="LEVEL_PAGE__EASY"></Translate>
     </span>
     <span
       id="medium"
       class="option option--medium"
       on:click={() => setLevel('medium')}>
-      { _medium }
+      <Translate token="LEVEL_PAGE__MEDIUM"></Translate>
     </span>
     <span
       id="hard"
       class="option option--hard"
       on:click={() => setLevel('hard')}>
-      { _hard }
+      <Translate token="LEVEL_PAGE__HARD"></Translate>
     </span>
     <span
       id="legendary"
       class="option option--legendary"
       on:click={() => setLevel('legendary')}>
-      { _legendary }
+      <Translate token="LEVEL_PAGE__LEGENDARY"></Translate>
     </span>
 
     <img
@@ -154,7 +149,7 @@
   </section>
 
   <section id="submitLevel" class="component-narrow cursor-pointer text-4xl underline" on:click={switchPage}>
-    { _play }!
+    <Translate token="LEVEL_PAGE__PLAY"></Translate>!
   </section>
 
 </div>

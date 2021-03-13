@@ -1,6 +1,7 @@
 <script>
-  import _ from "../translator/Translator.js";
-  import { page, lang } from "../store/project.js";
+	import Translate from "../i18n/components/Translate.svelte";
+
+  import { page } from "../store/project.js";
   import { level, clickCounter, startTime, endTime } from "../store/game.js";
   import { logged } from "../store/user.js";
 
@@ -47,12 +48,6 @@
         clicks: $clickCounter
       });
   });
-
-  $: _congratulations = _("Congratulations", $lang);
-  $: _youveMade = _("You've made", $lang);
-  $: _clicks = _("clicks", $lang);
-  $: _itTooksYou = _("It tooks you", $lang);
-  $: _playOnceAgain = _("Play once again", $lang);
 </script>
 
 <style>
@@ -97,18 +92,18 @@
   out:fade={{ duration: 500 }}
   class="page">
 
-    <section class="component-wide text-5xl">{ _congratulations }!</section>
+    <section class="component-wide text-5xl"><Translate token="RESULT_PAGE__CONGRATULATIONS"></Translate>!</section>
     <section class="component-mid flex-col">
-      <div class="text-3xl">{ _youveMade }:</div>
+      <div class="text-3xl"><Translate token="RESULT_PAGE__YOUVE_MADE"></Translate>:</div>
       <div class="text-9xl">{$clickCounter}</div>
-      <div class="text-3xl">{ _clicks }!</div>
+      <div class="text-3xl"><Translate token="RESULT_PAGE__CLICKS"></Translate>!</div>
     </section>
     <section class="component-wide text-4xl">
-      { _itTooksYou } {getTime($startTime, $endTime)}
+      <Translate token="RESULT_PAGE__IT_TOOKS_YOU"></Translate> { getTime($startTime, $endTime) }
     </section>
 
   <section class="component-narrow cursor-pointer text-4xl underline" on:click={switchPage}>
-    { _playOnceAgain }!
+    <Translate token="RESULT_PAGE__PLAY_AGAIN"></Translate>!
   </section>
 
 </div>

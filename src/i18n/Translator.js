@@ -10,16 +10,22 @@ class Translator {
 		this.languages.set(language.abbr, language.dictionary);
 	}
 
-	translate(word, lang = "en") {
-		if(!this.languages.has(lang)) throw new Error("Language '" + lang + "' doesn't exist");
-		if(!this.languages.get(lang).has(word)) throw new Error("Word '" + word + "' doesn't exist");
-		
-		return this.languages.get(lang).get(word);
+	translate(token, lang = "en") {
+		if(!this.languages.has(lang)) {
+			console.error(`Language ${ lang } doesn't exist`);
+			return token;
+		}
+
+		const dictionary = this.languages.get(lang);
+		return dictionary[token] || token;
 	}
 }
 
 const translator = new Translator();
-export default translator.translate.bind(translator);;
 
 translator.registerLanguage(polish);
 translator.registerLanguage(english);
+
+export const translate = translator.translate.bind(translator);
+export const languages = [...translator.languages.keys()];
+
