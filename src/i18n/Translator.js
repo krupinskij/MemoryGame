@@ -22,7 +22,10 @@ class Translator {
 }
 
 const translator = new Translator();
-export default translator.translate.bind(translator);;
 
 translator.registerLanguage(polish);
 translator.registerLanguage(english);
+
+export const translate = translator.translate.bind(translator);
+export const languages = [...translator.languages.keys()];
+
