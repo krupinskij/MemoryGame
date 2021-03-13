@@ -1,10 +1,9 @@
 <script>
+	import Translate from "../i18n/components/Translate.svelte";
   import { logged } from "../store/user.js";
   import { modal } from "../store/modal.js";
-  import { page, lang } from "../store/project.js";
+  import { page } from "../store/project.js";
   import { singlePokemon } from "../store/pokemons.js";
-
-  import _ from "../translator/Translator.js";
 
   import firebase from "firebase";
   import "firebase/auth";
@@ -56,13 +55,6 @@
   const getUsername = email => {
     return email.substr(0, email.length - 8);
   };
-
-  $: _checkInPokedex = _("Check in pokedex", $lang);
-  $: _hi = _("Hi", $lang);
-  $: _showRanking = _("Show ranking", $lang);
-  $: _logOut = _("Log Out", $lang);
-  $: _logIn = _("Log In", $lang);
-  $: _signUp = _("Sign Up", $lang);
 </script>
 
 <div class="navbar">
@@ -72,27 +64,27 @@
         class="button"
         disabled={!$singlePokemon}
         on:click={showPokedexModal}>
-        {_checkInPokedex}
+        <Translate token="NAVBAR__CHECK_IN_POKEDEX"></Translate>
       </button>
     {/if}
   </div>
   <div class="buttons-group">
     {#if $logged}
       <label class="greet">
-        {_hi}, {getUsername(firebase.auth().currentUser.email)}!
+        <Translate token="NAVBAR__HI"></Translate>, { getUsername(firebase.auth().currentUser.email) }!
       </label>
       <button class="button" on:click={showRankingModal}>
-        {_showRanking}
+        <Translate token="NAVBAR__SHOW_RANKING"></Translate>
       </button>
       <button class="button" on:click={logout}>
-        {_logOut}
+        <Translate token="NAVBAR__LOG_OUT"></Translate>
       </button>
     {:else}
       <button class="button" on:click={showLoginModal}>
-        {_logIn}
+        <Translate token="NAVBAR__SIGN_IN"></Translate>
       </button>
       <button class="button" on:click={showRegisterModal}>
-        {_signUp}
+        <Translate token="NAVBAR__SIGN_UP"></Translate>
       </button>
     {/if}
 

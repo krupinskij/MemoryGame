@@ -4,6 +4,7 @@ export default {
         // navbar
         NAVBAR__SIGN_IN: "Sign In",
         NAVBAR__SIGN_UP: 'Sign Up',
+        NAVBAR__LOG_OUT: "Log Out",
         NAVBAR__HI: "Hi",
         NAVBAR__SHOW_RANKING: "Show Ranking",
         NAVBAR__CHECK_IN_POKEDEX: "Check In Pokedex",
@@ -23,7 +24,7 @@ export default {
         // login modal
         LOGIN_MODAL__SIGN_IN: "Sign in",
         LOGIN_MODAL__USERNAME: "Username",
-        LOGIN_MODALL__PASSWORD: "Passowrd",
+        LOGIN_MODAL__PASSWORD: "Password",
 
         // pokedex modal
         POKEDEX_MODAL__TYPE: "Type",
@@ -36,6 +37,10 @@ export default {
         RANKING_MODAL__CLICKS: "Clicks",
         RANKING_MODAL__ME: "Me",
         RANKING_MODAL__ALL: "All",
+        RANKING_MODAL__EASY: "Easy",
+        RANKING_MODAL__MEDIUM: "Medium",
+        RANKING_MODAL__HARD: "Hard",
+        RANKING_MODAL__LEGENDARY: "Legendary",
 
         // level page
         LEVEL_PAGE__EASY: "Easy",
@@ -45,7 +50,7 @@ export default {
         LEVEL_PAGE__PLAY: "Play",
 
         // result page
-        RESULT_PAGE__CONGRATULATION: "Congratulation",
+        RESULT_PAGE__CONGRATULATIONS: "Congratulations",
         RESULT_PAGE__YOUVE_MADE: "You've made",
         RESULT_PAGE__CLICKS: "clicks",
         RESULT_PAGE__IT_TOOKS_YOU: "It tooks you",

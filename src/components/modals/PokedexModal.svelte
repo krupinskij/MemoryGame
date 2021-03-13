@@ -1,6 +1,4 @@
 <script>
-  import _ from "../../translator/Translator.js";
-
   import { lang } from "../../store/project.js";
   import { lastPokemon } from "../../store/pokemons.js";
   import { modal } from "../../store/modal.js";
@@ -158,12 +156,12 @@
     y += 40;
 
     context.font = "12pt Courier New";
-    context.fillText(_type + ":", x, y);
+    context.fillText("Type:", x, y);
     y += 20;
     context.fillText(data.type, x, y);
     y += 40;
 
-    context.fillText(_evolution + ":", x, y);
+    context.fillText("Evolution:", x, y);
     y += 20;
     for (let i = 0; i < data.evolution.length; i++) {
       const wordsE = data.evolution[i].split(" ");
@@ -203,9 +201,6 @@
   onMount(() => {
     setTimeout(openLoop, 500);
   });
-
-  $: _type = _("Type", $lang);
-  $: _evolution = _("Evolution", $lang);
 </script>
 
 <style>

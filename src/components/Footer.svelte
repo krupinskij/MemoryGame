@@ -1,7 +1,6 @@
 <script>
-  import { lang } from "../store/project.js";
 	import Translate from "../i18n/components/Translate.svelte";
-
+  import { lang } from "../store/project.js";
 </script>
 
 <div class="footer">
