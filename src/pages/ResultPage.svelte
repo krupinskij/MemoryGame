@@ -22,7 +22,7 @@
   const getTime = (startTime, endTime) => {
     let time = endTime - startTime;
 
-    const ms = time % 1000;
+    const ms = Math.floor(time % 1000);
     time = Math.floor(time / 1000);
 
     const s = time % 60;
@@ -49,43 +49,6 @@
       });
   });
 </script>
-
-<style>
-  .result-page {
-    display: grid;
-    grid-template-rows: 85% 15%;
-    place-items: center;
-  }
-
-  .details {
-    display: grid;
-    grid-template-rows: 20% 15% 30% 15% 20%;
-    place-items: center;
-
-    width: 80%;
-  }
-
-  .details--normal {
-    font-size: 30px;
-  }
-
-  .details--big {
-    font-size: 50px;
-  }
-
-  .details--huge {
-    font-size: 200px;
-  }
-
-  .newGame {
-    font-size: 25px;
-
-    padding: 1% 5%;
-
-    cursor: pointer;
-    text-decoration: underline;
-  }
-</style>
 
 <div
   in:fade={{ delay: 500, duration: 1000 }}
