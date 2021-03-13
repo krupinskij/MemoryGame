@@ -20,7 +20,7 @@
   let pokeImageSrc;
   const backImageSrc = "../img/cardback.png";
   let imageSrc = backImageSrc;
-  let state = "active";
+  let state = "unclicked";
   let visible = true;
 
   const loadImage = src => {
@@ -33,12 +33,18 @@
     return "";
   };
 
+  const handleClick = () => {
+    state = "clicked";
+    turnCard();
+  }
+
   const turnCard = () => {
     visible = false;
   }
 
   const addToQueue = () => {
-    if(imageSrc !== pokeImageSrc) return;
+    if(state !== "clicked") return;
+    state = "unclicked";
 
     pokemonCheckQueue.update(q => [...q, { id, type }]);
     lastPokemon.set(id);
@@ -48,7 +54,7 @@
 
   const changeImage = () => {
     imageSrc = imageSrc === backImageSrc ? pokeImageSrc : backImageSrc;
-    visible = state === "active";
+    visible = state !== "deleted";
   }
 
   const deleteCard = () => {
@@ -56,12 +62,12 @@
     state = "deleted";
   }
 
+  const checkCard = (card) => {
+    return card.id === id && card.type === type;
+  }
+
   pokemonDeleteQueue.subscribe(q => {
-    if (
-      q.length > 1 &&
-      ((q[0].id === id && q[0].type === type) ||
-        (q[1].id === id && q[1].type === type))
-    ) {
+    if (q.length > 1 && ( checkCard(q[0]) || checkCard(q[1]) )) {
       setTimeout(deleteCard, 1000);
     }
 
@@ -69,11 +75,7 @@
   });
 
   pokemonTurnDownQueue.subscribe(q => {
-    if (
-      q.length !== 0 &&
-      ((q[0].id === id && q[0].type === type) ||
-        (q[1].id === id && q[1].type === type))
-    ) {
+    if (q.length !== 0 && ( checkCard(q[0]) || checkCard(q[1]) )) {
       setTimeout(turnCard, 1000);
     }
 
@@ -81,9 +83,7 @@
   });
 
   onMount(() => {
-    firebase
-      .storage()
-      .ref(`${type}/${id}.png`)
+    firebase.storage().ref(`${type}/${id}.png`)
       .getDownloadURL()
       .then(url => {
         loadImage(url);
@@ -104,7 +104,7 @@
         src={ imageSrc }
         class="card-image"
         alt="Pokemon"
-        on:click={ turnCard } 
+        on:click={ handleClick } 
       />
     </div>
   {/if}
