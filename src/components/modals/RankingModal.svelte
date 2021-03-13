@@ -87,7 +87,7 @@
   };
 
   const getTime = time => {
-    const ms = time % 1000;
+    const ms = Math.floor(time % 1000);
     time = Math.floor(time / 1000);
 
     const s = time % 60;
