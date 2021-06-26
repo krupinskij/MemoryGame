@@ -1,18 +1,17 @@
 <script>
 	import Translate from "../../i18n/components/Translate.svelte";
+  import Modal from "../modal/Modal.svelte";
+  import ModalHeader from "../modal/ModalHeader.svelte";
+  import ModalField from "../modal/ModalField.svelte";
+  import ModalButtons from "../modal/ModalButtons.svelte";
+  import ModalError from "../modal/ModalError.svelte";
+  import Button from "../button/Button.svelte";
 
-  import { scale } from "svelte/transition";
   import { page } from "../../store/project.js";
   import { modal } from "../../store/modal.js";
 
   import firebase from "firebase";
   import "firebase/auth";
-
-  const hideModal = () => {
-    modal.set({
-      visible: false
-    });
-  };
 
   let error = "";
   let username = "";
@@ -37,23 +36,25 @@
   };
 </script>
 
-<div class="modal-container" transition:scale={{ duration: 500 }} on:click|self={hideModal}>
-  <form class="modal bg-login" on:submit|preventDefault={login}>
-    <h2 class="modal-header"><Translate token="LOGIN_MODAL__SIGN_IN"></Translate></h2>
-    <div class="modal-field">
-      <label class="modal-field-label" for="username"><Translate token="LOGIN_MODAL__USERNAME"></Translate>:</label>
-      <input class="modal-field-input" type="text" id="username" bind:value={username} />
-    </div>
-    <div class="modal-field">
-      <label class="modal-field-label" for="password"><Translate token="LOGIN_MODAL__PASSWORD"></Translate>:</label>
-      <input class="modal-field-input" type="password" id="password" bind:value={password} />
-    </div>
-    <div class="modal-buttons">
-      <button class="button">
-        <Translate token="LOGIN_MODAL__SIGN_IN"></Translate>!
-      </button>
-    </div>
+<Modal background="bg-register">
+  <form on:submit|preventDefault={login}>
+    <ModalHeader>
+      <Translate token="LOGIN_MODAL__SIGN_IN"></Translate>
+    </ModalHeader>
 
-    <div class="modal-error">{error}</div>
+    <ModalField name="username" bind:value={username}>
+      <Translate token="LOGIN_MODAL__USERNAME"></Translate>:
+    </ModalField>
+    <ModalField name="password" bind:value={password} type="password">
+      <Translate token="REGISTER_MODAL__PASSWORD"></Translate>: 
+    </ModalField>
+
+    <ModalButtons>
+      <Button>
+        <Translate token="LOGIN_MODAL__SIGN_IN"></Translate>!
+      </Button>
+    </ModalButtons>
+
+    <ModalError error={error}></ModalError>
   </form>
-</div>
+</Modal>

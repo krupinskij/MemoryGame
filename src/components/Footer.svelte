@@ -1,6 +1,6 @@
 <script>
 	import Translate from "../i18n/components/Translate.svelte";
-	import ButtonGroup from "./ButtonGroup.svelte";
+	import ButtonGroup from "./button/ButtonGroup.svelte";
 
   import { languages } from "../i18n/Translator";
   import { lang } from "../store/project.js";

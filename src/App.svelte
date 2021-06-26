@@ -38,21 +38,21 @@
 <main>
   <div class="bg-game bg-no-repeat bg-cover bg-center h-screen grid grid-rows-game" class:blurred={ $modal.visible }>
     <Navbar />
-    <!-- {#if $page === 'start'}
+    {#if $page === 'start'}
       <StartPage />
     {:else if $page === 'level'}
       <LevelPage />
     {:else if $page === 'game'}
       <GamePage />
-    {:else if $page === 'result'} -->
+    {:else if $page === 'result'}
       <ResultPage />
-    <!-- {:else}
+    {:else}
       <div />
-    {/if} -->
+    {/if}
     <Footer />
   </div>
 
-  {#if $modal.type === 'register'}
+  <!-- {#if $modal.type === 'register'}
     <RegisterModal />
   {:else if $modal.type === 'login'}
     <LoginModal/>
@@ -60,8 +60,8 @@
     <PokedexModal/>
   {:else if $modal.type === 'ranking'}
     <RankingModal/>
-  {:else if $modal.type === 'loading'}
+  {:else if $modal.type === 'loading'} -->
     <LoadingModal/>
-  {/if}
+  <!-- {/if} -->
   
 </main>

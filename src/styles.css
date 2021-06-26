@@ -28,62 +28,22 @@
   }
 }
 
-/*  */
-
-/* Buttons */
-
-.buttons-group-merged {
-  /* @apply buttons-group gap-0; */
-}
-
-.buttons-group-merged > .button {
-  @apply rounded-none;
-	margin-right: -3px;
-  margin-left: 0;
-}
-
-.buttons-group-merged .button:first-child {
-  @apply rounded-l;
-	margin-right: -3px;
-}
-
-.buttons-group-merged .button:last-child {
-  @apply rounded-r;
-}
-
-.button:disabled {
-  color: gray;
-  background-color: rgb(60, 60, 60);
-  border-color: rgb(60, 60, 60);
-}
-
-.button:hover {
-  @apply border-white rounded;
-  z-index: 10;
-}
-
-.button--active {
-  @apply bg-black border-white border-4 z-10 rounded h-12 px-4 mx-2 text-lg;
-}
-
-/*  */
-
-/* Grid */
-
-.grid-template-4-4 {
-  @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
-}
-
-.grid-template-4-6 {
-  @apply grid-rows-4 grid-cols-6 max-h-4-6 max-w-4-6;
-}
-
-.grid-template-4-8 {
-  @apply grid-rows-4 grid-cols-8 max-h-4-8 max-w-4-8;
-}
-
-.grid-template-6-12 {
-  @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+@layer components {
+  .grid-template-4-4 {
+    @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
+  }
+  
+  .grid-template-4-6 {
+    @apply grid-rows-4 grid-cols-6 max-h-4-6 max-w-4-6;
+  }
+  
+  .grid-template-4-8 {
+    @apply grid-rows-4 grid-cols-8 max-h-4-8 max-w-4-8;
+  }
+  
+  .grid-template-6-12 {
+    @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+  }
 }
 
 /*  */
@@ -100,58 +60,6 @@
 
 .card-image {
   @apply w-full h-auto border-white border-2 rounded-lg cursor-pointer;
-}
-
-/*  */
-
-/* Modal */
-
-.modal-container {
-  @apply absolute w-screen h-screen top-0 bg-black bg-opacity-50 grid place-items-center;
-}
-
-.modal {
-  @apply bg-no-repeat bg-cover bg-center shadow-component w-1/2 min-h-1/2 p-12 grid items-center;
-}
-
-.modal-header {
-  @apply component text-center my-3 p-3 text-6xl;
-}
-
-.modal-info {
-  @apply component text-center my-3 p-3 text-4xl;
-}
-
-.modal-field {
-  @apply component grid grid-cols-modal items-center my-2 p-3 text-center;
-}
-
-.modal-field-label {
-  @apply text-3xl;
-}
-
-.modal-field-input {
-  @apply text-3xl text-black border-2 border-black rounded px-4 py-2;
-}
-
-.modal-error {
-  @apply text-center w-1/2 mx-auto my-2 bg-red-700 bg-opacity-50;
-}
-
-.modal-buttons {
-  @apply flex justify-center gap-4 flex-wrap m-4 w-full;
-}
-
-/*  */
-
-/* Table */
-
-.table-header {
-  @apply uppercase text-3xl text-center;
-}
-
-.table-data {
-  @apply text-2xl text-center;
 }
 
 /*  */

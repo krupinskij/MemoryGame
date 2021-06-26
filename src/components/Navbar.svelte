@@ -1,7 +1,7 @@
 <script>
 	import Translate from "../i18n/components/Translate.svelte";
-  import ButtonGroup from "./ButtonGroup.svelte";
-  import Button from "./Button.svelte";
+  import ButtonGroup from "./button/ButtonGroup.svelte";
+  import Button from "./button/Button.svelte";
 
   import { logged } from "../store/user.js";
   import { modal } from "../store/modal.js";
