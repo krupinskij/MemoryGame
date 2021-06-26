@@ -42,12 +42,18 @@
   .grid-template-6-12 {
     @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
   }
+
+  
 }
 
 @layer utilities {
   @variants hover {
-    .highlight {
-      @apply border-white z-10;
+    .highlight-white {
+      @apply border-white z-20;
+    }
+
+    .highlight-gray {
+      @apply border-gray-400 z-10;
     }
   }
 
@@ -66,6 +72,12 @@
   @variants merged-last {
     .join-last {
       @apply rounded-l-none ml-0;
+    }
+  }
+
+  @variants disabled {
+    .disabled {
+      @apply bg-gray-600 text-gray-500 border-gray-600;
     }
   }
 }
