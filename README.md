@@ -36,5 +36,6 @@ $ npm run build
 $ npm run dev
 ```
 
-## Homepage view
-![home page view](./screenshot.png)
+## Views
+![home page view](./screenshot_1.png)
+![game view](./screenshot_2.png)
