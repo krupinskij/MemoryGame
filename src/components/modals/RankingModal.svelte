@@ -132,31 +132,31 @@
       <Button active={who === 'me'} onClick={() => { setWho('me'); }}>
         <Translate token="RANKING_MODAL__ME"></Translate>
       </Button>
-      <Button active={who === 'all'} on:click={() => { setWho('all'); }}>
+      <Button active={who === 'all'} onClick={() => { setWho('all'); }}>
         <Translate token="RANKING_MODAL__ALL"></Translate>
       </Button>
     </ButtonMergedGroup>
 
     <ButtonMergedGroup>
-      <Button active={order === 'time'} on:click={() => { setOrder('time', 'clicks'); }}>
+      <Button active={order === 'time'} onClick={() => { setOrder('time', 'clicks'); }}>
         <Translate token="RANKING_MODAL__TIME"></Translate>
       </Button>
-      <Button active={order === 'clicks'} on:click={() => { setOrder('clicks', 'time'); }}>
+      <Button active={order === 'clicks'} onClick={() => { setOrder('clicks', 'time'); }}>
         <Translate token="RANKING_MODAL__CLICKS"></Translate>
       </Button>
     </ButtonMergedGroup>
 
     <ButtonMergedGroup>
-      <Button active={level === 'easy'} on:click={() => { setLevel('easy'); }}>
+      <Button active={level === 'easy'} onClick={() => { setLevel('easy'); }}>
         <Translate token="RANKING_MODAL__EASY"></Translate>
       </Button>
-      <Button active={level === 'medium'} on:click={() => { setLevel('medium'); }}>
+      <Button active={level === 'medium'} onClick={() => { setLevel('medium'); }}>
         <Translate token="RANKING_MODAL__MEDIUM"></Translate>
       </Button>
-      <Button active={level === 'hard'} on:click={() => { setLevel('hard'); }}>
+      <Button active={level === 'hard'} onClick={() => { setLevel('hard'); }}>
         <Translate token="RANKING_MODAL__HARD"></Translate>
       </Button>
-      <Button active={level === 'legendary'} on:click={() => { setLevel('legendary'); }}>
+      <Button active={level === 'legendary'} onClick={() => { setLevel('legendary'); }}>
         <Translate token="RANKING_MODAL__LEGENDARY"></Translate>
       </Button>
     </ButtonMergedGroup>

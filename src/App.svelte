@@ -52,7 +52,7 @@
     <Footer />
   </div>
 
-  <!-- {#if $modal.type === 'register'}
+  {#if $modal.type === 'register'}
     <RegisterModal />
   {:else if $modal.type === 'login'}
     <LoginModal/>
@@ -60,8 +60,8 @@
     <PokedexModal/>
   {:else if $modal.type === 'ranking'}
     <RankingModal/>
-  {:else if $modal.type === 'loading'} -->
+  {:else if $modal.type === 'loading'}
     <LoadingModal/>
-  <!-- {/if} -->
+  {/if}
   
 </main>

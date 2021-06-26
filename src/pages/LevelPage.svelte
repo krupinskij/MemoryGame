@@ -72,7 +72,7 @@
 
   </section>
 
-  <section class="component-narrow cursor-pointer text-6xl underline" on:click={switchPage}>
+  <section class="component w-1/2 p-6 rounded-lg flex items-center justify-center cursor-pointer text-6xl underline" on:click={switchPage}>
     <Translate token="LEVEL_PAGE__PLAY"></Translate>!
   </section>
 
