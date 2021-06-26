@@ -26,9 +26,7 @@
   .blurred {
     filter: blur(5px);
   }
-}
 
-@layer components {
   .grid-template-4-4 {
     @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
   }
@@ -43,5 +41,13 @@
   
   .grid-template-6-12 {
     @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+  }
+}
+
+@layer utilities {
+  @variants hover {
+    .highlight {
+      @apply border-white border-2 z-10;
+    }
   }
 }
