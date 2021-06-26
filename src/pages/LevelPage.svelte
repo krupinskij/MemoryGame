@@ -52,7 +52,7 @@
 
 <Page fadeIn="{{ delay: 500, duration: 1000 }}" fadeOut="{{ duration: 500 }}">
 
-  <section class="component lg:w-3/4 p-6 rounded-lg flex flex-col-reverse lg:flex-row items-center justify-evenly">
+  <section class="component p-6 rounded-lg flex flex-col-reverse lg:levels-horizontal items-center justify-evenly">
     <div class="flex flex-col items-center p-2">
       {#each options as option}
         <LevelOption 

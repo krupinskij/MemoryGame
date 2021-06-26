@@ -80,4 +80,10 @@
       @apply bg-gray-600 text-gray-500 border-gray-600;
     }
   }
+
+  @variants responsive {
+    .levels-horizontal {
+      @apply w-3/4 flex-row grid grid-cols-2 justify-items-center;
+    }
+  }
 }
