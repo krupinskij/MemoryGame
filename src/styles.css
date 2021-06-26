@@ -26,9 +26,7 @@
   .blurred {
     filter: blur(5px);
   }
-}
 
-@layer components {
   .grid-template-4-4 {
     @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
   }
@@ -43,5 +41,43 @@
   
   .grid-template-6-12 {
     @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+  }
+
+  
+}
+
+@layer utilities {
+  @variants hover {
+    .highlight-white {
+      @apply border-white z-20;
+    }
+
+    .highlight-gray {
+      @apply border-gray-400 z-10;
+    }
+  }
+
+  @variants merged-middle {
+    .join {
+      @apply rounded-none mr-m4px ml-0;
+    }
+  }
+
+  @variants merged-first {
+    .join-first {
+      @apply rounded-r-none mr-m4px;
+    }
+  }
+
+  @variants merged-last {
+    .join-last {
+      @apply rounded-l-none ml-0;
+    }
+  }
+
+  @variants disabled {
+    .disabled {
+      @apply bg-gray-600 text-gray-500 border-gray-600;
+    }
   }
 }
