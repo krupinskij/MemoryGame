@@ -28,30 +28,6 @@
   }
 }
 
-
-
-
-
-.component-narrow {
-  @apply component w-1/2 p-6 rounded-lg flex items-center justify-center;
-}
-
-.component-mid {
-  @apply component w-2/3 p-6 rounded-lg flex items-center justify-center;
-}
-
-.component-wide {
-  @apply component w-11/12 p-6 rounded-lg grid items-center justify-center;
-}
-
-.navbar, .footer {
-  @apply component ;
-}
-
-.page {
-  @apply flex flex-col items-center justify-center gap-8;
-}
-
 /*  */
 
 /* Buttons */

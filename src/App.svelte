@@ -40,13 +40,13 @@
     <Navbar />
     <!-- {#if $page === 'start'}
       <StartPage />
-    {:else if $page === 'level'} -->
+    {:else if $page === 'level'}
       <LevelPage />
-    <!-- {:else if $page === 'game'}
+    {:else if $page === 'game'}
       <GamePage />
-    {:else if $page === 'result'}
+    {:else if $page === 'result'} -->
       <ResultPage />
-    {:else}
+    <!-- {:else}
       <div />
     {/if} -->
     <Footer />
