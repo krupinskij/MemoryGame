@@ -5,7 +5,7 @@
 </script>
 
 <button
-  class={`bg-black border-black border-4 rounded h-12 px-4 mx-2 text-lg ${active ? 'underline' : ''} hover:highlight`}
+  class={`bg-black border-black border-4 rounded h-12 px-4 mx-2 text-lg ${active ? 'underline' : ''} hover:highlight merged-middle:join merged-first:join-first merged-last:join-last`}
   disabled={disabled}
   on:click={onClick}
 >

@@ -47,7 +47,25 @@
 @layer utilities {
   @variants hover {
     .highlight {
-      @apply border-white border-2 z-10;
+      @apply border-white z-10;
+    }
+  }
+
+  @variants merged-middle {
+    .join {
+      @apply rounded-none mr-m4px ml-0;
+    }
+  }
+
+  @variants merged-first {
+    .join-first {
+      @apply rounded-r-none mr-m4px;
+    }
+  }
+
+  @variants merged-last {
+    .join-last {
+      @apply rounded-l-none ml-0;
     }
   }
 }

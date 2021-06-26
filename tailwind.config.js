@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
@@ -36,6 +38,9 @@ module.exports = {
       },
       minHeight: {
         '1/2': '50%'
+      },
+      margin: {
+        m4px: '-4px'
       }
     }
   },
@@ -46,6 +51,27 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/aspect-ratio'),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-middle', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-middle${separator}${className}`)}:not(:first-child):not(:last-child)`
+        })
+      })
+    }),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-first', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-first${separator}${className}`)}:first-child`
+        })
+      })
+    }),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-last', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-last${separator}${className}`)}:last-child`
+        })
+      })
+    })
   ],
 }
