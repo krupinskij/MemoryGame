@@ -91,10 +91,10 @@
   });
 </script>
 
-<div class="card-container">
+<div class="aspect-w-1 aspect-h-1">
   {#if visible}
     <div 
-      class="card"
+      class="grid place-items-center p-1"
       transition:turn="{{ duration: 200 }}"
       on:introend="{addToQueue}"
       on:outroend="{changeImage}"
@@ -102,7 +102,7 @@
       <img
         id={`${type}-${id}`}
         src={ imageSrc }
-        class="card-image"
+        class="w-full h-auto border-white border-2 rounded-lg cursor-pointer"
         alt="Pokemon"
         on:click={ handleClick } 
       />

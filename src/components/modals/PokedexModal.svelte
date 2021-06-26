@@ -1,8 +1,8 @@
 <script>
+  import Modal from "../modal/Modal.svelte";
   import { lang } from "../../store/project.js";
   import { lastPokemon } from "../../store/pokemons.js";
   import { modal } from "../../store/modal.js";
-  import { scale } from "svelte/transition";
 
   import { onMount } from "svelte";
 
@@ -209,11 +209,10 @@
   }
 </style>
 
-<div
-  class="modal-container"
-  transition:scale={{ duration: 500 }}
-  on:click|self={hidePokedex}>
-  <canvas id="pokedex" class="pokedex" width="750" height="550">
-    Your browser does not support the HTML5 canvas tag.
-  </canvas>
-</div>
+<Modal>
+  <div on:click|self={hidePokedex}>
+    <canvas id="pokedex" class="pokedex" width="750" height="550">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+  </div>
+</Modal>

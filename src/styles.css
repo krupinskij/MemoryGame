@@ -2,201 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global */
+@layer base {
+  body {
+    font-family: 'Passion One', cursive;
+    font-weight: 400;
+    color: white;
+    
+    max-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    
+    user-select: none;
+    outline: 0;
+    cursor: default;
+  }
+}
 
-body {
-  font-family: 'Russo One', sans-serif;
-  color: white;
+@layer components {
+  .component {
+    @apply bg-component shadow-component rounded-lg;
+  }
+
+  .blurred {
+    filter: blur(5px);
+  }
+}
+
+@layer components {
+  .grid-template-4-4 {
+    @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
+  }
   
-  max-height: 100vh;
-  margin: 0;
-  overflow: hidden;
+  .grid-template-4-6 {
+    @apply grid-rows-4 grid-cols-6 max-h-4-6 max-w-4-6;
+  }
   
-  user-select: none;
-  outline: 0;
-  cursor: default;
+  .grid-template-4-8 {
+    @apply grid-rows-4 grid-cols-8 max-h-4-8 max-w-4-8;
+  }
+  
+  .grid-template-6-12 {
+    @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
+  }
 }
-
-.blurred {
-	filter: blur(5px);
-}
-
-/*  */
-
-/* Components */
-
-.game {
-  @apply bg-game bg-no-repeat bg-cover bg-center h-screen grid grid-rows-game;
-}
-
-.component {
-  @apply bg-component shadow-component;
-}
-
-.component-narrow {
-  @apply component w-1/2 p-6 rounded-lg flex items-center justify-center;
-}
-
-.component-mid {
-  @apply component w-2/3 p-6 rounded-lg flex items-center justify-center;
-}
-
-.component-wide {
-  @apply component w-11/12 p-6 rounded-lg grid items-center justify-center;
-}
-
-.navbar, .footer {
-  @apply component rounded m-2 p-2 flex justify-between items-center;
-}
-
-.page {
-  @apply flex flex-col items-center justify-center gap-8;
-}
-
-.greet {
-  @apply text-xl mx-4;
-}
-
-.addon {
-  @apply text-base mx-4;
-}
-
-.link {
-  @apply underline;
-}
-
-/*  */
-
-/* Buttons */
-
-.buttons-group {
-  @apply flex items-center content-center;
-}
-
-.buttons-group-merged {
-  @apply buttons-group gap-0;
-}
-
-.buttons-group-merged > .button {
-  @apply rounded-none;
-	margin-right: -3px;
-  margin-left: 0;
-}
-
-.buttons-group-merged .button:first-child {
-  @apply rounded-l;
-	margin-right: -3px;
-}
-
-.buttons-group-merged .button:last-child {
-  @apply rounded-r;
-}
-
-.button {
-  @apply bg-black border-black border-4 rounded h-12 px-4 mx-2 text-lg;
-}
-
-.button:disabled {
-  color: gray;
-  background-color: rgb(60, 60, 60);
-  border-color: rgb(60, 60, 60);
-}
-
-.button:hover {
-  @apply border-white rounded;
-  z-index: 10;
-}
-
-.button--active {
-  @apply bg-black border-white border-4 z-10 rounded h-12 px-4 mx-2 text-lg;
-}
-
-/*  */
-
-/* Grid */
-
-.grid-template-4-4 {
-  @apply grid-rows-4 grid-cols-4 max-h-4-4 max-w-4-4;
-}
-
-.grid-template-4-6 {
-  @apply grid-rows-4 grid-cols-6 max-h-4-6 max-w-4-6;
-}
-
-.grid-template-4-8 {
-  @apply grid-rows-4 grid-cols-8 max-h-4-8 max-w-4-8;
-}
-
-.grid-template-6-12 {
-  @apply grid-rows-6 grid-cols-12 max-h-6-12 max-w-6-12;
-}
-
-/*  */
-
-/* Card */
-
-.card-container {
-  @apply aspect-w-1 aspect-h-1;
-}
-
-.card {
-  @apply grid place-items-center p-1;
-}
-
-.card-image {
-  @apply w-full h-auto border-white border-2 rounded-lg cursor-pointer;
-}
-
-/*  */
-
-/* Modal */
-
-.modal-container {
-  @apply absolute w-screen h-screen top-0 bg-black bg-opacity-50 grid place-items-center;
-}
-
-.modal {
-  @apply bg-no-repeat bg-cover bg-center shadow-component w-1/2 min-h-1/2 p-12 grid items-center;
-}
-
-.modal-header {
-  @apply component text-center my-3 p-3 text-6xl;
-}
-
-.modal-info {
-  @apply component text-center my-3 p-3 text-4xl;
-}
-
-.modal-field {
-  @apply component grid grid-cols-modal items-center my-2 p-3 text-center;
-}
-
-.modal-field-label {
-  @apply text-3xl;
-}
-
-.modal-field-input {
-  @apply text-3xl text-black border-2 border-black rounded px-4 py-2;
-}
-
-.modal-error {
-  @apply text-center w-1/2 mx-auto my-2 bg-red-700 bg-opacity-50;
-}
-
-.modal-buttons {
-  @apply flex justify-center gap-4 flex-wrap m-4 w-full;
-}
-
-/*  */
-
-/* Table */
-
-.table-header {
-  @apply uppercase text-3xl text-center;
-}
-
-.table-data {
-  @apply text-2xl text-center;
-}
-
-/*  */
