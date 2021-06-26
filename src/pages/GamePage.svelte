@@ -7,38 +7,28 @@
 
   import { onMount } from "svelte";
   
-  let verticalLength = 5;
-  let horizontalLength = 4;
   let species = 8;
-  let width = 35;
+  let gridTemplate = 'grid-template-4-4'
 
   switch ($level) {
     case "easy": {
-      verticalLength = 4;
-      horizontalLength = 4;
       species = 8;
-      width = 35;
+      gridTemplate = 'grid-template-4-4'
       break;
     }
     case "medium": {
-      verticalLength = 4;
-      horizontalLength = 6;
       species = 12;
-      width = 55;
+      gridTemplate = 'grid-template-4-6'
       break;
     }
     case "hard": {
-      verticalLength = 4;
-      horizontalLength = 8;
       species = 16;
-      width = 75;
+      gridTemplate = 'grid-template-4-8'
       break;
     }
     case "legendary": {
-      verticalLength = 6;
-      horizontalLength = 12;
       species = 36;
-      width = 75;
+      gridTemplate = 'grid-template-6-12'
       break;
     }
   }
@@ -79,7 +69,7 @@
   fadeIn="{{ delay: 500, duration: 1000 }}"
   fadeOut="{{ duration: 500 }}"
 >
-  <section class={`component w-11/12 p-6 rounded-lg grid items-center justify-center grid-template-${verticalLength}-${horizontalLength}`}>
+  <section class={`component w-11/12 p-6 rounded-lg grid items-center justify-center ${gridTemplate}`}>
     {#each pokemonCards as pokemonCard}
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}

@@ -1,9 +1,20 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: [],
+  purge: {
+    enabled: true,
+    content: ['./src/**/*.svelte'],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.trueGray
+    },
     extend: {
       backgroundImage: {
         'game': "url('/img/background/bg-game.png')",
@@ -31,10 +42,7 @@ module.exports = {
         '6-12': '75vw'
       },
       maxHeight: {
-        '4-4': '100vw',
-        '4-6': '100vw',
-        '4-8': '100vw',
-        '6-12': '100vw'
+        'max-w': '100vw'
       },
       minHeight: {
         '1/2': '50%'
