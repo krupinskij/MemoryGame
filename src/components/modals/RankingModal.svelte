@@ -1,19 +1,24 @@
 <script>
-  import _ from "../../translator/Translator.js";
+	import Translate from "../../i18n/components/Translate.svelte";
+  import Modal from "../modal/Modal.svelte";
+  import ModalHeader from "../modal/ModalHeader.svelte";
+  import ModalButtons from "../modal/ModalButtons.svelte";
 
-  import { scale } from "svelte/transition";
-  import { lang } from "../../store/project.js"
+  import Table from "../table/Table.svelte";
+  import TableHead from "../table/TableHead.svelte";
+  import TableHeader from "../table/TableHeader.svelte";
+  import TableBody from "../table/TableBody.svelte";
+  import TableRow from "../table/TableRow.svelte";
+  import TableData from "../table/TableData.svelte";
+  
+  import Button from "../button/Button.svelte";
+  import ButtonMergedGroup from "../button/ButtonMergedGroup.svelte";
+
   import { modal } from "../../store/modal.js";
 
   import firebase from "firebase";
 
   import { onMount } from "svelte";
-
-  const hideModal = () => {
-    modal.set({
-      visible: false
-    });
-  };
 
   let who = "all";
   let order = "time";
@@ -88,7 +93,7 @@
   };
 
   const getTime = time => {
-    const ms = time % 1000;
+    const ms = Math.floor(time % 1000);
     time = Math.floor(time / 1000);
 
     const s = time % 60;
@@ -98,77 +103,62 @@
   };
 
   onMount(getData);
-
-  $: _bestResults = _("Best results", $lang);
-
-  $: _user = _("User", $lang);
-  $: _time = _("Time", $lang);
-  $: _clicks = _("Clicks", $lang);
-
-  $: _me = _("Me", $lang);
-  $: _all = _("All", $lang);
-
-  $: _easy = _("Easy", $lang);
-  $: _medium = _("Medium", $lang);
-  $: _hard = _("Hard", $lang);
-  $: _legendary = _("Legendary", $lang);
-
 </script>
 
-<div class="modal-container" transition:scale={{ duration: 500 }} on:click|self={hideModal}>
-  <div class="modal bg-ranking">
-    <h2 class="modal-header">{ _bestResults }</h2>
-    <table class="component">
-      <thead>
-        <tr>
-          <th class="table-header">{ _user }</th>
-          <th class="table-header">{ _time }</th>
-          <th class="table-header">{ _clicks }</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each results as result}
-          <tr>
-            <td class="table-data">{result.username}</td>
-            <td class="table-data">{result.time}</td>
-            <td class="table-data">{result.clicks}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
+<Modal background="bg-ranking">
+  <ModalHeader>
+    <Translate token="RANKING_MODAL__BEST_RESULTS"></Translate>
+  </ModalHeader>
 
-    <div class="modal-buttons">
-      <div class="buttons-group-merged">
-        <button class="button" class:button--active={who === 'me'} on:click={() => { setWho('me'); }}>
-          { _me }
-        </button>
-        <button class="button" class:button--active={who === 'all'} on:click={() => { setWho('all'); }}>
-          { _all }
-        </button>
-      </div>
-      <div class="buttons-group-merged">
-        <button class="button" class:button--active={order === 'time'} on:click={() => { setOrder('time', 'clicks'); }}>
-          { _time }
-        </button>
-        <button class="button" class:button--active={order === 'clicks'} on:click={() => { setOrder('clicks', 'time'); }}>
-          { _clicks }
-        </button>
-      </div>
-      <div class="buttons-group-merged">
-        <button class="button" class:button--active={level === 'easy'} on:click={() => { setLevel('easy'); }}>
-          { _easy }
-        </button>
-        <button class="button" class:button--active={level === 'medium'} on:click={() => { setLevel('medium'); }}>
-          { _medium }
-        </button>
-        <button class="button" class:button--active={level === 'hard'} on:click={() => { setLevel('hard'); }}>
-          { _hard }
-        </button>
-        <button class="button" class:button--active={level === 'legendary'} on:click={() => { setLevel('legendary'); }}>
-          { _legendary }
-        </button>
-      </div>
-    </div>
+  <Table>
+    <TableHead>
+      <TableHeader><Translate token="RANKING_MODAL__USER"></Translate></TableHeader>
+      <TableHeader><Translate token="RANKING_MODAL__TIME"></Translate></TableHeader>
+      <TableHeader><Translate token="RANKING_MODAL__CLICKS"></Translate></TableHeader>
+    </TableHead>
+    <TableBody>
+      {#each results as result}
+        <TableRow>
+          <TableData>{result.username}</TableData>
+          <TableData>{result.time}</TableData>
+          <TableData>{result.clicks}</TableData>
+        </TableRow>
+      {/each}
+    </TableBody>
+  </Table>
 
-  </div>
-</div>
+  <ModalButtons>
+    <ButtonMergedGroup>
+      <Button active={who === 'me'} onClick={() => { setWho('me'); }}>
+        <Translate token="RANKING_MODAL__ME"></Translate>
+      </Button>
+      <Button active={who === 'all'} onClick={() => { setWho('all'); }}>
+        <Translate token="RANKING_MODAL__ALL"></Translate>
+      </Button>
+    </ButtonMergedGroup>
+
+    <ButtonMergedGroup>
+      <Button active={order === 'time'} onClick={() => { setOrder('time', 'clicks'); }}>
+        <Translate token="RANKING_MODAL__TIME"></Translate>
+      </Button>
+      <Button active={order === 'clicks'} onClick={() => { setOrder('clicks', 'time'); }}>
+        <Translate token="RANKING_MODAL__CLICKS"></Translate>
+      </Button>
+    </ButtonMergedGroup>
+
+    <ButtonMergedGroup>
+      <Button active={level === 'easy'} onClick={() => { setLevel('easy'); }}>
+        <Translate token="RANKING_MODAL__EASY"></Translate>
+      </Button>
+      <Button active={level === 'medium'} onClick={() => { setLevel('medium'); }}>
+        <Translate token="RANKING_MODAL__MEDIUM"></Translate>
+      </Button>
+      <Button active={level === 'hard'} onClick={() => { setLevel('hard'); }}>
+        <Translate token="RANKING_MODAL__HARD"></Translate>
+      </Button>
+      <Button active={level === 'legendary'} onClick={() => { setLevel('legendary'); }}>
+        <Translate token="RANKING_MODAL__LEGENDARY"></Translate>
+      </Button>
+    </ButtonMergedGroup>
+  </ModalButtons>
+</Modal>

@@ -1,7 +1,6 @@
 <script>
-  import { page } from "../store/project.js";
   import { clickCounter } from "../store/game.js";
-  import { imagesLoaded, imagesAll } from "../store/images.js";
+  import { imagesLoaded } from "../store/images.js";
   import {
     lastPokemon,
     singlePokemon,
@@ -10,15 +9,18 @@
     pokemonTurnDownQueue
   } from "../store/pokemons.js";
 
+  import { turn } from '../transitions/turn';
+
   import firebase from "firebase";
   import "firebase/storage";
 
   import { onMount } from "svelte";
   export let id, type;
 
-  let imageSrc;
-  let turnedDown = true;
-  let busy = false;
+  let pokeImageSrc;
+  const backImageSrc = "../img/cardback.png";
+  let imageSrc = backImageSrc;
+  let state = "unclicked";
   let visible = true;
 
   const loadImage = src => {
@@ -27,109 +29,61 @@
       imagesLoaded.update(n => n + 1);
     });
     image.src = src;
-    imageSrc = src;
+    pokeImageSrc = src;
     return "";
   };
 
-  const turnCard = () => {
-    if (busy) return;
-    busy = true;
+  const handleClick = () => {
+    state = "clicked";
+    turnCard();
+  }
 
+  const turnCard = () => {
+    visible = false;
+  }
+
+  const addToQueue = () => {
+    if(state !== "clicked") return;
+    state = "unclicked";
+
+    pokemonCheckQueue.update(q => [...q, { id, type }]);
     lastPokemon.set(id);
     singlePokemon.update(w => !w);
     clickCounter.update(n => n + 1);
-    pokemonCheckQueue.update(q => [...q, { id, type }]);
-    showPokemonImage(turnedDown ? imageSrc : "../img/cardback.png");
-  };
+  }
 
-  const showPokemonImage = src => {
-    const image = document.getElementById(`${type}-${id}`);
-    const CARD_SIZE = 100;
-    let width = CARD_SIZE;
-    let fracPI = 0;
-    let isShown = false;
+  const changeImage = () => {
+    imageSrc = imageSrc === backImageSrc ? pokeImageSrc : backImageSrc;
+    visible = state !== "deleted";
+  }
 
-    image.style.height = image.height + "px";
-
-    const showPokemonItv = setInterval(() => {
-      fracPI += 0.05;
-      width = Math.abs(CARD_SIZE * Math.cos(Math.PI * fracPI));
-
-      if (!isShown) {
-        image.style.width = width + "%";
-
-        if (fracPI >= 0.5) {
-          image.setAttribute("src", src);
-          isShown = true;
-        }
-      } else {
-        image.style.width = width + "%";
-
-        if (fracPI >= 1) {
-          image.style.width = "100%";
-          image.style.height = "auto";
-
-          turnedDown = !turnedDown;
-          busy = false;
-          clearInterval(showPokemonItv);
-        }
-      }
-    }, 10);
-  };
-
-  const hideCard = () => {
-    const image = document.getElementById(`${type}-${id}`);
-    let opacity = 1;
+  const deleteCard = () => {
     visible = false;
+    state = "deleted";
+  }
 
-    const cardFadeOutItv = setInterval(() => {
-      opacity -= 0.05;
-      image.style.opacity = opacity;
-
-      if (opacity <= 0) {
-        clearInterval(cardFadeOutItv);
-        image.style.display = "none";
-      }
-    }, 10);
-  };
+  const checkCard = (card) => {
+    return card.id === id && card.type === type;
+  }
 
   pokemonDeleteQueue.subscribe(q => {
-    if (
-      q.length > 1 &&
-      ((q[0].id === id && q[0].type === type) ||
-        (q[1].id === id && q[1].type === type))
-    ) {
-      busy = true;
-
-      setTimeout(() => {
-        showPokemonImage("../img/cardback.png");
-        hideCard();
-      }, 1000);
+    if (q.length > 1 && ( checkCard(q[0]) || checkCard(q[1]) )) {
+      setTimeout(deleteCard, 1000);
     }
 
     return q;
   });
 
   pokemonTurnDownQueue.subscribe(q => {
-    if (
-      q.length !== 0 &&
-      ((q[0].id === id && q[0].type === type) ||
-        (q[1].id === id && q[1].type === type))
-    ) {
-      busy = true;
-
-      setTimeout(() => {
-        showPokemonImage("../img/cardback.png");
-      }, 1000);
+    if (q.length !== 0 && ( checkCard(q[0]) || checkCard(q[1]) )) {
+      setTimeout(turnCard, 1000);
     }
 
     return q;
   });
 
   onMount(() => {
-    firebase
-      .storage()
-      .ref(`${type}/${id}.png`)
+    firebase.storage().ref(`${type}/${id}.png`)
       .getDownloadURL()
       .then(url => {
         loadImage(url);
@@ -137,14 +91,21 @@
   });
 </script>
 
-<div class="card-container">
-  <div class="card">
-    <img
-      id={`${type}-${id}`}
-      src="../img/cardback.png"
-      class="card-image"
-      alt="Pokemon"
-      on:click={turnCard} />
-  </div>
-
+<div class="aspect-w-1 aspect-h-1">
+  {#if visible}
+    <div 
+      class="grid place-items-center p-1"
+      transition:turn="{{ duration: 200 }}"
+      on:introend="{addToQueue}"
+      on:outroend="{changeImage}"
+    >
+      <img
+        id={`${type}-${id}`}
+        src={ imageSrc }
+        class="w-full h-auto border-white border-2 rounded-lg cursor-pointer"
+        alt="Pokemon"
+        on:click={ handleClick } 
+      />
+    </div>
+  {/if}
 </div>

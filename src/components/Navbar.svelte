@@ -1,10 +1,12 @@
 <script>
+	import Translate from "../i18n/components/Translate.svelte";
+  import ButtonGroup from "./button/ButtonGroup.svelte";
+  import Button from "./button/Button.svelte";
+
   import { logged } from "../store/user.js";
   import { modal } from "../store/modal.js";
-  import { page, lang } from "../store/project.js";
+  import { page } from "../store/project.js";
   import { singlePokemon } from "../store/pokemons.js";
-
-  import _ from "../translator/Translator.js";
 
   import firebase from "firebase";
   import "firebase/auth";
@@ -56,45 +58,34 @@
   const getUsername = email => {
     return email.substr(0, email.length - 8);
   };
-
-  $: _checkInPokedex = _("Check in pokedex", $lang);
-  $: _hi = _("Hi", $lang);
-  $: _showRanking = _("Show ranking", $lang);
-  $: _logOut = _("Log Out", $lang);
-  $: _logIn = _("Log In", $lang);
-  $: _signUp = _("Sign Up", $lang);
 </script>
 
-<div class="navbar">
-  <div class="buttons-group">
+<div class="component m-2 p-2 flex justify-between items-center">
+  <ButtonGroup>
     {#if $page === 'game'}
-      <button
-        class="button"
-        disabled={!$singlePokemon}
-        on:click={showPokedexModal}>
-        {_checkInPokedex}
-      </button>
+      <Button disabled={!$singlePokemon} onClick={showPokedexModal}>
+        <Translate token="NAVBAR__CHECK_IN_POKEDEX"></Translate>
+      </Button>
     {/if}
-  </div>
-  <div class="buttons-group">
+  </ButtonGroup>
+  <ButtonGroup>
     {#if $logged}
-      <label class="greet">
-        {_hi}, {getUsername(firebase.auth().currentUser.email)}!
+      <label class="text-xl mx-4">
+        <Translate token="NAVBAR__HI"></Translate>, { getUsername(firebase.auth().currentUser.email) }!
       </label>
-      <button class="button" on:click={showRankingModal}>
-        {_showRanking}
-      </button>
-      <button class="button" on:click={logout}>
-        {_logOut}
-      </button>
+      <Button onClick={showRankingModal}>
+        <Translate token="NAVBAR__SHOW_RANKING"></Translate>
+      </Button>
+      <Button onClick={logout}>
+        <Translate token="NAVBAR__LOG_OUT"></Translate>
+      </Button>
     {:else}
-      <button class="button" on:click={showLoginModal}>
-        {_logIn}
-      </button>
-      <button class="button" on:click={showRegisterModal}>
-        {_signUp}
-      </button>
+      <Button onClick={showLoginModal}>
+        <Translate token="NAVBAR__SIGN_IN"></Translate>
+      </Button>
+      <Button onClick={showRegisterModal}>
+        <Translate token="NAVBAR__SIGN_UP"></Translate>
+      </Button>
     {/if}
-
-  </div>
+  </ButtonGroup>
 </div>

@@ -1,7 +1,20 @@
+const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  purge: [],
+  purge: {
+    enabled: true,
+    content: ['./src/**/*.svelte'],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.trueGray
+    },
     extend: {
       backgroundImage: {
         'game': "url('/img/background/bg-game.png')",
@@ -29,20 +42,44 @@ module.exports = {
         '6-12': '75vw'
       },
       maxHeight: {
-        '4-4': '100vw',
-        '4-6': '100vw',
-        '4-8': '100vw',
-        '6-12': '100vw'
+        'max-w': '100vw'
       },
       minHeight: {
         '1/2': '50%'
+      },
+      margin: {
+        m4px: '-4px'
       }
     }
   },
   variants: {
-    extend: {},
+    extend: {
+      fontWeight: ['hover'],
+      zIndex: ['hover']
+    },
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/aspect-ratio'),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-middle', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-middle${separator}${className}`)}:not(:first-child):not(:last-child)`
+        })
+      })
+    }),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-first', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-first${separator}${className}`)}:first-child`
+        })
+      })
+    }),
+    plugin(function({ addVariant, e }) {
+      addVariant('merged-last', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.merged > .${e(`merged-last${separator}${className}`)}:last-child`
+        })
+      })
+    })
   ],
 }

@@ -1,18 +1,17 @@
 <script>
-  import _ from "../../translator/Translator.js";
+	import Translate from "../../i18n/components/Translate.svelte";
+  import Modal from "../modal/Modal.svelte";
+  import ModalHeader from "../modal/ModalHeader.svelte";
+  import ModalField from "../modal/ModalField.svelte";
+  import ModalButtons from "../modal/ModalButtons.svelte";
+  import ModalError from "../modal/ModalError.svelte";
+  import Button from "../button/Button.svelte";
 
-  import { scale } from 'svelte/transition';
   import { modal } from '../../store/modal.js';
-  import { page, lang } from '../../store/project.js';
+  import { page } from '../../store/project.js';
 
   import firebase from "firebase";
   import "firebase/auth";
-
-  const hideModal = () => {
-    modal.set({
-      visible: false
-    })
-  }
 
   let error = "";
   let username = "";
@@ -43,33 +42,30 @@
       );
   };
 
-  $: _register = _("Register", $lang);
-  $: _username = _("Username", $lang);
-  $: _password = _("Password", $lang);
-  $: _repeatPassword = _("Repeat password", $lang);
-  $: _signUp = _("Sign Up", $lang);
-
 </script>
 
-<div class="modal-container" transition:scale="{{ duration: 500 }}" on:click|self ={ hideModal }>
-  <form class="modal bg-register" on:click|preventDefault={ register }>
-    <h2 class="modal-header">{ _register }</h2>
-    <div class="modal-field">
-      <label class="modal-field-label" for="username">{ _username }: </label>
-      <input class="modal-field-input" type="text" id="username" bind:value={ username } />
-    </div>
-    <div class="modal-field">
-      <label class="modal-field-label" for="password">{ _password }: </label>
-      <input class="modal-field-input" type="password" id="password" bind:value={ password } />
-    </div>
-    <div class="modal-field">
-      <label class="modal-field-label" for="repeat">{ _repeatPassword }: </label>
-      <input class="modal-field-input" type="password" id="repeat" bind:value={ repeat } />
-    </div>
-    <div class="modal-buttons">
-      <input type="submit" class="button" value={ _signUp + "!"}/>
-    </div>
+<Modal background="bg-register">
+  <form on:submit|preventDefault={ register }>
+    <ModalHeader>
+      <Translate token="REGISTER_MODAL__SIGN_UP"></Translate>
+    </ModalHeader>
 
-    <div class="modal-error">{error}</div>
+    <ModalField name="username" bind:value={username}>
+      <Translate token="REGISTER_MODAL__USERNAME"></Translate>: 
+    </ModalField>
+    <ModalField name="password" bind:value={password} type="password">
+      <Translate token="REGISTER_MODAL__PASSWORD"></Translate>: 
+    </ModalField>
+    <ModalField name="repeat" bind:value={repeat} type="password">
+      <Translate token="REGISTER_MODAL__REPEAT_PASSWORD"></Translate>: 
+    </ModalField>
+
+    <ModalButtons>
+      <Button>
+        <Translate token="REGISTER_MODAL__SIGN_UP"></Translate>!
+      </Button>
+    </ModalButtons>
+
+    <ModalError error={error}></ModalError>
   </form>
-</div>
+</Modal>

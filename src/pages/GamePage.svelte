@@ -1,47 +1,34 @@
 <script>
-  import { page } from "../store/project.js"; 
+  import Page from "../components/Page.svelte";
+  import Card from "../components/Card.svelte";
+
   import { level } from "../store/game.js";
   import { imagesAll } from "../store/images.js";
-  import { singlePokemon } from "../store/pokemons.js";
 
   import { onMount } from "svelte";
   
-  import Card from "../components/Card.svelte";
-
-  import { fade } from "svelte/transition";
-
-  let verticalLength = 5;
-  let horizontalLength = 4;
   let species = 8;
-  let width = 35;
+  let gridTemplate = 'grid-template-4-4'
 
   switch ($level) {
     case "easy": {
-      verticalLength = 4;
-      horizontalLength = 4;
       species = 8;
-      width = 35;
+      gridTemplate = 'grid-template-4-4'
       break;
     }
     case "medium": {
-      verticalLength = 4;
-      horizontalLength = 6;
       species = 12;
-      width = 55;
+      gridTemplate = 'grid-template-4-6'
       break;
     }
     case "hard": {
-      verticalLength = 4;
-      horizontalLength = 8;
       species = 16;
-      width = 75;
+      gridTemplate = 'grid-template-4-8'
       break;
     }
     case "legendary": {
-      verticalLength = 6;
-      horizontalLength = 12;
       species = 36;
-      width = 75;
+      gridTemplate = 'grid-template-6-12'
       break;
     }
   }
@@ -78,15 +65,13 @@
   });
 </script>
 
-<div
-  in:fade={{ delay: 500, duration: 1000 }}
-  out:fade={{ duration: 500 }}
-  class="page">
-
-  <section id="container" class="component-wide {`grid-template-${verticalLength}-${horizontalLength}`}">
+<Page
+  fadeIn="{{ delay: 500, duration: 1000 }}"
+  fadeOut="{{ duration: 500 }}"
+>
+  <section class={`component w-11/12 p-6 rounded-lg grid items-center justify-center ${gridTemplate}`}>
     {#each pokemonCards as pokemonCard}
       <Card id={pokemonCard.id} type={pokemonCard.type} />
     {/each}
   </section>
-
-</div>
+</Page>

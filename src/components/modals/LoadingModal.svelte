@@ -1,15 +1,16 @@
 <script>
-  import _ from "../../translator/Translator.js";
-
-  import { lang } from "../../store/project.js" 
+	import Translate from "../../i18n/components/Translate.svelte";
+  import Modal from "../modal/Modal.svelte";
+  import ModalHeader from "../modal/ModalHeader.svelte";
+  import ModalInfo from "../modal/ModalInfo.svelte";
+  
   import { imagesLoaded, imagesAll } from "../../store/images.js";
-
-  $: _loading = _("Loading", $lang);
 </script>
 
-<div class="modal-container">
-  <div class="modal bg-loading">
-    <h2 class="modal-header">{ _loading }...</h2>
-    <div class="modal-info">{$imagesLoaded} : {$imagesAll}</div>
-  </div>
-</div>
+<Modal background="bg-loading">
+  <ModalHeader>
+    <Translate token="LOADING_MODAL__LOADING"></Translate>...
+  </ModalHeader>
+
+  <ModalInfo>{$imagesLoaded} : {$imagesAll}</ModalInfo>
+</Modal>

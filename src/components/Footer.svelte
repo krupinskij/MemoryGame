@@ -1,25 +1,24 @@
 <script>
-  import { lang } from "../store/project.js";
-  import _ from "../translator/Translator.js";
+	import Translate from "../i18n/components/Translate.svelte";
+	import ButtonGroup from "./button/ButtonGroup.svelte";
 
-	
-  $: _madeBy = _("Made By", $lang);
+  import { languages } from "../i18n/Translator";
+  import { lang } from "../store/project.js";
 </script>
 
-<div class="footer">
-  <div class="buttons-group" >
-		<button class="mx-2" on:click={ () => { lang.set("en") }}>
-			<img
-				class="w-auto h-5"
-      	src="img/lang/english-lang.svg"
-      	alt="English lang" />
-		</button>
-		<button class="mx-2" on:click={ () => { lang.set("pl") }}>
-			<img
-				class="w-auto h-5"
-      	src="img/lang/polish-lang.svg"
-      	alt="Polish lang" />
-		</button>
+<div class="component m-2 p-2 flex justify-between items-center">
+  <ButtonGroup>
+		{#each languages as language }
+			<button class="mx-2" on:click={ () => { lang.set(language) }}>
+				<img
+					class="w-auto h-5"
+      		src={ `img/lang/${ language }-lang.svg` }
+      		alt={ `${ language } lang` } />
+			</button>
+		{/each}
+	</ButtonGroup>
+  <div class="text-base mx-4">
+		<Translate token="FOOTER__MADE_BY"/>
+		<a class="underline" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021
 	</div>
-  <div class="addon">{_madeBy} <a class="link" href="https://github.com/krupinskij">Jan Krupiński</a> &copy;2021</div>
 </div>
