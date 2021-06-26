@@ -36,11 +36,11 @@
 </script>
 
 <main>
-  <div class="game" class:blurred={ $modal.visible }>
+  <div class="bg-game bg-no-repeat bg-cover bg-center h-screen grid grid-rows-game" class:blurred={ $modal.visible }>
     <Navbar />
-    {#if $page === 'start'}
+    <!-- {#if $page === 'start'} -->
       <StartPage />
-    {:else if $page === 'level'}
+    <!-- {:else if $page === 'level'}
       <LevelPage />
     {:else if $page === 'game'}
       <GamePage />
@@ -48,7 +48,7 @@
       <ResultPage />
     {:else}
       <div />
-    {/if}
+    {/if} -->
     <Footer />
   </div>
 

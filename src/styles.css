@@ -2,36 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global */
-
-body {
-  font-family: 'Russo One', sans-serif;
-  color: white;
-  
-  max-height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  
-  user-select: none;
-  outline: 0;
-  cursor: default;
+@layer base {
+  body {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    
+    max-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    
+    user-select: none;
+    outline: 0;
+    cursor: default;
+  }
 }
 
-.blurred {
-	filter: blur(5px);
+@layer components {
+  .component {
+    @apply bg-component shadow-component rounded-lg;
+  }
+
+  .blurred {
+    filter: blur(5px);
+  }
 }
 
-/*  */
 
-/* Components */
 
-.game {
-  @apply bg-game bg-no-repeat bg-cover bg-center h-screen grid grid-rows-game;
-}
 
-.component {
-  @apply bg-component shadow-component;
-}
 
 .component-narrow {
   @apply component w-1/2 p-6 rounded-lg flex items-center justify-center;
@@ -46,35 +44,19 @@ body {
 }
 
 .navbar, .footer {
-  @apply component rounded m-2 p-2 flex justify-between items-center;
+  @apply component ;
 }
 
 .page {
   @apply flex flex-col items-center justify-center gap-8;
 }
 
-.greet {
-  @apply text-xl mx-4;
-}
-
-.addon {
-  @apply text-base mx-4;
-}
-
-.link {
-  @apply underline;
-}
-
 /*  */
 
 /* Buttons */
 
-.buttons-group {
-  @apply flex items-center content-center;
-}
-
 .buttons-group-merged {
-  @apply buttons-group gap-0;
+  /* @apply buttons-group gap-0; */
 }
 
 .buttons-group-merged > .button {
@@ -90,10 +72,6 @@ body {
 
 .buttons-group-merged .button:last-child {
   @apply rounded-r;
-}
-
-.button {
-  @apply bg-black border-black border-4 rounded h-12 px-4 mx-2 text-lg;
 }
 
 .button:disabled {
