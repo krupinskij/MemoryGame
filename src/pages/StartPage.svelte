@@ -1,7 +1,6 @@
 <script>
+  import Page from "./../components/Page.svelte";
   import { page } from "../store/project.js";
-
-  import { fade } from 'svelte/transition';
 
   const switchPage = () => {
     setTimeout(() => {
@@ -11,8 +10,8 @@
 </script>
 
 
-<div out:fade="{{ duration: 500 }}" class="page" on:click={switchPage}>
-  <div class="component-mid cursor-pointer">
+<Page fadeOut="{{ duration: 500 }}" on:click={switchPage}>
+  <div class="component w-2/3 p-6 rounded-lg flex items-center justify-center cursor-pointer">
     <img src="/img/name.png" alt="Pokemon - Memory Game" />
   </div>
-</div>
+</Page>
